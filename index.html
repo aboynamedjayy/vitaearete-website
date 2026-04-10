@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitae Arete | Jason Fee, MS, RDN, LDN — Oncology, GLP-1 & Executive Nutrition</title>
+<meta name="description" content="Vitae Arete — evidence-based oncology nutrition, GLP-1 consulting, longevity medicine, and healthcare system consulting by Jason Fee, MS, RDN, LDN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:     #1a5c47;
+  --forest-dk:  #0d3329;
+  --forest-mid: #245e49;
+  --forest-lt:  #2e7558;
+  --gold:       #c8a96e;
+  --gold-lt:    #dfc99a;
+  --parchment:  #f0e9d8;
+  --cream:      #faf7f2;
+  --bg:         #111410;
+  --bg-alt:     #0d1a11;
+  --bg-card:    #0d1810;
+  --text-dim:   rgba(240,233,216,0.50);
+  --text-mid:   rgba(240,233,216,0.78);
+  --border:     rgba(200,169,110,0.10);
+  --border-md:  rgba(200,169,110,0.20);
+  --green-glow: rgba(26,92,71,0.15);
+  --trans: 0.25s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--parchment);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Noise overlay */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:999;
+}
+
+img { display:block; max-width:100%; }
+a  { color:inherit; text-decoration:none; }
+ul { list-style:none; }
+
+/* ── TYPE ──────────────────────────────────────────────── */
+h1,h2,h3,h4 {
+  font-family:'Cormorant Garamond',Georgia,serif;
+  line-height:1.1;
+  font-weight:300;
+}
+h1 { font-size:clamp(3rem,7vw,6rem); }
+h2 { font-size:clamp(2rem,4vw,3.4rem); }
+h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
+
+.eyebrow {
+  font-family:'DM Sans',sans-serif;
+  font-size:.68rem; font-weight:600;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); display:block; margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.9rem;
+}
+.eyebrow::before {
+  content:''; display:block;
+  width:32px; height:1px;
+  background:var(--gold); opacity:.55; flex-shrink:0;
+}
+
+/* ── LAYOUT ────────────────────────────────────────────── */
+.wrap   { width:min(1200px,92%); margin:0 auto; }
+.section { padding:8rem 0; border-top:1px solid var(--border); }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+           background:var(--border); border:1px solid var(--border); }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+           background:var(--border); border:1px solid var(--border); }
+
+@media(max-width:900px) {
+  .grid-2 { grid-template-columns:1fr; gap:3rem; }
+  .grid-3 { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:560px) {
+  .grid-3,.grid-4 { grid-template-columns:1fr; }
+  .section { padding:5rem 0; }
+}
+
+/* ── BUTTONS ───────────────────────────────────────────── */
+.btn {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:'DM Sans',sans-serif;
+  font-size:.74rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  padding:.9rem 2.2rem;
+  cursor:pointer; border:none; transition:all var(--trans);
+}
+.btn--gold   { background:var(--gold); color:var(--bg); }
+.btn--gold:hover { background:var(--gold-lt); transform:translateY(-1px); }
+.btn--outline {
+  background:transparent; color:var(--gold);
+  border:1px solid rgba(200,169,110,.35);
+}
+.btn--outline:hover { border-color:var(--gold); background:rgba(200,169,110,.06); transform:translateY(-1px); }
+.btn--ghost  {
+  background:transparent; color:var(--text-mid);
+  border:1px solid rgba(240,233,216,.15);
+  font-size:.72rem;
+}
+.btn--ghost:hover { color:var(--parchment); border-color:rgba(240,233,216,.35); }
+
+/* ── NAV ───────────────────────────────────────────────── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:1.4rem 0;
+  transition:background var(--trans), border-color var(--trans);
+}
+.nav.scrolled {
+  background:rgba(17,20,16,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav__inner {
+  display:flex; align-items:center; justify-content:space-between;
+  width:min(1200px,92%); margin:0 auto;
+}
+.nav__logo { display:flex; flex-direction:column; line-height:1; }
+.nav__logo-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem; font-weight:400; letter-spacing:.03em;
+  color:var(--parchment);
+}
+.nav__logo-name em { font-style:italic; color:var(--gold); }
+.nav__logo-sub {
+  font-size:.58rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--text-dim); margin-top:.15rem;
+}
+.nav__links {
+  display:flex; align-items:center; gap:2.4rem;
+}
+.nav__links a {
+  font-size:.72rem; font-weight:400; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--text-dim); transition:color var(--trans);
+}
+.nav__links a:hover { color:var(--gold); }
+.nav__burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:.35rem; }
+.nav__burger span { display:block; width:22px; height:1.5px; background:var(--parchment); transition:var(--trans); }
+@media(max-width:768px) { .nav__links,.nav__cta { display:none; } .nav__burger { display:flex; } }
+
+/* ── MOBILE MENU ───────────────────────────────────────── */
+.mmenu {
+  display:none; position:fixed; inset:0; z-index:198;
+  background:var(--bg); flex-direction:column;
+  align-items:center; justify-content:center; gap:2.5rem;
+}
+.mmenu.open { display:flex; }
+.mmenu a {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem; font-weight:300; color:var(--parchment);
+  transition:color var(--trans);
+}
+.mmenu a:hover { color:var(--gold); }
+.mmenu__close { position:absolute; top:1.5rem; right:1.5rem; font-size:1.6rem; cursor:pointer; color:var(--text-dim); }
+
+/* ── HERO ──────────────────────────────────────────────── */
+.hero {
+  min-height:100vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:0 0 6rem;
+  position:relative; overflow:hidden;
+}
+.hero__bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 65% 80% at 72% 28%, rgba(26,92,71,.28) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 55% at 18% 78%, rgba(13,51,41,.35) 0%, transparent 62%),
+    linear-gradient(155deg,#0a1a14 0%,#111410 45%,#0d1a11 100%);
+}
+.hero__grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(200,169,110,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,169,110,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 25%,transparent 78%);
+}
+.hero__inner {
+  position:relative; z-index:2;
+  width:min(1200px,92%); margin:0 auto;
+  display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:flex-end;
+}
+.hero__eyebrow {
+  font-size:.7rem; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.6rem;
+  display:flex; align-items:center; gap:1rem;
+  opacity:0; animation:fadeUp .8s ease .3s forwards;
+}
+.hero__eyebrow::before { content:''; display:block; width:36px; height:1px; background:var(--gold); opacity:.6; }
+.hero__headline {
+  font-size:clamp(3rem,7.5vw,6.5rem); font-weight:300;
+  line-height:1.0; letter-spacing:-.01em;
+  margin-bottom:.4rem; color:var(--parchment);
+  opacity:0; animation:fadeUp .9s ease .5s forwards;
+}
+.hero__headline em { font-style:italic; color:var(--gold-lt); }
+.hero__headline strong { font-weight:600; display:block; }
+.hero__sub {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2vw,1.5rem); font-weight:300; font-style:italic;
+  color:var(--text-mid); margin-bottom:2.5rem;
+  opacity:0; animation:fadeUp .9s ease .7s forwards;
+}
+.hero__desc {
+  font-size:.85rem; font-weight:300; color:var(--text-dim);
+  letter-spacing:.03em; line-height:1.9; max-width:500px; margin-bottom:2.5rem;
+  opacity:0; animation:fadeUp .9s ease .9s forwards;
+}
+.hero__actions {
+  display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap;
+  opacity:0; animation:fadeUp .9s ease 1.1s forwards;
+}
+.hero__stats {
+  display:flex; flex-direction:column; gap:1.8rem; align-items:flex-end;
+  opacity:0; animation:fadeIn 1s ease 1.4s forwards;
+}
+.hero__stat { text-align:right; }
+.hero__stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6rem; font-weight:300; color:var(--parchment); line-height:1;
+}
+.hero__stat-label {
+  font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-dim); margin-top:2px;
+}
+.hero__stat-div { width:1px; height:36px; background:var(--border-md); margin-left:auto; }
+.scroll-ind {
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  opacity:0; animation:fadeIn 1s ease 1.8s forwards; z-index:2;
+}
+.scroll-line {
+  width:1px; height:42px;
+  background:linear-gradient(to bottom,transparent,var(--gold));
+  animation:scrollPulse 2.2s ease-in-out infinite;
+}
+@media(max-width:768px) { .hero__stats { display:none; } .hero__inner { grid-template-columns:1fr; } }
+
+/* ── TRUST BAR ─────────────────────────────────────────── */
+.trust { background:var(--forest-dk); padding:1.4rem 0; border-top:1px solid rgba(26,92,71,.5); }
+.trust__inner {
+  width:min(1200px,92%); margin:0 auto;
+  display:flex; align-items:center; justify-content:center; gap:3rem; flex-wrap:wrap;
+}
+.trust__item {
+  display:flex; align-items:center; gap:.6rem;
+  font-size:.72rem; font-weight:400; letter-spacing:.06em;
+  color:rgba(240,233,216,.6);
+}
+.trust__dot { width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+
+/* ── ABOUT ─────────────────────────────────────────────── */
+.about__grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+.about__name {
+  font-size:clamp(2.2rem,5vw,3.8rem); font-weight:300; line-height:1.05;
+  margin-bottom:.4rem; color:var(--parchment);
+}
+.about__name strong { font-weight:600; display:block; }
+.about__title { font-size:1.05rem; font-style:italic; color:var(--gold); margin-bottom:2.5rem; }
+.about__bio { font-size:.9rem; font-weight:300; color:var(--text-mid); line-height:1.9; margin-bottom:1rem; }
+.about__bio strong { color:var(--parchment); font-weight:400; }
+.about__creds { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2rem; margin-bottom:2rem; }
+.cred-tag {
+  font-size:.64rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--gold); border:1px solid rgba(200,169,110,.22); padding:4px 12px;
+  transition:all var(--trans);
+}
+.cred-tag:hover { border-color:rgba(200,169,110,.5); background:rgba(200,169,110,.05); }
+.specialty-card {
+  background:rgba(26,92,71,.06); border:1px solid rgba(26,92,71,.25);
+  border-left:2px solid var(--forest); padding:1.6rem 1.8rem; margin-bottom:.85rem;
+  transition:background var(--trans), border-color var(--trans);
+}
+.specialty-card:hover { background:rgba(26,92,71,.12); border-color:rgba(26,92,71,.45); border-left-color:var(--gold); }
+.specialty-card .s-num { font-size:.68rem; letter-spacing:.15em; color:var(--text-dim); margin-bottom:.4rem; }
+.specialty-card h3 { font-size:1.2rem; font-weight:600; color:var(--parchment); margin-bottom:.4rem; }
+.specialty-card p { font-size:.84rem; font-weight:300; color:var(--text-dim); line-height:1.7; }
+@media(max-width:900px) { .about__grid { grid-template-columns:1fr; } }
+
+/* ── CRED GRID ─────────────────────────────────────────── */
+.cred-grid { margin-top:4rem; }
+.cred-block {
+  background:var(--bg); padding:2.4rem 2rem;
+  transition:background var(--trans);
+}
+.cred-block:hover { background:var(--green-glow); }
+.cred-icon {
+  font-size:.64rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.1rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.cred-icon::before { content:''; display:block; width:18px; height:1px; background:var(--gold); opacity:.5; }
+.cred-block h3 { font-size:1.3rem; font-weight:600; color:var(--parchment); margin-bottom:.4rem; }
+.cred-block p { font-size:.84rem; font-weight:300; color:var(--text-dim); line-height:1.65; }
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services-intro {
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem;
+  margin-bottom:5rem; align-items:end;
+}
+.services-intro h2 { color:var(--parchment); }
+.services-intro h2 strong { font-weight:600; display:block; }
+.services-intro p { font-size:.9rem; font-weight:300; color:var(--text-mid); line-height:1.85; }
+.services-row {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; background:var(--border); border:1px solid var(--border);
+}
+.svc-item {
+  background:var(--bg); padding:2.4rem 1.75rem;
+  position:relative; overflow:hidden;
+  transition:background var(--trans);
+}
+.svc-item::after {
+  content:''; position:absolute; bottom:0; left:0;
+  height:2px; width:0; background:var(--gold);
+  transition:width .45s ease;
+}
+.svc-item:hover { background:var(--green-glow); }
+.svc-item:hover::after { width:100%; }
+.svc-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.2rem; font-weight:300; color:rgba(200,169,110,.08);
+  position:absolute; top:.8rem; right:1.2rem; line-height:1;
+}
+.svc-tag { font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; display:block; }
+.svc-item h3 { font-size:1.2rem; font-weight:600; color:var(--parchment); margin-bottom:.6rem; line-height:1.2; }
+.svc-item p { font-size:.83rem; font-weight:300; color:var(--text-dim); line-height:1.7; margin-bottom:1.2rem; }
+.svc-list { display:flex; flex-direction:column; gap:.35rem; margin-bottom:1.4rem; }
+.svc-list li { font-size:.78rem; color:var(--text-dim); display:flex; align-items:flex-start; gap:.5rem; line-height:1.5; }
+.svc-list li::before { content:'—'; color:var(--gold); opacity:.6; flex-shrink:0; font-size:.7rem; margin-top:.1rem; }
+.svc-price { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--gold); margin-bottom:1rem; font-style:italic; }
+@media(max-width:1000px) { .services-row { grid-template-columns:repeat(2,1fr); } .services-intro { grid-template-columns:1fr; } }
+@media(max-width:560px)  { .services-row { grid-template-columns:1fr; } }
+
+/* ── GUIDES / SHOP ─────────────────────────────────────── */
+.guides-intro { margin-bottom:4rem; }
+.guides-intro h2 { color:var(--parchment); margin-bottom:.6rem; }
+.guides-intro h2 em { font-style:italic; color:var(--gold-lt); }
+.guides-intro p { font-size:.9rem; font-weight:300; color:var(--text-mid); line-height:1.85; max-width:680px; }
+.guides-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:1.5rem; }
+.guide-card {
+  background:var(--bg-card); border:1px solid var(--border);
+  overflow:hidden; transition:border-color var(--trans);
+}
+.guide-card:hover { border-color:var(--border-md); }
+.guide-card--featured { border-color:rgba(26,92,71,.4); }
+.guide-card--featured:hover { border-color:rgba(200,169,110,.3); }
+.guide-badge {
+  display:block; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold); background:rgba(200,169,110,.07); padding:5px 14px;
+  border-bottom:1px solid var(--border);
+}
+.guide-mockup {
+  background:linear-gradient(135deg,#1a3d2b 0%,#0d2a1e 60%,#0a1f16 100%);
+  padding:2rem; min-height:170px;
+  display:flex; align-items:flex-end; position:relative; overflow:hidden;
+}
+.guide-mockup::before {
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(200,169,110,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,169,110,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.guide-mockup-inner { position:relative; z-index:1; }
+.guide-mockup-label { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); opacity:.8; margin-bottom:.5rem; }
+.guide-mockup-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:600; color:var(--parchment); line-height:1.2; margin-bottom:.2rem; }
+.guide-mockup-sub { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:rgba(240,233,216,.5); line-height:1.4; margin-bottom:.6rem; }
+.guide-mockup-rule { height:1px; background:linear-gradient(90deg,rgba(200,169,110,.35),transparent); margin-bottom:.5rem; }
+.guide-mockup-author { font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); opacity:.7; }
+.guide-body { padding:1.6rem 1.8rem; }
+.guide-tags { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.9rem; }
+.guide-tag { font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); border:1px solid var(--border); padding:3px 10px; }
+.guide-body h3 { font-size:1.2rem; font-weight:600; color:var(--parchment); margin-bottom:.6rem; }
+.guide-body p { font-size:.84rem; font-weight:300; color:var(--text-mid); line-height:1.8; margin-bottom:1rem; }
+.guide-includes { display:flex; flex-direction:column; gap:.35rem; margin-bottom:1.4rem; }
+.guide-includes li { font-size:.78rem; color:var(--text-dim); display:flex; align-items:flex-start; gap:.5rem; }
+.guide-includes li::before { content:'✓'; color:var(--gold); flex-shrink:0; font-size:.7rem; }
+.guide-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem; }
+.guide-price { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--parchment); }
+@media(max-width:900px) { .guides-grid { grid-template-columns:1fr; } }
+
+/* ── SYSTEMS CONSULTING ─────────────────────────────────── */
+.systems { background:var(--bg-alt); }
+.systems-inner { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+.systems-left h2 { color:var(--parchment); margin-bottom:1rem; }
+.systems-left h2 strong { font-weight:600; }
+.systems-lead { font-size:.88rem; font-weight:300; color:var(--text-mid); line-height:1.9; margin-bottom:1rem; }
+.research-box {
+  background:rgba(26,92,71,.08); border:1px solid rgba(26,92,71,.3);
+  border-left:2px solid var(--forest); padding:1.5rem 1.8rem; margin:1.8rem 0;
+}
+.rbox-label { font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.6rem; }
+.research-box p { font-size:.85rem; font-weight:300; color:var(--text-dim); line-height:1.75; }
+.research-box strong { color:var(--parchment); font-weight:400; }
+.deliverables-list { display:flex; flex-direction:column; gap:.75rem; margin-top:1.5rem; }
+.d-item { display:flex; align-items:flex-start; gap:1.1rem; }
+.d-num { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; color:rgba(200,169,110,.35); flex-shrink:0; width:1.5rem; line-height:1.2; }
+.d-item h4 { font-family:'DM Sans',sans-serif; font-size:.84rem; font-weight:600; color:var(--parchment); margin-bottom:.2rem; }
+.d-item p { font-size:.8rem; font-weight:300; color:var(--text-dim); line-height:1.65; }
+.sys-cards { display:flex; flex-direction:column; gap:.85rem; }
+.sys-card {
+  background:var(--bg-card); border:1px solid var(--border);
+  padding:1.6rem 1.8rem; position:relative; overflow:hidden;
+  transition:background var(--trans), border-color var(--trans);
+}
+.sys-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:2px; height:100%; background:var(--forest);
+  transition:background var(--trans);
+}
+.sys-card:hover { background:rgba(26,92,71,.08); border-color:rgba(26,92,71,.4); }
+.sys-card:hover::before { background:var(--gold); }
+.sys-card-tag { font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; display:block; }
+.sys-card h3 { font-size:1.1rem; font-weight:600; color:var(--parchment); margin-bottom:.4rem; }
+.sys-card p { font-size:.82rem; font-weight:300; color:var(--text-dim); line-height:1.7; }
+.metrics-row { display:flex; gap:2rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.metric { }
+.metric-val { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--parchment); line-height:1; }
+.metric-label { font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); margin-top:2px; }
+@media(max-width:900px) { .systems-inner { grid-template-columns:1fr; } }
+
+/* ── INSIGHTS ──────────────────────────────────────────── */
+.insights-header { margin-bottom:4rem; }
+.insights-header h2 { color:var(--parchment); margin-bottom:.5rem; }
+.insights-header p { font-size:.9rem; color:var(--text-mid); max-width:560px; }
+.articles-grid { display:grid; grid-template-columns:1.3fr 1fr; gap:1.5rem; }
+.article-featured {
+  background:var(--bg-card); border:1px solid rgba(26,92,71,.3);
+  overflow:hidden; transition:border-color var(--trans); display:flex; flex-direction:column;
+}
+.article-featured:hover { border-color:rgba(200,169,110,.3); }
+.af-cover {
+  background:linear-gradient(135deg,#1a3d2b,#0a1a10);
+  height:220px; display:flex; align-items:flex-end; padding:1.8rem;
+  position:relative; overflow:hidden;
+}
+.af-cover::before {
+  content:''; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(200,169,110,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.af-cover-inner { position:relative; z-index:1; }
+.article-tag { font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(200,169,110,.25); padding:3px 10px; display:inline-block; margin-bottom:.6rem; }
+.af-cover-title { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--parchment); line-height:1.2; }
+.af-body { padding:1.6rem 1.8rem; flex:1; }
+.af-body p { font-size:.85rem; font-weight:300; color:var(--text-mid); line-height:1.8; margin-bottom:1rem; }
+.af-meta { font-size:.7rem; color:var(--text-dim); display:flex; gap:1rem; }
+.articles-col { display:flex; flex-direction:column; gap:.75rem; }
+.article-card {
+  background:var(--bg-card); border:1px solid var(--border);
+  padding:1.5rem 1.7rem;
+  transition:border-color var(--trans), background var(--trans);
+}
+.article-card:hover { border-color:var(--border-md); background:rgba(26,92,71,.05); }
+.article-card h3 { font-size:1.05rem; font-weight:600; color:var(--parchment); margin-bottom:.4rem; line-height:1.25; }
+.article-card p { font-size:.82rem; font-weight:300; color:var(--text-dim); line-height:1.7; margin-bottom:.8rem; }
+.article-card-footer { display:flex; align-items:center; justify-content:space-between; }
+.article-card-date { font-size:.7rem; color:var(--text-dim); }
+@media(max-width:900px) { .articles-grid { grid-template-columns:1fr; } }
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.testi-header { text-align:center; max-width:540px; margin:0 auto 4rem; }
+.testi-header h2 { color:var(--parchment); margin-bottom:.5rem; }
+.testi-header p { font-size:.9rem; color:var(--text-mid); }
+.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+.testi-card {
+  background:var(--bg); padding:2.2rem;
+  transition:background var(--trans);
+}
+.testi-card:hover { background:rgba(26,92,71,.07); }
+.testi-stars { color:var(--gold); font-size:.9rem; letter-spacing:.08em; margin-bottom:1rem; }
+.testi-quote {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:1.1rem; color:var(--parchment); line-height:1.65; margin-bottom:1.5rem;
+}
+.testi-author { display:flex; align-items:center; gap:.75rem; }
+.testi-avatar {
+  width:38px; height:38px; border-radius:50%;
+  background:rgba(26,92,71,.25); border:1px solid rgba(200,169,110,.2);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--gold); flex-shrink:0;
+}
+.testi-name { font-size:.86rem; font-weight:500; color:var(--parchment); }
+.testi-role { font-size:.76rem; color:var(--text-dim); }
+@media(max-width:900px) { .testi-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:560px)  { .testi-grid { grid-template-columns:1fr; } }
+
+/* ── FAQ ───────────────────────────────────────────────── */
+.faq-header { text-align:center; max-width:540px; margin:0 auto 4rem; }
+.faq-header h2 { color:var(--parchment); margin-bottom:.5rem; }
+.faq-list { max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:.6rem; }
+.faq-item { background:var(--bg-card); border:1px solid var(--border); overflow:hidden; }
+.faq-q {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 1.6rem; cursor:pointer;
+  font-size:.92rem; font-weight:400; color:var(--text-mid);
+  transition:color var(--trans); user-select:none;
+}
+.faq-q:hover { color:var(--gold); }
+.faq-icon {
+  width:26px; height:26px; border:1px solid var(--border); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; color:var(--gold); flex-shrink:0;
+  transition:transform var(--trans);
+}
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .38s ease; }
+.faq-item.open .faq-a { max-height:300px; }
+.faq-a p { padding:0 1.6rem 1.3rem; font-size:.86rem; font-weight:300; color:var(--text-dim); line-height:1.75; }
+
+/* ── NEWSLETTER ────────────────────────────────────────── */
+.newsletter {
+  background:linear-gradient(135deg,#0d2a1e 0%,#1a3d2b 50%,#0d2a1e 100%);
+  padding:6rem 0; text-align:center;
+  border-top:1px solid rgba(26,92,71,.5);
+}
+.newsletter__inner { width:min(620px,92%); margin:0 auto; }
+.newsletter h2 { color:var(--parchment); margin-bottom:.75rem; }
+.newsletter p { font-size:.9rem; color:var(--text-mid); margin-bottom:2.2rem; }
+.nl-form { display:flex; gap:.75rem; max-width:460px; margin:0 auto; }
+.nl-input {
+  flex:1; padding:.85rem 1.1rem;
+  background:rgba(240,233,216,.07); border:1px solid rgba(200,169,110,.2);
+  color:var(--parchment); font-family:'DM Sans',sans-serif; font-size:.88rem;
+  outline:none; transition:border-color var(--trans);
+}
+.nl-input::placeholder { color:var(--text-dim); }
+.nl-input:focus { border-color:rgba(200,169,110,.5); }
+@media(max-width:500px) { .nl-form { flex-direction:column; } }
+
+/* ── BOOKING ───────────────────────────────────────────── */
+.booking-inner { display:grid; grid-template-columns:1fr 1.3fr; gap:5rem; align-items:start; }
+.booking-info h2 { color:var(--parchment); margin-bottom:1rem; }
+.booking-info p  { font-size:.88rem; color:var(--text-mid); margin-bottom:2rem; }
+.booking-opts { display:flex; flex-direction:column; gap:.75rem; }
+.b-opt {
+  background:rgba(240,233,216,.04); border:1px solid var(--border);
+  padding:1.1rem 1.4rem; display:flex; align-items:center; gap:1rem;
+  cursor:pointer; transition:background var(--trans), border-color var(--trans);
+}
+.b-opt:hover,.b-opt.active { background:rgba(26,92,71,.15); border-color:rgba(26,92,71,.5); }
+.b-opt-icon {
+  width:40px; height:40px;
+  background:rgba(200,169,110,.1); border:1px solid rgba(200,169,110,.2);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  font-size:1rem;
+}
+.b-opt-title { font-size:.9rem; font-weight:500; color:var(--parchment); }
+.b-opt-detail { font-size:.78rem; color:var(--text-dim); }
+.cal-card {
+  background:rgba(240,233,216,.04); border:1px solid var(--border);
+  padding:1.8rem;
+}
+.cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.4rem; }
+.cal-month { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--parchment); }
+.cal-nav { display:flex; gap:.4rem; }
+.cal-nav button {
+  width:32px; height:32px; background:rgba(240,233,216,.05);
+  border:1px solid var(--border); color:var(--parchment); cursor:pointer;
+  font-size:.9rem; transition:background var(--trans);
+}
+.cal-nav button:hover { background:rgba(240,233,216,.1); }
+.cal-days-hd { display:grid; grid-template-columns:repeat(7,1fr); gap:.25rem; margin-bottom:.4rem; }
+.cal-dname { text-align:center; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); padding:.25rem 0; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:.25rem; }
+.cal-day {
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:.82rem; color:var(--text-dim); cursor:pointer;
+  transition:all var(--trans); border:1px solid transparent;
+}
+.cal-day.avail { color:rgba(240,233,216,.8); }
+.cal-day.avail:hover { background:rgba(26,92,71,.25); border-color:rgba(26,92,71,.5); color:var(--parchment); }
+.cal-day.selected { background:var(--gold); color:var(--bg); border-color:var(--gold); }
+.cal-day.today  { border-color:var(--border-md); color:var(--parchment); }
+.cal-day.past   { opacity:.2; cursor:default; }
+.cal-day.empty  { cursor:default; }
+.time-slots-wrap { margin-top:1.4rem; display:none; }
+.time-slots-wrap.visible { display:block; }
+.ts-label { font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); margin-bottom:.6rem; }
+.time-slots { display:flex; flex-wrap:wrap; gap:.4rem; }
+.ts {
+  background:rgba(240,233,216,.04); border:1px solid var(--border);
+  padding:.45rem .9rem; font-size:.8rem; color:var(--text-mid);
+  cursor:pointer; transition:all var(--trans);
+}
+.ts:hover,.ts.selected { background:var(--gold); border-color:var(--gold); color:var(--bg); }
+.book-confirm { display:none; margin-top:1.4rem; }
+.book-confirm.visible { display:block; }
+.book-confirm-note { font-size:.76rem; color:var(--text-dim); text-align:center; margin-top:.6rem; }
+@media(max-width:900px) { .booking-inner { grid-template-columns:1fr; } }
+
+/* ── CONTACT ───────────────────────────────────────────── */
+.contact-inner { display:grid; grid-template-columns:1fr 1.2fr; gap:5rem; align-items:start; }
+.contact-info h2 { color:var(--parchment); margin-bottom:1rem; }
+.contact-info p  { font-size:.88rem; color:var(--text-mid); margin-bottom:2rem; line-height:1.85; }
+.contact-details { display:flex; flex-direction:column; gap:1rem; }
+.c-detail { display:flex; align-items:flex-start; gap:.85rem; }
+.c-icon {
+  width:38px; height:38px; background:rgba(26,92,71,.15);
+  border:1px solid rgba(26,92,71,.3);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  font-size:.85rem; color:var(--gold);
+}
+.c-label { font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); }
+.c-val   { font-size:.9rem; color:var(--parchment); }
+.contact-form {
+  background:var(--bg-card); border:1px solid var(--border); padding:2.4rem;
+}
+.f-group { margin-bottom:1.1rem; }
+.f-group label { display:block; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); margin-bottom:.4rem; }
+.f-group input,
+.f-group select,
+.f-group textarea {
+  width:100%; padding:.8rem 1rem;
+  background:rgba(240,233,216,.04); border:1px solid var(--border);
+  color:var(--parchment); font-family:'DM Sans',sans-serif; font-size:.88rem;
+  outline:none; transition:border-color var(--trans);
+}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus { border-color:rgba(200,169,110,.4); }
+.f-group textarea { resize:vertical; min-height:110px; }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
+.f-group select option { background:var(--bg); }
+@media(max-width:900px) { .contact-inner { grid-template-columns:1fr; } .f-row { grid-template-columns:1fr; } }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+.footer { background:#0a0f0d; padding:5rem 0 2.5rem; border-top:1px solid var(--border); }
+.footer-top {
+  display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:3rem;
+  padding-bottom:3rem; border-bottom:1px solid var(--border); margin-bottom:2rem;
+}
+.footer-brand-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--parchment); display:block; margin-bottom:.2rem; }
+.footer-brand-name em { font-style:italic; color:var(--gold); }
+.footer-brand-sub { font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-dim); display:block; margin-bottom:1rem; }
+.footer-brand-desc { font-size:.82rem; color:var(--text-dim); line-height:1.7; max-width:280px; }
+.footer-col h4 { font-family:'DM Sans',sans-serif; font-size:.64rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(200,169,110,.4); margin-bottom:1rem; }
+.footer-col ul { display:flex; flex-direction:column; gap:.5rem; }
+.footer-col ul li a { font-size:.84rem; color:var(--text-dim); transition:color var(--trans); }
+.footer-col ul li a:hover { color:var(--gold-lt); }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.footer-copy { font-size:.76rem; color:var(--text-dim); }
+.footer-legal { display:flex; gap:1.5rem; }
+.footer-legal a { font-size:.76rem; color:rgba(240,233,216,.3); transition:color var(--trans); }
+.footer-legal a:hover { color:var(--gold); }
+@media(max-width:900px) { .footer-top { grid-template-columns:1fr 1fr; } }
+@media(max-width:560px) { .footer-top { grid-template-columns:1fr; } }
+
+/* ── SCROLL ANIMATIONS ─────────────────────────────────── */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .65s ease,transform .65s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-d1 { transition-delay:.1s; }
+.reveal-d2 { transition-delay:.2s; }
+.reveal-d3 { transition-delay:.3s; }
+
+/* ── KEYFRAMES ─────────────────────────────────────────── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:.8} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+/* ── MOBILE OPTIMIZATIONS ─────────────────────────────── */
+
+/* iOS viewport fix — prevents content hiding behind address bar */
+@supports (-webkit-touch-callout: none) {
+  .hero { min-height: -webkit-fill-available; }
+}
+
+/* Tap target minimum size — all interactive elements */
+@media(max-width:768px) {
+  .btn { min-height:44px; padding:0.85rem 1.8rem; }
+  .nav__burger { padding:.6rem; min-width:44px; min-height:44px; justify-content:center; align-items:center; }
+  .faq-q { min-height:52px; padding:1rem 1.2rem; font-size:.88rem; }
+  .b-opt { min-height:56px; }
+  .cal-day { min-width:36px; min-height:36px; font-size:.8rem; }
+  .ts { min-height:40px; padding:.55rem 1rem; font-size:.82rem; }
+  .mmenu a { min-height:52px; display:flex; align-items:center; justify-content:center; }
+}
+
+/* Small phone (≤ 430px) — hero & type scaling */
+@media(max-width:430px) {
+  h1, .hero__headline { font-size:clamp(2.2rem,10vw,3rem); }
+  h2 { font-size:clamp(1.65rem,7vw,2.4rem); }
+
+  .hero { padding-bottom:4rem; padding-top:100px; min-height:100svh; }
+  .hero__inner { gap:2rem; }
+  .hero__eyebrow {
+    font-size:.62rem; letter-spacing:.14em;
+    flex-wrap:wrap; gap:.4rem;
+  }
+  .hero__sub { font-size:1rem; margin-bottom:1.6rem; }
+  .hero__desc { font-size:.82rem; max-width:100%; margin-bottom:2rem; }
+  .hero__actions { flex-direction:column; align-items:flex-start; gap:.75rem; }
+  .hero__actions .btn { width:100%; justify-content:center; }
+
+  .section { padding:3.5rem 0; }
+  .wrap { width:min(100%,92%); }
+
+  /* Trust bar wraps to 2 cols */
+  .trust__inner { gap:1rem 1.8rem; justify-content:flex-start; }
+  .trust__item { font-size:.68rem; }
+
+  /* Services stacked */
+  .services-intro { gap:1.5rem; margin-bottom:3rem; }
+  .svc-item { padding:1.8rem 1.4rem; }
+
+  /* About */
+  .about__grid { gap:2rem; }
+  .about__creds { gap:.4rem; }
+  .cred-tag { font-size:.6rem; padding:3px 9px; }
+
+  /* Guides */
+  .guide-mockup { min-height:140px; }
+  .guide-body { padding:1.2rem 1.4rem; }
+  .guide-footer { flex-direction:column; align-items:flex-start; }
+  .guide-footer .btn { width:100%; justify-content:center; }
+
+  /* Systems */
+  .systems-inner { gap:2.5rem; }
+  .metrics-row { gap:1.2rem; }
+
+  /* Booking */
+  .booking-inner { gap:2.5rem; }
+  .cal-card { padding:1.2rem; }
+  .cal-days-hd,.cal-grid { gap:.15rem; }
+  .cal-dname { font-size:.56rem; }
+  .cal-day { font-size:.74rem; }
+
+  /* Contact */
+  .contact-inner { gap:2.5rem; }
+  .contact-form { padding:1.6rem 1.4rem; }
+
+  /* Footer */
+  .footer { padding:3.5rem 0 2rem; }
+  .footer-top { gap:2rem; }
+  .footer-brand-desc { max-width:100%; }
+  .footer-bottom { flex-direction:column; align-items:flex-start; gap:.6rem; }
+  .footer-legal { gap:1rem; flex-wrap:wrap; }
+
+  /* Newsletter */
+  .newsletter { padding:3.5rem 0; }
+  .nl-form { flex-direction:column; }
+}
+
+/* Prevent horizontal scroll everywhere */
+* { max-width:100%; }
+img,video,canvas,iframe { max-width:100%; }
+pre,code { white-space:pre-wrap; word-break:break-word; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#home" class="nav__logo">
+      <span class="nav__logo-name">Vitae <em>Arete</em></span>
+      <span class="nav__logo-sub">Jason Fee, MS, RDN, LDN</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#guides">Guides</a></li>
+      <li><a href="#glp1calc" style="color:var(--gold)">Tools ✦</a></li>
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#booking" class="btn btn--outline nav__cta" style="padding:.7rem 1.5rem;font-size:.7rem">Book a Consultation</a>
+    <div class="nav__burger" id="burgerBtn"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ═══════════════════════════════════════════════ -->
+<div class="mmenu" id="mobileMenu">
+  <span class="mmenu__close" id="menuClose">✕</span>
+  <a href="#about"    class="ml">About</a>
+  <a href="#services" class="ml">Services</a>
+  <a href="#guides"   class="ml">Guides</a>
+  <a href="#glp1calc" class="ml" style="color:var(--gold)">Tools ✦</a>
+  <a href="#systems"  class="ml">Systems</a>
+  <a href="#insights" class="ml">Insights</a>
+  <a href="#booking"  class="ml">Book</a>
+  <a href="#contact"  class="ml">Contact</a>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero__bg"></div>
+  <div class="hero__grid"></div>
+  <canvas id="molCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.80"></canvas>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">Oncology · GLP-1 · Longevity · Executive Nutrition</div>
+      <h1 class="hero__headline">
+        <strong>Vitae Arete</strong>
+        <em>The science of eating</em><br>
+        through what matters most.
+      </h1>
+      <p class="hero__sub">A life of excellence, nourished.</p>
+      <p class="hero__desc">
+        Jason Fee, MS, RDN, LDN · GLP-1 Specialist · Oncology Nutrition · Executive Nutrition Consultant · Published Author. Evidence-based. Radically personal.
+      </p>
+      <div class="hero__actions">
+        <a href="#booking" class="btn btn--gold">Book a Consultation</a>
+        <a href="#services" class="btn btn--ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <span class="hero__stat-num">MS</span>
+        <span class="hero__stat-label">JMU · AI + Nutrition</span>
+      </div>
+      <div class="hero__stat-div"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-num">RDN</span>
+        <span class="hero__stat-label">Board Certified</span>
+      </div>
+      <div class="hero__stat-div"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-num">4</span>
+        <span class="hero__stat-label">Specialties</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind"><div class="scroll-line"></div></div>
+</section>
+
+<!-- ══ TRUST BAR ═════════════════════════════════════════════════ -->
+<div class="trust">
+  <div class="trust__inner">
+    <div class="trust__item"><span class="trust__dot"></span>MS, RDN, LDN</div>
+    <div class="trust__item"><span class="trust__dot"></span>GLP-1 Specialist</div>
+    <div class="trust__item"><span class="trust__dot"></span>Oncology Nutrition</div>
+    <div class="trust__item"><span class="trust__dot"></span>Longevity Medicine</div>
+    <div class="trust__item"><span class="trust__dot"></span>Executive Nutrition Consultant</div>
+    <div class="trust__item"><span class="trust__dot"></span>Published Author</div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══════════════════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about__grid">
+      <div class="reveal">
+        <span class="eyebrow">About</span>
+        <div class="about__name">
+          Clinical<br><strong>dietitian.</strong><br>Evidence-first.
+        </div>
+        <div class="about__title">Making nutrition actually work in the hardest moments.</div>
+        <p class="about__bio">
+          I'm Jason Fee — a <strong>Registered Dietitian (MS, RDN, LDN)</strong> specializing in oncology nutrition, GLP-1 therapy, longevity medicine, and executive nutrition consulting. I hold a Master of Science degree from James Madison University and have spent years working at the intersection of evidence-based clinical nutrition and the deeply personal experience of eating through life's most demanding moments.
+        </p>
+        <p class="about__bio">
+          My work sits at the intersection of <strong>clinical rigor and human reality</strong>. I've spent years helping cancer patients nourish their bodies through chemotherapy, immunotherapy, radiation, and surgery — and helping high-performing executives build nutrition strategies that survive the demands of real life. As one of Florida's emerging GLP-1 clinical specialists, I help patients on Ozempic, Wegovy, and Mounjaro preserve muscle, manage side effects, and build sustainable long-term strategies.
+        </p>
+        <p class="about__bio">
+          My graduate research at James Madison University applied <strong>computer vision and AI to dietary assessment</strong> — a field I was working in before "AI in healthcare" became a LinkedIn headline.
+        </p>
+        <div class="about__creds">
+          <span class="cred-tag">MS · JMU</span>
+          <span class="cred-tag">RDN</span>
+          <span class="cred-tag">LDN</span>
+          <span class="cred-tag">Florida-Based</span>
+          <span class="cred-tag">Oncology Nutrition</span>
+          <span class="cred-tag">GLP-1 Specialist</span>
+          <span class="cred-tag">Executive Health</span>
+          <span class="cred-tag">Published Author</span>
+        </div>
+        <a href="#booking" class="btn btn--outline">Book a Free Discovery Call</a>
+      </div>
+      <div class="reveal reveal-d1">
+        <div style="margin-bottom:2.5rem;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;max-height:520px;background:var(--bg-card);border:1px solid var(--border)">
+          <img src="headshot.jpg" alt="Jason Fee, MS, RDN, LDN" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" onerror="this.style.display='none';this.parentElement.style.display='none'">
+        </div>
+        <div class="specialty-card">
+          <div class="s-num">Specialty 01</div>
+          <h3>Oncology Nutrition</h3>
+          <p>Specialized nutritional support for patients navigating cancer diagnosis, active treatment, and survivorship — with deep clinical experience in chemotherapy, immunotherapy, radiation, and surgery nutrition.</p>
+        </div>
+        <div class="specialty-card">
+          <div class="s-num">Specialty 02</div>
+          <h3>GLP-1 Nutrition</h3>
+          <p>Clinical guidance for patients on semaglutide, tirzepatide, and retatrutide — focused on muscle preservation, protein strategy, managing GI side effects, and sustainable long-term outcomes the prescriber doesn't cover.</p>
+        </div>
+        <div class="specialty-card">
+          <div class="s-num">Specialty 03</div>
+          <h3>Executive Health Nutrition</h3>
+          <p>Private consulting for C-suite executives and high-performing leaders who require precision nutrition strategy — performance-grade guidance, not wellness platitudes.</p>
+        </div>
+        <div class="specialty-card">
+          <div class="s-num">Specialty 04</div>
+          <h3>Healthcare System Consulting</h3>
+          <p>Evidence-based frameworks for hospital systems and health networks on RDN workforce strategy, clinical nutrition program investment, and compensation advocacy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cred blocks -->
+    <div class="grid-4 cred-grid reveal" style="margin-top:5rem">
+      <div class="cred-block">
+        <div class="cred-icon">Clinical Practice</div>
+        <h3>Oncology Nutrition</h3>
+        <p>Years of bedside and outpatient oncology nutrition experience — helping patients nourish their bodies through chemotherapy, immunotherapy, radiation, surgery, and survivorship.</p>
+      </div>
+      <div class="cred-block">
+        <div class="cred-icon">Private Consulting</div>
+        <h3>Executive Nutrition</h3>
+        <p>Private nutrition consulting for high-performance executives and professionals — precision strategy tailored to real-world demands, schedules, and performance goals.</p>
+      </div>
+      <div class="cred-block">
+        <div class="cred-icon">Publication</div>
+        <h3>Published Author</h3>
+        <p><em>The Cancer Treatment Nutrition Guide</em> — clinical-grade, evidence-based nutrition guidance for patients and caregivers through chemo, radiation, immunotherapy, and recovery. Available on Amazon.</p>
+      </div>
+      <div class="cred-block">
+        <div class="cred-icon">Graduate Research</div>
+        <h3>AI & Dietary Assessment</h3>
+        <p>MS thesis at James Madison University applying computer vision and machine learning to dietary intake assessment — before AI in healthcare was a buzzword.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ════════════════════════════════════════════════════ -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="services-intro reveal">
+      <div>
+        <span class="eyebrow">Services</span>
+        <h2>Precision nutrition<br><strong>for complex lives.</strong></h2>
+      </div>
+      <p>Whether you're navigating a cancer diagnosis, optimizing your GLP-1 journey, building longevity, or performing at the executive level — clinical nutrition should meet you where you are.</p>
+    </div>
+    <div class="services-row">
+      <div class="svc-item reveal">
+        <span class="svc-num">01</span>
+        <span class="svc-tag">Oncology</span>
+        <h3>Oncology Nutrition Consulting</h3>
+        <p>Specialized nutrition support across the cancer continuum — from diagnosis through treatment and survivorship.</p>
+        <ul class="svc-list">
+          <li>Pre- and post-treatment nutrition planning</li>
+          <li>Side effect management: nausea, fatigue, weight changes, mucositis</li>
+          <li>Immunotherapy, chemo, radiation, and surgery nutrition</li>
+          <li>Survivorship and long-term health optimization</li>
+          <li>Caregiver guidance and support</li>
+        </ul>
+        <div class="svc-price">From $150 / session</div>
+        <a href="#booking" class="btn btn--outline" style="font-size:.68rem;padding:.7rem 1.4rem">Book Now</a>
+      </div>
+      <div class="svc-item reveal reveal-d1">
+        <span class="svc-num">02</span>
+        <span class="svc-tag">GLP-1</span>
+        <h3>GLP-1 Nutrition Consulting</h3>
+        <p>Clinical nutrition support for patients on semaglutide, tirzepatide, and retatrutide — what your prescriber doesn't have time to cover.</p>
+        <ul class="svc-list">
+          <li>Muscle preservation and protein strategy</li>
+          <li>GI side effect management</li>
+          <li>Dosing-day meal timing and tolerability</li>
+          <li>Long-term maintenance and metabolic baseline</li>
+          <li>Alcohol, fasting, and diabetes-specific guidance</li>
+        </ul>
+        <div class="svc-price">From $150 / session</div>
+        <a href="#booking" class="btn btn--outline" style="font-size:.68rem;padding:.7rem 1.4rem">Book Now</a>
+      </div>
+      <div class="svc-item reveal reveal-d2">
+        <span class="svc-num">03</span>
+        <span class="svc-tag">Longevity</span>
+        <h3>Longevity & Lifestyle Medicine</h3>
+        <p>Precision nutrition to extend healthspan, optimize metabolic function, and perform at your best — today and for decades ahead.</p>
+        <ul class="svc-list">
+          <li>Metabolic and biomarker-based nutrition</li>
+          <li>Anti-inflammatory eating strategies</li>
+          <li>Gut health and microbiome optimization</li>
+          <li>Sleep, stress, and lifestyle integration</li>
+        </ul>
+        <div class="svc-price">From $175 / session</div>
+        <a href="#booking" class="btn btn--outline" style="font-size:.68rem;padding:.7rem 1.4rem">Book Now</a>
+      </div>
+      <div class="svc-item reveal reveal-d3">
+        <span class="svc-num">04</span>
+        <span class="svc-tag">Executive · VIP</span>
+        <h3>Executive & VIP Consulting</h3>
+        <p>Concierge-level nutrition consulting for high-performing professionals who understand that optimal health is a strategic advantage.</p>
+        <ul class="svc-list">
+          <li>Comprehensive health and nutrition assessment</li>
+          <li>Performance and cognitive nutrition</li>
+          <li>Travel and schedule-adaptive meal planning</li>
+          <li>Priority access and direct messaging</li>
+        </ul>
+        <div class="svc-price">From $350 / session</div>
+        <a href="#booking" class="btn btn--outline" style="font-size:.68rem;padding:.7rem 1.4rem">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GUIDES / SHOP ══════════════════════════════════════════════ -->
+<section class="section" id="guides" style="background:var(--bg-alt)">
+  <div class="wrap">
+    <div class="guides-intro reveal">
+      <span class="eyebrow">Guides & Resources</span>
+      <h2>Clinical expertise,<br><em>in your hands.</em></h2>
+      <p>Evidence-based guides written from years at the oncology bedside and GLP-1 clinical practice. No wellness myths. No false promises. Just science — and practical, actionable guidance.</p>
+    </div>
+    <div class="guides-grid">
+      <!-- GLP-1 Guide -->
+      <div class="guide-card guide-card--featured reveal">
+        <span class="guide-badge">Featured Guide · Digital Download</span>
+        <div class="guide-mockup">
+          <div class="guide-mockup-inner">
+            <div class="guide-mockup-label">Clinical Guide</div>
+            <div class="guide-mockup-title">The GLP-1 Nutrition Survival Guide</div>
+            <div class="guide-mockup-sub">Semaglutide · Tirzepatide · Retatrutide</div>
+            <div class="guide-mockup-rule"></div>
+            <div class="guide-mockup-author">Jason Fee, MS, RDN, LDN</div>
+          </div>
+        </div>
+        <div class="guide-body">
+          <div class="guide-tags">
+            <span class="guide-tag">GLP-1</span>
+            <span class="guide-tag">8 Sections</span>
+            <span class="guide-tag">Cheat Sheet</span>
+            <span class="guide-tag">Evidence-Based</span>
+          </div>
+          <h3>The GLP-1 Nutrition Survival Guide</h3>
+          <p>The science of GLP-1, GIP & glucagon receptor agonists — including semaglutide, tirzepatide, and retatrutide. Evidence-based strategies for protein intake, resistance training, micronutrient gaps, dosing philosophy, and long-term weight maintenance. What your prescriber doesn't have time to explain.</p>
+          <ul class="guide-includes">
+            <li>The science of GLP-1, GIP & glucagon receptor agonist mechanisms</li>
+            <li>Why 25–39% of weight loss may be muscle — and exactly how to prevent it</li>
+            <li>Protein targets by lean body mass with lookup tables</li>
+            <li>Resistance training prescription for GLP-1 users</li>
+            <li>Dosing-day meal timing, GI side effect management</li>
+            <li>Alcohol, intermittent fasting & diabetes-specific guidance</li>
+            <li>Quick Reference Cheat Sheet — protein targets, meal rules, red flags</li>
+          </ul>
+          <div class="guide-footer">
+            <span class="guide-price">$29</span>
+            <a href="#contact" class="btn btn--gold" style="font-size:.7rem;padding:.75rem 1.6rem">Get the Guide</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cancer Treatment Guide -->
+      <div class="guide-card reveal reveal-d1">
+        <span class="guide-badge guide-badge--book" style="color:var(--gold);background:rgba(200,169,110,.06)">Published · Available on Amazon</span>
+        <div class="guide-mockup" style="background:linear-gradient(135deg,#0a2a3a 0%,#0d3348 50%,#092030 100%)">
+          <div class="guide-mockup-inner">
+            <div class="guide-mockup-label">Amazon eBook</div>
+            <div class="guide-mockup-title">The Cancer Treatment Nutrition Guide</div>
+            <div class="guide-mockup-sub">What to Eat During Chemo, Radiation, Immunotherapy, and Recovery</div>
+            <div class="guide-mockup-rule"></div>
+            <div class="guide-mockup-author">Jason Fee, MS, RDN, LDN</div>
+          </div>
+        </div>
+        <div class="guide-body">
+          <div class="guide-tags">
+            <span class="guide-tag">Oncology</span>
+            <span class="guide-tag">260+ Pages</span>
+            <span class="guide-tag">Patients & Caregivers</span>
+          </div>
+          <h3>The Cancer Treatment Nutrition Guide</h3>
+          <p>The only clinical-grade nutrition guide written specifically for cancer patients and their caregivers. Covers all treatment types, 14 symptom toolkits, food safety, and patient worksheets. Written from years at the oncology bedside.</p>
+          <ul class="guide-includes">
+            <li>All treatment types: chemo, radiation, immunotherapy, surgery, hormone therapy</li>
+            <li>14 symptom toolkits: nausea, fatigue, mouth sores, diarrhea, and more</li>
+            <li>Food safety guidance for immunocompromised patients</li>
+            <li>Patient worksheets, meal trackers, and hydration templates</li>
+            <li>Myth-busting: nutrition "rules" you may hear during treatment</li>
+            <li>Caregiver companion pages</li>
+          </ul>
+          <div class="guide-footer">
+            <span class="guide-price" style="font-size:1rem">Available on Amazon</span>
+            <a href="https://www.amazon.com/Cancer-Treatment-Nutrition-Guide-Immunotherapy-ebook/dp/B0GQX69CKY" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:.7rem;padding:.75rem 1.6rem">Buy on Amazon →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GLP-1 CALCULATOR ══════════════════════════════════════════ -->
+<section class="section" id="glp1calc" style="background:var(--bg)">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start">
+      <div class="reveal">
+        <span class="eyebrow">GLP-1 Clinical Tool</span>
+        <h2>Muscle & Protein<br><em style="color:var(--gold-lt)">Preservation Calculator</em></h2>
+        <p style="font-size:.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.5rem">
+          GLP-1 medications can be remarkably effective — but 25–39% of weight lost may come from lean muscle mass. This calculator estimates your personal muscle loss risk and the daily protein target needed to protect it, based on clinical evidence from the STEP and SURMOUNT trials.
+        </p>
+        <div style="background:rgba(26,92,71,.08);border:1px solid rgba(26,92,71,.25);border-left:2px solid var(--forest);padding:1.4rem 1.6rem;margin-bottom:1.5rem">
+          <div style="font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">Clinical Basis</div>
+          <p style="font-size:.82rem;color:var(--text-dim);line-height:1.75">Protein targets are based on lean body mass (LBM), not total body weight. Range: <strong style="color:var(--parchment)">1.6 g/kg LBM</strong> (minimum to prevent loss) to <strong style="color:var(--parchment)">2.2 g/kg LBM</strong> (optimal preservation with resistance training). Muscle loss estimate extrapolated from trial body composition data.</p>
+        </div>
+        <a href="#booking" class="btn btn--outline" style="font-size:.72rem">Book a GLP-1 Consultation →</a>
+      </div>
+
+      <div class="reveal reveal-d1" style="background:var(--bg-card);border:1px solid var(--border);padding:2.2rem">
+        <div style="font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;display:flex;align-items:center;gap:.7rem"><span style="display:block;width:20px;height:1px;background:var(--gold);opacity:.5"></span>Enter Your Numbers</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+          <div>
+            <label style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:.4rem">Current Weight</label>
+            <div style="display:flex;gap:.4rem">
+              <input id="calcWeight" type="number" min="80" max="500" value="220" style="flex:1;padding:.7rem .9rem;background:rgba(240,233,216,.05);border:1px solid var(--border);color:var(--parchment);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s" oninput="runCalc()" onfocus="this.style.borderColor='rgba(200,169,110,.4)'" onblur="this.style.borderColor='rgba(200,169,110,.1)'">
+              <select id="calcUnit" onchange="runCalc()" style="padding:.7rem .6rem;background:rgba(240,233,216,.05);border:1px solid var(--border);color:var(--gold);font-size:.78rem;outline:none;cursor:pointer">
+                <option value="lbs">lbs</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:.4rem">Weight Loss Goal</label>
+            <div style="display:flex;align-items:center;gap:.4rem">
+              <input id="calcGoal" type="number" min="5" max="200" value="40" style="flex:1;padding:.7rem .9rem;background:rgba(240,233,216,.05);border:1px solid var(--border);color:var(--parchment);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s" oninput="runCalc()" onfocus="this.style.borderColor='rgba(200,169,110,.4)'" onblur="this.style.borderColor='rgba(200,169,110,.1)'">
+              <span id="calcGoalUnit" style="font-size:.78rem;color:var(--text-dim)">lbs</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem">
+          <label style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:.4rem">Estimated Body Fat %</label>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <input id="calcBF" type="range" min="10" max="55" value="32" oninput="document.getElementById('bfVal').textContent=this.value+'%';runCalc()" style="flex:1;accent-color:var(--gold);cursor:pointer">
+            <span id="bfVal" style="font-size:.88rem;color:var(--gold);width:3rem;text-align:right">32%</span>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div id="calcResults" style="margin-top:1.8rem;border-top:1px solid var(--border);padding-top:1.6rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.4rem">
+            <div style="background:rgba(26,92,71,.08);border:1px solid rgba(26,92,71,.2);padding:1.2rem">
+              <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Muscle at Risk</div>
+              <div id="muscleLow" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--parchment);line-height:1">—</div>
+              <div id="muscleHigh" style="font-size:.78rem;color:var(--gold);margin-top:.2rem">— lbs at 39%</div>
+            </div>
+            <div style="background:rgba(200,169,110,.06);border:1px solid rgba(200,169,110,.15);padding:1.2rem">
+              <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Daily LBM</div>
+              <div id="lbmVal" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--parchment);line-height:1">—</div>
+              <div style="font-size:.78rem;color:var(--gold);margin-top:.2rem">lean body mass</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.2rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.5rem">
+              <span style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim)">Daily Protein Target</span>
+              <span id="proteinRange" style="font-size:.78rem;color:var(--gold)">calculating…</span>
+            </div>
+            <div style="background:rgba(240,233,216,.06);border-radius:2px;overflow:hidden;height:8px;margin-bottom:.8rem">
+              <div id="proteinBar" style="height:100%;background:linear-gradient(90deg,var(--forest),var(--gold));width:0%;transition:width .8s ease;border-radius:2px"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+              <div style="background:rgba(240,233,216,.04);padding:.9rem;border:1px solid var(--border)">
+                <div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.3rem">Minimum</div>
+                <div id="proteinMin" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--parchment)">—</div>
+                <div style="font-size:.7rem;color:var(--text-dim)">1.6 g/kg LBM/day</div>
+              </div>
+              <div style="background:rgba(26,92,71,.1);padding:.9rem;border:1px solid rgba(26,92,71,.3)">
+                <div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Optimal</div>
+                <div id="proteinOpt" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--parchment)">—</div>
+                <div style="font-size:.7rem;color:var(--text-dim)">2.2 g/kg LBM/day</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="calcNote" style="font-size:.78rem;color:var(--text-dim);line-height:1.7;padding:.9rem;background:rgba(200,169,110,.05);border:1px solid rgba(200,169,110,.1);font-style:italic"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SYSTEMS CONSULTING ════════════════════════════════════════ -->
+<section class="section systems" id="systems">
+  <div class="wrap">
+    <span class="eyebrow reveal">Healthcare System Consulting</span>
+    <div class="systems-inner">
+      <div class="reveal">
+        <h2>Clinical nutrition investment:<br><strong>liability or an asset.</strong></h2>
+        <p class="systems-lead">
+          Most health systems underinvest in clinical nutrition — not because leadership doesn't value it, but because no one has made the case compellingly enough. That's where I come in.
+        </p>
+        <p class="systems-lead">
+          I work with hospital systems, health networks, and executive leadership teams to build evidence-based frameworks for nutrition program investment: workforce strategy, RDN compensation advocacy, clinical program design, and alignment with organizational mission.
+        </p>
+        <div class="research-box">
+          <div class="rbox-label">Original Research</div>
+          <p>My compensation advocacy work draws on <strong>primary benchmarking analysis</strong> across national RDN salary data, workforce pipeline modeling, clinical ROI scenario building, and <strong>mission-alignment strategy</strong> — including frameworks connecting nutrition investment to whole-person care models and value-based care. This isn't advocacy by opinion. It's advocacy by evidence.</p>
+        </div>
+        <div class="metrics-row">
+          <div class="metric">
+            <div class="metric-val">$94.1M</div>
+            <div class="metric-label">Modeled Clinical ROI</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">125×</div>
+            <div class="metric-label">Return on Investment</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">12</div>
+            <div class="metric-label">Objection Rebuttals</div>
+          </div>
+        </div>
+        <div class="deliverables-list">
+          <div class="d-item">
+            <span class="d-num">01</span>
+            <div><h4>RDN Compensation Analysis</h4><p>Benchmarking against BLS data, regional markets, and peer clinical roles — with three-scenario financial modeling and actionable pay architecture recommendations.</p></div>
+          </div>
+          <div class="d-item">
+            <span class="d-num">02</span>
+            <div><h4>Workforce Pipeline Modeling</h4><p>Pipeline analysis, retention projections, and risk modeling around ACEND enrollment declines and inpatient dietetics workforce contraction.</p></div>
+          </div>
+          <div class="d-item">
+            <span class="d-num">03</span>
+            <div><h4>Clinical ROI Scenario Modeling</h4><p>Conservative, base, and optimistic projections for malnutrition identification revenue, LOS reduction, and readmission avoidance tied to RDN investment.</p></div>
+          </div>
+          <div class="d-item">
+            <span class="d-num">04</span>
+            <div><h4>Mission & Vision Alignment Strategy</h4><p>Connecting nutrition investment to your organization's stated values — whole-person care, workforce wellbeing, and long-term clinical outcomes.</p></div>
+          </div>
+          <div class="d-item">
+            <span class="d-num">05</span>
+            <div><h4>Grand Rounds & Leadership Presentations</h4><p>Evidence-based speaking engagements for clinical leadership, medical staff, and executive audiences.</p></div>
+          </div>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="#contact" class="btn btn--gold">Inquire About System Consulting</a>
+        </div>
+      </div>
+      <div class="sys-cards reveal reveal-d1">
+        <div class="sys-card">
+          <span class="sys-card-tag">Workforce</span>
+          <h3>RDN Workforce Strategy</h3>
+          <p>Pipeline analysis, retention modeling, and compensation frameworks that position your organization as an employer of choice for top clinical nutrition talent.</p>
+        </div>
+        <div class="sys-card">
+          <span class="sys-card-tag">Program Design</span>
+          <h3>Oncology Nutrition Programs</h3>
+          <p>End-to-end design of clinical nutrition programs for oncology service lines — from staffing ratios to care protocols to outcome metrics.</p>
+        </div>
+        <div class="sys-card">
+          <span class="sys-card-tag">ROI Modeling</span>
+          <h3>Clinical Value Frameworks</h3>
+          <p>Financial models connecting RDN investment to malnutrition identification revenue, LOS reduction, readmission avoidance, and audit risk mitigation.</p>
+        </div>
+        <div class="sys-card">
+          <span class="sys-card-tag">GLP-1 Strategy</span>
+          <h3>GLP-1 Program Development</h3>
+          <p>As GLP-1 medications create a new wave of clinical nutrition demand, I help systems build the RDN infrastructure to capture that opportunity — and reduce downstream costs.</p>
+        </div>
+        <div style="background:rgba(26,92,71,.08);border:1px solid rgba(26,92,71,.3);padding:1.6rem 1.8rem;margin-top:.5rem">
+          <div style="font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">Case Context</div>
+          <p style="font-size:.82rem;color:var(--text-dim);line-height:1.75;margin-bottom:.75rem">An organization publicly committed to whole-person care was compensating licensed nutrition experts 20–30% below adjacent allied health roles, with no formal case ever made to leadership. The resulting framework projected <strong style="color:var(--parchment)">$94.1M in clinical value</strong> against ~$750K in annual compensation correction cost.</p>
+          <p style="font-size:.78rem;color:rgba(200,169,110,.7);font-style:italic">All identifying details anonymized for consulting engagements.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI ESTIMATOR TOOL -->
+    <div class="roi-estimator reveal" style="margin-top:4rem;padding-top:3.5rem;border-top:1px solid var(--border)">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem">
+        <div>
+          <span style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem">Interactive Tool</span>
+          <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;color:var(--parchment)">Clinical ROI Estimator</h3>
+        </div>
+        <p style="font-size:.82rem;color:var(--text-dim);max-width:440px;line-height:1.75">Estimate the projected clinical value of strategic RDN investment for your health system. Based on published malnutrition identification revenue, LOS reduction data, and readmission avoidance benchmarks.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start">
+        <div>
+          <div style="margin-bottom:1.6rem">
+            <label style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.9rem">Licensed Beds</label>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <input id="roiBeds" type="range" min="50" max="1200" value="400" step="10" oninput="document.getElementById('roiBedsVal').textContent=this.value;runROI()" style="flex:1;accent-color:var(--gold);cursor:pointer;height:4px">
+              <span id="roiBedsVal" style="font-size:1.1rem;font-family:'Cormorant Garamond',Georgia,serif;color:var(--parchment);min-width:42px;text-align:right">400</span>
+            </div>
+          </div>
+          <div style="margin-bottom:1.6rem">
+            <label style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.9rem">Current RDN FTEs</label>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <input id="roiRdns" type="number" min="0" max="100" value="8" oninput="runROI()" style="width:100%;padding:.7rem .9rem;background:rgba(240,233,216,.05);border:1px solid var(--border);color:var(--parchment);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='rgba(200,169,110,.4)'" onblur="this.style.borderColor='rgba(200,169,110,.1)'">
+            </div>
+          </div>
+          <div style="margin-bottom:1.6rem">
+            <label style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.9rem">Avg. RDN Salary</label>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <span style="font-size:.9rem;color:var(--text-dim)">$</span>
+              <input id="roiSalary" type="number" min="40000" max="120000" value="65000" step="1000" oninput="runROI()" style="flex:1;padding:.7rem .9rem;background:rgba(240,233,216,.05);border:1px solid var(--border);color:var(--parchment);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='rgba(200,169,110,.4)'" onblur="this.style.borderColor='rgba(200,169,110,.1)'">
+            </div>
+          </div>
+          <div>
+            <label style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.9rem">Target RDN:Bed Ratio</label>
+            <div style="display:flex;gap:.5rem">
+              <button onclick="setRatio(1,30,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:30<br><span style="font-size:.65rem;color:var(--text-dim)">Minimum</span></button>
+              <button onclick="setRatio(1,25,this)" class="ratio-btn active-ratio" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(26,92,71,.2);border:1px solid rgba(26,92,71,.5);color:var(--parchment);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:25<br><span style="font-size:.65rem;color:var(--gold)">Standard</span></button>
+              <button onclick="setRatio(1,20,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:20<br><span style="font-size:.65rem;color:var(--text-dim)">Best Practice</span></button>
+              <button onclick="setRatio(1,15,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:15<br><span style="font-size:.65rem;color:var(--text-dim)">Excellence</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div id="roiResults">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.2rem">
+            <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
+              <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Recommended RDNs</div>
+              <div id="roiRecRdns" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--parchment)">16</div>
+            </div>
+            <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
+              <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">FTE Gap</div>
+              <div id="roiGap" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--gold)">+8</div>
+            </div>
+            <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
+              <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Annual Payroll Cost</div>
+              <div id="roiCost" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--parchment)">$520K</div>
+            </div>
+            <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
+              <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">ROI Multiple</div>
+              <div id="roiMultiple" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--gold)">~89×</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(26,92,71,.1);border:1px solid rgba(26,92,71,.25);padding:1.3rem 1.5rem;margin-bottom:1rem">
+            <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">Projected Annual Clinical Value</div>
+            <div style="display:flex;gap:1.2rem;align-items:flex-end">
+              <div style="flex:1">
+                <div style="font-size:.68rem;color:var(--text-dim);margin-bottom:.3rem">Conservative</div>
+                <div id="roiConserv" style="font-size:1.4rem;font-family:'Cormorant Garamond',Georgia,serif;color:var(--text-mid)">$2.8M</div>
+              </div>
+              <div style="flex:1;text-align:center;border-left:1px solid rgba(26,92,71,.3);border-right:1px solid rgba(26,92,71,.3);padding:0 1rem">
+                <div style="font-size:.68rem;color:var(--gold);margin-bottom:.3rem">Base Case</div>
+                <div id="roiBase" style="font-size:1.75rem;font-family:'Cormorant Garamond',Georgia,serif;color:var(--parchment);font-weight:300">$4.4M</div>
+              </div>
+              <div style="flex:1;text-align:right">
+                <div style="font-size:.68rem;color:var(--text-dim);margin-bottom:.3rem">Optimistic</div>
+                <div id="roiOptim" style="font-size:1.4rem;font-family:'Cormorant Garamond',Georgia,serif;color:var(--text-mid)">$6.8M</div>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size:.7rem;color:var(--text-dim);line-height:1.65;font-style:italic">Clinical value projections based on malnutrition identification revenue (DRG coding), LOS reduction, and readmission avoidance benchmarks from peer-reviewed literature. All figures are modeling estimates for planning purposes only. Individual results vary by case mix, documentation practices, and organizational context.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ INSIGHTS ════════════════════════════════════════════════════ -->
+<section class="section" id="insights">
+  <div class="wrap">
+    <div class="insights-header reveal">
+      <span class="eyebrow">Insights</span>
+      <h2>Evidence meets everyday living</h2>
+      <p>Clinical perspectives on oncology nutrition, GLP-1 therapy, longevity, and the science of nourishing a life well-lived.</p>
+    </div>
+    <div class="articles-grid">
+      <div class="article-featured reveal">
+        <div class="af-cover">
+          <div class="af-cover-inner">
+            <span class="article-tag">GLP-1 · Featured</span>
+            <div class="af-cover-title">Why 25–39% of Your GLP-1 Weight Loss May Be Muscle — And Exactly How to Stop It</div>
+          </div>
+        </div>
+        <div class="af-body">
+          <p>The trials don't lie: tirzepatide produces remarkable weight loss. What they don't tell you at the pharmacy is how much of that weight is lean mass — and what happens to your metabolism when it's gone. A clinical breakdown of the muscle loss problem, the resistance training prescription that prevents it, and why protein timing matters more than total protein on a GLP-1.</p>
+          <div class="af-meta">
+            <span>April 2026</span>
+            <span class="article-tag" style="border-color:rgba(200,169,110,.2)">Muscle Preservation</span>
+            <span class="article-tag" style="border-color:rgba(200,169,110,.2)">Pharmacology</span>
+          </div>
+        </div>
+      </div>
+      <div class="articles-col">
+        <div class="article-card reveal reveal-d1">
+          <div class="article-tag" style="margin-bottom:.5rem">Oncology</div>
+          <h3>Eating Through Immunotherapy: What's Different and Why It Matters</h3>
+          <p>Immunotherapy side effects create a different nutritional landscape than chemotherapy — and most patients aren't prepared for it.</p>
+          <div class="article-card-footer">
+            <span class="article-card-date">March 2026</span>
+            <span class="article-tag" style="border-color:rgba(200,169,110,.2)">Clinical</span>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d2">
+          <div class="article-tag" style="margin-bottom:.5rem">GLP-1</div>
+          <h3>Retatrutide: What the Phase 2 Data Actually Shows</h3>
+          <p>24.2% mean body weight reduction at 48 weeks. The triple agonist data is extraordinary — and the clinical implications are significant.</p>
+          <div class="article-card-footer">
+            <span class="article-card-date">February 2026</span>
+            <span class="article-tag" style="border-color:rgba(200,169,110,.2)">Pharmacology</span>
+          </div>
+        </div>
+        <div class="article-card reveal reveal-d3">
+          <div class="article-tag" style="margin-bottom:.5rem">Longevity</div>
+          <h3>The Anti-Inflammatory Plate: A Blueprint for Eating for Longevity</h3>
+          <p>How to structure your meals to reduce chronic inflammation, support metabolic health, and extend your healthspan.</p>
+          <div class="article-card-footer">
+            <span class="article-card-date">January 2026</span>
+            <span class="article-tag" style="border-color:rgba(200,169,110,.2)">Evidence-Based</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ════════════════════════════════════════════════ -->
+<section class="section" id="testimonials" style="background:var(--bg-alt)">
+  <div class="wrap">
+    <div class="testi-header reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2>Lives nourished, excellence pursued</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Working with Jason during my breast cancer treatment was transformative. I finally had a clear, personalized plan — not generic advice. My energy levels during chemo were completely different."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-role">Breast Cancer Survivor · Florida</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I've been on Ozempic for 8 months and losing muscle was my biggest fear. The GLP-1 guide was the most practical, science-based resource I found — and the consulting session changed my whole approach."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Michael R.</div><div class="testi-role">GLP-1 Patient · Orlando, FL</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"As a CEO, I've worked with doctors, trainers, and coaches — but no one addressed my nutrition with this level of clinical rigor and personalization. My labs have never looked better."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div><div class="testi-name">Robert K.</div><div class="testi-role">CEO · Executive Health Client</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="faq-header reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions, honest answers</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Do you accept insurance?<span class="faq-icon">+</span></div><div class="faq-a"><p>Currently, consultations are offered on a private-pay basis. This allows me to spend more time with each client and provide truly individualized care without insurance billing constraints. Many clients use HSA/FSA accounts. I'm happy to provide a superbill for potential out-of-network reimbursement upon request.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Are consultations in-person or virtual?<span class="faq-icon">+</span></div><div class="faq-a"><p>All private consulting sessions are conducted via secure video call, allowing me to work with clients anywhere in the country. If you're local to the Orlando / Celebration, FL area, in-person sessions may be available upon request.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">I'm on a GLP-1 medication. What can you help with?<span class="faq-icon">+</span></div><div class="faq-a"><p>A lot — and it's likely more than your prescriber has time to cover. I specialize in the nutrition side of GLP-1 therapy: building a protein strategy to preserve muscle (which 25–39% of GLP-1 weight loss can be), managing GI side effects, dosing-day meal timing, navigating plateaus, alcohol and fasting interactions, and building a sustainable long-term approach once you reach your maintenance phase.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">I'm currently in cancer treatment. Is it safe to work with a nutrition consultant?<span class="faq-icon">+</span></div><div class="faq-a"><p>Absolutely — in fact, nutritional support during treatment is one of the most evidence-backed interventions for quality of life, treatment tolerance, and clinical outcomes. I work in close coordination with your oncology team and am trained to understand the nuances of each treatment type and its nutritional implications.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">How does the Healthcare System Consulting engagement work?<span class="faq-icon">+</span></div><div class="faq-a"><p>System consulting engagements typically begin with an organizational discovery call, followed by a customized scope of work. I can deliver compensation benchmarking analyses, clinical ROI models, workforce pipeline assessments, and leadership presentations — all adapted to your system's size, mission, and specific nutrition program challenges. Reach out via the contact form to start the conversation.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOKING ═════════════════════════════════════════════════════ -->
+<section class="section" id="booking" style="background:var(--bg-alt)">
+  <div class="wrap">
+    <div class="booking-inner">
+      <div class="reveal">
+        <span class="eyebrow">Book a Consultation</span>
+        <h2>Start your journey toward <em style="color:var(--gold-lt)">a life of excellence.</em></h2>
+        <p>Select a consultation type and choose a time that works for you. All sessions via secure video call. Calendly integration coming soon — reach out via contact form to book now.</p>
+        <div class="booking-opts">
+          <div class="b-opt" onclick="selectOpt(this)"><div class="b-opt-icon">⏱</div><div><div class="b-opt-title">Discovery Call — Free</div><div class="b-opt-detail">30 min · Learn how we can work together</div></div></div>
+          <div class="b-opt" onclick="selectOpt(this)"><div class="b-opt-icon">📋</div><div><div class="b-opt-title">Initial Consultation</div><div class="b-opt-detail">60 min · Comprehensive intake and personalized plan</div></div></div>
+          <div class="b-opt" onclick="selectOpt(this)"><div class="b-opt-icon">🔄</div><div><div class="b-opt-title">Follow-Up Session</div><div class="b-opt-detail">30 min · Progress review and plan refinement</div></div></div>
+          <div class="b-opt" onclick="selectOpt(this)"><div class="b-opt-icon">🏥</div><div><div class="b-opt-title">System Consulting Inquiry</div><div class="b-opt-detail">Hospital and health system engagements</div></div></div>
+        </div>
+      </div>
+      <div class="cal-card reveal reveal-d1">
+        <div class="cal-header">
+          <span class="cal-month" id="calMonth">April 2026</span>
+          <div class="cal-nav"><button onclick="prevMonth()">‹</button><button onclick="nextMonth()">›</button></div>
+        </div>
+        <div class="cal-days-hd">
+          <div class="cal-dname">Su</div><div class="cal-dname">Mo</div><div class="cal-dname">Tu</div>
+          <div class="cal-dname">We</div><div class="cal-dname">Th</div><div class="cal-dname">Fr</div><div class="cal-dname">Sa</div>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="time-slots-wrap" id="timeSlots">
+          <div class="ts-label">Available Times</div>
+          <div class="time-slots">
+            <div class="ts" onclick="selectTime(this)">9:00 AM</div>
+            <div class="ts" onclick="selectTime(this)">10:30 AM</div>
+            <div class="ts" onclick="selectTime(this)">1:00 PM</div>
+            <div class="ts" onclick="selectTime(this)">2:30 PM</div>
+            <div class="ts" onclick="selectTime(this)">4:00 PM</div>
+          </div>
+        </div>
+        <div class="book-confirm" id="bookConfirm">
+          <a href="#contact" class="btn btn--gold" style="width:100%;justify-content:center">Confirm & Send Request →</a>
+          <p class="book-confirm-note">You'll receive a confirmation with your secure video link.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ═════════════════════════════════════════════════ -->
+<div class="newsletter">
+  <div class="newsletter__inner reveal">
+    <span class="eyebrow" style="justify-content:center;color:rgba(200,169,110,.65)">Stay Informed</span>
+    <h2>Clinical insights, delivered monthly</h2>
+    <p>Evidence-based nutrition insights on oncology, GLP-1 therapy, longevity, and peak performance. No fluff — just science, simplified.</p>
+    <form class="nl-form" onsubmit="handleNL(event)">
+      <input class="nl-input" type="email" placeholder="your@email.com" required />
+      <button type="submit" class="btn btn--gold">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══ CONTACT ═════════════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Let's talk about your goals</h2>
+        <p>Whether you have questions about a service, want to discuss your specific situation before booking, are interested in healthcare system consulting, or have a media or speaking inquiry — I'd love to hear from you.</p>
+        <div class="contact-details">
+          <div class="c-detail">
+            <div class="c-icon">✉</div>
+            <div><div class="c-label">Email</div><div class="c-val">hello@vitaearete.com</div></div>
+          </div>
+          <div class="c-detail">
+            <div class="c-icon">📍</div>
+            <div><div class="c-label">Location</div><div class="c-val">Celebration, FL · Telehealth Nationwide</div></div>
+          </div>
+          <div class="c-detail">
+            <div class="c-icon">📅</div>
+            <div><div class="c-label">Availability</div><div class="c-val">Mon – Fri, by appointment</div></div>
+          </div>
+          <div class="c-detail">
+            <div class="c-icon">🌐</div>
+            <div><div class="c-label">Web</div><div class="c-val">vitaearete.com</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-d1">
+        <form onsubmit="handleContact(event)">
+          <div class="f-row">
+            <div class="f-group"><label>First Name</label><input type="text" placeholder="Jane" required /></div>
+            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Smith" required /></div>
+          </div>
+          <div class="f-group"><label>Email</label><input type="email" placeholder="jane@example.com" required /></div>
+          <div class="f-group">
+            <label>Inquiry Type</label>
+            <select>
+              <option value="">Select a topic…</option>
+              <option>Oncology Nutrition Consulting</option>
+              <option>GLP-1 Nutrition Consulting</option>
+              <option>Longevity & Lifestyle Medicine</option>
+              <option>Executive / VIP Consulting</option>
+              <option>Healthcare System Consulting</option>
+              <option>GLP-1 Nutrition Survival Guide</option>
+              <option>The Cancer Treatment Nutrition Guide</option>
+              <option>Media / Speaking Inquiry</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="f-group"><label>Message</label><textarea placeholder="Tell me a little about yourself and what you're hoping to achieve…"></textarea></div>
+          <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <span class="footer-brand-name">Vitae <em>Arete</em></span>
+        <span class="footer-brand-sub">Jason Fee, MS, RDN, LDN</span>
+        <p class="footer-brand-desc">Evidence-based, radically personalized nutrition for oncology patients, GLP-1 users, longevity seekers, high-performing executives, and the healthcare systems that serve them.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Oncology Nutrition</a></li>
+          <li><a href="#services">GLP-1 Consulting</a></li>
+          <li><a href="#services">Longevity Medicine</a></li>
+          <li><a href="#services">Executive Consulting</a></li>
+          <li><a href="#systems">System Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#guides">GLP-1 Survival Guide</a></li>
+          <li><a href="https://www.amazon.com/Cancer-Treatment-Nutrition-Guide-Immunotherapy-ebook/dp/B0GQX69CKY" target="_blank" rel="noopener">Cancer Treatment Guide</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#contact">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://www.amazon.com/Cancer-Treatment-Nutrition-Guide-Immunotherapy-ebook/dp/B0GQX69CKY" target="_blank" rel="noopener">Amazon</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Vitae Arete · Jason Fee, MS, RDN, LDN · All rights reserved.</span>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Disclaimer</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════════════ -->
+<script>
+/* Nav scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+/* Mobile menu */
+const burger=document.getElementById('burgerBtn'),menu=document.getElementById('mobileMenu'),close=document.getElementById('menuClose');
+burger.addEventListener('click',()=>menu.classList.add('open'));
+close.addEventListener('click',()=>menu.classList.remove('open'));
+document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>menu.classList.remove('open')));
+
+/* Scroll reveals */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Calendar */
+let calDate=new Date(2026,3,1);
+const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const avail=[2,3,7,8,9,10,14,15,16,17,21,22,23,28,29,30];
+
+function renderCal(){
+  const today=new Date(),y=calDate.getFullYear(),m=calDate.getMonth();
+  const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+  document.getElementById('calMonth').textContent=`${months[m]} ${y}`;
+  const grid=document.getElementById('calGrid');
+  grid.innerHTML='';
+  for(let i=0;i<first;i++){const el=document.createElement('div');el.className='cal-day empty';grid.appendChild(el);}
+  for(let d=1;d<=days;d++){
+    const el=document.createElement('div');
+    const isToday=(y===today.getFullYear()&&m===today.getMonth()&&d===today.getDate());
+    const isPast=new Date(y,m,d)<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    const isAvail=avail.includes(d)&&!isPast;
+    el.className='cal-day'+(isToday?' today':'')+(isPast?' past':'')+(isAvail?' avail':'');
+    el.textContent=d;
+    if(isAvail)el.addEventListener('click',()=>selectDay(el));
+    grid.appendChild(el);
+  }
+}
+
+function selectDay(el){
+  document.querySelectorAll('.cal-day').forEach(d=>d.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('timeSlots').classList.add('visible');
+  document.querySelectorAll('.ts').forEach(t=>t.classList.remove('selected'));
+  document.getElementById('bookConfirm').classList.remove('visible');
+}
+
+function selectTime(el){
+  document.querySelectorAll('.ts').forEach(t=>t.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('bookConfirm').classList.add('visible');
+}
+
+function selectOpt(el){
+  document.querySelectorAll('.b-opt').forEach(o=>o.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function prevMonth(){calDate.setMonth(calDate.getMonth()-1);renderCal();}
+function nextMonth(){calDate.setMonth(calDate.getMonth()+1);renderCal();}
+renderCal();
+
+/* Forms */
+function handleNL(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button');
+  btn.textContent='✓ Subscribed!';
+  setTimeout(()=>btn.textContent='Subscribe',3000);
+}
+function handleContact(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button');
+  btn.textContent='✓ Message Sent!';
+  setTimeout(()=>btn.textContent='Send Message →',3000);
+}
+
+/* FAQ */
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+
+/* ── GLP-1 CALCULATOR ─────────────────────────────────────── */
+function runCalc(){
+  const unit   = document.getElementById('calcUnit').value;
+  const rawW   = parseFloat(document.getElementById('calcWeight').value)||0;
+  const rawG   = parseFloat(document.getElementById('calcGoal').value)||0;
+  const bf     = parseFloat(document.getElementById('calcBF').value)||30;
+
+  /* normalise to kg */
+  const wKg  = unit==='lbs' ? rawW*0.453592 : rawW;
+  const gKg  = unit==='lbs' ? rawG*0.453592 : rawG;
+
+  /* update goal unit label */
+  document.getElementById('calcGoalUnit').textContent = unit==='lbs'?'lbs':'kg';
+
+  if(wKg<30||gKg<2){ clearCalc(); return; }
+
+  /* lean body mass */
+  const lbm  = wKg * (1 - bf/100);
+
+  /* muscle loss range: 25% – 39% of weight lost (STEP/SURMOUNT data) */
+  const muscleLo = gKg * 0.25;
+  const muscleHi = gKg * 0.39;
+
+  /* protein targets: 1.6 – 2.2 g per kg LBM */
+  const protLo   = lbm * 1.6;
+  const protHi   = lbm * 2.2;
+
+  /* update DOM */
+  document.getElementById('muscleLo').textContent  = muscleLo.toFixed(1);
+  document.getElementById('muscleHi').textContent  = muscleHi.toFixed(1);
+  document.getElementById('muscleUnit').textContent= unit==='lbs'?'lbs':'kg';
+
+  const pLo = unit==='lbs' ? protLo*2.20462 : protLo;
+  const pHi = unit==='lbs' ? protHi*2.20462 : protHi;
+  document.getElementById('proteinRange').textContent = `${Math.round(pLo)}–${Math.round(pHi)} g/day`;
+
+  /* bar fill – muscle loss % of goal */
+  const barPct = Math.min(((muscleLo+muscleHi)/2/gKg)*100, 100);
+  document.getElementById('proteinBar').style.width = barPct+'%';
+
+  /* contextual note */
+  const pMid = (pLo+pHi)/2;
+  const note = `At ${bf}% body fat, your estimated lean body mass is ${(unit==='lbs'?lbm*2.20462:lbm).toFixed(1)} ${unit==='lbs'?'lbs':'kg'}. `+
+    `Without adequate protein intake, you risk losing ${(unit==='lbs'?muscleLo*2.20462:muscleLo).toFixed(1)}–${(unit==='lbs'?muscleHi*2.20462:muscleHi).toFixed(1)} ${unit==='lbs'?'lbs':'kg'} of muscle alongside fat. `+
+    `Targeting ${Math.round(unit==='lbs'?pLo*2.20462:pLo)}–${Math.round(unit==='lbs'?pHi*2.20462:pHi)} g of protein per day — spread across 3–5 meals — can meaningfully preserve lean mass and long-term metabolic health.`;
+  document.getElementById('calcNote').textContent = note;
+}
+function clearCalc(){
+  ['muscleLo','muscleHi','proteinRange'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent='—'; });
+  const bar=document.getElementById('proteinBar'); if(bar) bar.style.width='0%';
+  const note=document.getElementById('calcNote'); if(note) note.textContent='';
+}
+/* initialise on load */
+runCalc();
+
+/* ── HEALTHCARE ROI ESTIMATOR ────────────────────────────── */
+let roiRatio = 25; /* beds per RDN */
+
+function setRatio(n, d, btn){
+  roiRatio = d;
+  document.querySelectorAll('.ratio-btn').forEach(b=>{
+    b.style.background='rgba(240,233,216,.04)';
+    b.style.borderColor='rgba(200,169,110,.1)';
+    b.style.color='rgba(240,233,216,.5)';
+  });
+  btn.style.background='rgba(26,92,71,.2)';
+  btn.style.borderColor='rgba(26,92,71,.5)';
+  btn.style.color='var(--parchment)';
+  runROI();
+}
+
+function runROI(){
+  const beds   = parseInt(document.getElementById('roiBeds').value)||400;
+  const curRDN = parseFloat(document.getElementById('roiRdns').value)||0;
+  const salary = parseFloat(document.getElementById('roiSalary').value)||65000;
+
+  const recRDN  = Math.ceil(beds / roiRatio);
+  const gap     = Math.max(0, recRDN - curRDN);
+  const payroll = gap * salary;
+
+  /* Clinical value per additional RDN (evidence-based benchmarks):
+     Conservative $350K | Base $550K | Optimistic $850K */
+  const conserv = gap * 350000;
+  const base    = gap * 550000;
+  const optim   = gap * 850000;
+  const multiple= payroll > 0 ? (base / payroll) : 0;
+
+  const fmt = v => v >= 1e6
+    ? '$' + (v/1e6).toFixed(1) + 'M'
+    : '$' + Math.round(v/1000) + 'K';
+
+  document.getElementById('roiRecRdns').textContent = recRDN;
+  document.getElementById('roiGap').textContent     = gap > 0 ? '+'+gap : gap;
+  document.getElementById('roiCost').textContent    = fmt(payroll);
+  document.getElementById('roiMultiple').textContent= payroll > 0 ? '~'+Math.round(multiple)+'×' : '—';
+  document.getElementById('roiConserv').textContent = fmt(conserv);
+  document.getElementById('roiBase').textContent    = fmt(base);
+  document.getElementById('roiOptim').textContent   = fmt(optim);
+}
+runROI();
+
+/* ── MOLECULAR CANVAS ANIMATION ──────────────────────────── */
+function initMolCanvas(){
+  const canvas = document.getElementById('molCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], animId = null;
+  let mouse = {x:-9999, y:-9999};
+  const COUNT      = 75;
+  const LINK_DIST  = 160;
+  const MOUSE_DIST = 140;
+  const SPEED      = 0.4;
+  /* Node colors: bright luminous greens + gold — contrast against dark bg */
+  const COLORS = [
+    [72,200,140],  /* bright mint-green */
+    [100,220,160], /* light emerald */
+    [200,169,110], /* gold */
+    [230,200,140], /* pale gold */
+    [140,230,190], /* seafoam */
+    [255,210,120]  /* warm gold */
+  ];
+
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width  = rect.width  || window.innerWidth;
+    H = canvas.height = rect.height || window.innerHeight;
+  }
+
+  function makeParticle(){
+    const col = COLORS[Math.floor(Math.random()*COLORS.length)];
+    return {
+      x:  Math.random()*W,
+      y:  Math.random()*H,
+      vx: (Math.random()-.5)*SPEED,
+      vy: (Math.random()-.5)*SPEED,
+      r:  Math.random()*2.5+1.5,
+      r0: Math.random()*2.5+1.5,
+      col: col,
+      a:  Math.random()*.55+.35
+    };
+  }
+
+  function init(){
+    resize();
+    particles = Array.from({length:COUNT}, makeParticle);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    particles.forEach(p=>{
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x<0){p.x=0;p.vx*=-1;}
+      if(p.x>W){p.x=W;p.vx*=-1;}
+      if(p.y<0){p.y=0;p.vy*=-1;}
+      if(p.y>H){p.y=H;p.vy*=-1;}
+
+      /* mouse repulsion */
+      const dx = p.x-mouse.x, dy = p.y-mouse.y;
+      const dist = Math.hypot(dx,dy);
+      if(dist<MOUSE_DIST && dist>0){
+        const f = (MOUSE_DIST-dist)/MOUSE_DIST * 0.06;
+        p.vx += (dx/dist)*f;
+        p.vy += (dy/dist)*f;
+        /* clamp */
+        const spd = Math.hypot(p.vx,p.vy);
+        if(spd>SPEED*4){ p.vx=p.vx/spd*SPEED*4; p.vy=p.vy/spd*SPEED*4; }
+      }
+    });
+
+    /* draw links */
+    for(let i=0;i<particles.length-1;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i], b=particles[j];
+        const d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<LINK_DIST){
+          const alpha=(1-d/LINK_DIST)*0.40;
+          const c=a.col;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+          ctx.lineWidth=1.2;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* draw nodes */
+    particles.forEach(p=>{
+      const [r,g,b]=p.col;
+      /* glow */
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r*5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},0.10)`;
+      ctx.fill();
+      /* core */
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;
+      ctx.fill();
+    });
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',()=>{
+    resize();
+    particles.forEach(p=>{ if(p.x>W)p.x=W; if(p.y>H)p.y=H; });
+  });
+  canvas.parentElement.addEventListener('mousemove',e=>{
+    const rect=canvas.getBoundingClientRect();
+    mouse.x=e.clientX-rect.left;
+    mouse.y=e.clientY-rect.top;
+  });
+  canvas.parentElement.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+
+  init();
+  draw();
+}
+
+/* Start after full page load so layout dimensions are correct */
+if(document.readyState==='complete'){
+  initMolCanvas();
+} else {
+  window.addEventListener('load', initMolCanvas);
+}
+</script>
+</body>
+</html>
