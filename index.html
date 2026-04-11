@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitae Arete | Jason Fee, MS, RDN, LDN — Oncology, GLP-1 & Weight Loss, Executive Nutrition</title>
 <meta name="description" content="Vitae Arete — evidence-based oncology nutrition, GLP-1 & weight loss consulting, lifestyle medicine, and healthcare system consulting by Jason Fee, MS, RDN, LDN.">
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://vitaearete.com/">
+<meta property="og:title"       content="Vitae Arete | Jason Fee, MS, RDN, LDN">
+<meta property="og:description" content="Evidence-based oncology nutrition, GLP-1 & weight loss consulting, lifestyle medicine, and executive nutrition consulting. A life of excellence, nourished.">
+<meta property="og:image"       content="https://vitaearete.com/headshot.jpg">
+<meta property="og:site_name"   content="Vitae Arete">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:url"         content="https://vitaearete.com/">
+<meta name="twitter:title"       content="Vitae Arete | Jason Fee, MS, RDN, LDN">
+<meta name="twitter:description" content="Evidence-based oncology nutrition, GLP-1 & weight loss consulting, lifestyle medicine, and executive nutrition consulting.">
+<meta name="twitter:image"       content="https://vitaearete.com/headshot.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://vitaearete.com/">
+
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -1031,7 +1059,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
     <div class="guides-grid">
       <!-- GLP-1 Guide -->
       <div class="guide-card guide-card--featured reveal">
-        <span class="guide-badge">Featured Guide · Digital Download</span>
+        <span class="guide-badge">Coming Soon · Digital Download</span>
         <div class="guide-mockup">
           <div class="guide-mockup-inner">
             <div class="guide-mockup-label">Clinical Guide</div>
@@ -1060,8 +1088,8 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
             <li>Quick Reference Cheat Sheet — protein targets, meal rules, red flags</li>
           </ul>
           <div class="guide-footer">
-            <span class="guide-price">$29</span>
-            <a href="#contact" class="btn btn--gold" style="font-size:.7rem;padding:.75rem 1.6rem">Get the Guide</a>
+            <span class="guide-price" style="font-size:.85rem;color:var(--gold)">Coming Soon · $29</span>
+            <a href="#contact" class="btn btn--outline" style="font-size:.7rem;padding:.75rem 1.6rem">Notify Me →</a>
           </div>
         </div>
       </div>
@@ -1566,8 +1594,10 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
     <span class="eyebrow" style="justify-content:center;color:rgba(200,169,110,.65)">Stay Informed</span>
     <h2>Clinical insights, delivered monthly</h2>
     <p>Evidence-based nutrition insights on oncology, GLP-1 therapy, longevity, and peak performance. No fluff — just science, simplified.</p>
-    <form class="nl-form" onsubmit="handleNL(event)">
-      <input class="nl-input" type="email" placeholder="your@email.com" required />
+    <form class="nl-form" name="newsletter" netlify netlify-honeypot="bot-field" onsubmit="handleNL(event)">
+      <input type="hidden" name="form-name" value="newsletter">
+      <input type="hidden" name="bot-field" style="display:none">
+      <input class="nl-input" type="email" name="email" placeholder="your@email.com" required />
       <button type="submit" class="btn btn--gold">Subscribe</button>
     </form>
   </div>
@@ -1601,15 +1631,17 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
         </div>
       </div>
       <div class="contact-form reveal reveal-d1">
-        <form onsubmit="handleContact(event)">
+        <form name="contact" netlify netlify-honeypot="bot-field" onsubmit="handleContact(event)">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="bot-field" style="display:none">
           <div class="f-row">
-            <div class="f-group"><label>First Name</label><input type="text" placeholder="Jane" required /></div>
-            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Smith" required /></div>
+            <div class="f-group"><label>First Name</label><input type="text" name="first-name" placeholder="Jane" required /></div>
+            <div class="f-group"><label>Last Name</label><input type="text" name="last-name" placeholder="Smith" required /></div>
           </div>
-          <div class="f-group"><label>Email</label><input type="email" placeholder="jane@example.com" required /></div>
+          <div class="f-group"><label>Email</label><input type="email" name="email" placeholder="jane@example.com" required /></div>
           <div class="f-group">
             <label>Inquiry Type</label>
-            <select>
+            <select name="inquiry-type">
               <option value="">Select a topic…</option>
               <option>Oncology Nutrition Consulting</option>
               <option>GLP-1 & Weight Loss Consulting</option>
@@ -1622,7 +1654,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
               <option>General Inquiry</option>
             </select>
           </div>
-          <div class="f-group"><label>Message</label><textarea placeholder="Tell me a little about yourself and what you're hoping to achieve…"></textarea></div>
+          <div class="f-group"><label>Message</label><textarea name="message" placeholder="Tell me a little about yourself and what you're hoping to achieve…"></textarea></div>
           <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center">Send Message →</button>
         </form>
       </div>
