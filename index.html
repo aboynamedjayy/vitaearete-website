@@ -639,6 +639,18 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
 .f-group select option { background:var(--bg); }
 @media(max-width:900px) { .contact-inner { grid-template-columns:1fr; } .f-row { grid-template-columns:1fr; } }
 
+/* Calculator grids — collapse to single column on mobile */
+.calc-outer-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:5rem; align-items:start; }
+.roi-calc-grid   { display:grid; grid-template-columns:1fr 1fr;   gap:3.5rem; align-items:start; }
+@media(max-width:900px) {
+  .calc-outer-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .roi-calc-grid   { grid-template-columns:1fr; gap:2rem; }
+}
+
+/* Headshot — constrain height on large screens but keep portrait on mobile */
+.headshot-wrap { max-height:580px; }
+@media(max-width:900px) { .headshot-wrap { max-height:none; } }
+
 /* ── FOOTER ────────────────────────────────────────────── */
 .footer { background:#0a0f0d; padding:5rem 0 2.5rem; border-top:1px solid var(--border); }
 .footer-top {
@@ -885,8 +897,8 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
         <a href="#booking" class="btn btn--outline">Book a Free Discovery Call</a>
       </div>
       <div class="reveal reveal-d1">
-        <div style="margin-bottom:2.5rem;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;max-height:520px;background:var(--bg-card);border:1px solid var(--border)">
-          <img src="headshot.jpg" alt="Jason Fee, MS, RDN, LDN" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" onerror="this.style.display='none';this.parentElement.style.display='none'">
+        <div class="headshot-wrap" style="margin-bottom:2.5rem;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--bg-card);border:1px solid var(--border)">
+          <img src="headshot.jpg" alt="Jason Fee, MS, RDN, LDN" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;" onerror="this.style.display='none';this.parentElement.style.display='none'">
         </div>
         <div class="specialty-card">
           <div class="s-num">Specialty 01</div>
@@ -1097,7 +1109,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
 <!-- ══ GLP-1 CALCULATOR ══════════════════════════════════════════ -->
 <section class="section" id="glp1calc" style="background:var(--bg)">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start">
+    <div class="calc-outer-grid">
       <div class="reveal">
         <span class="eyebrow">GLP-1 Clinical Tool</span>
         <h2>Muscle & Protein<br><em style="color:var(--gold-lt)">Preservation Calculator</em></h2>
@@ -1290,7 +1302,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
         </div>
         <p style="font-size:.82rem;color:var(--text-dim);max-width:440px;line-height:1.75">Estimate the projected clinical value of strategic RDN investment for your health system. Based on published malnutrition identification revenue, LOS reduction data, and readmission avoidance benchmarks.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start">
+      <div class="roi-calc-grid">
         <div>
           <div style="margin-bottom:1.6rem">
             <label style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.9rem">Licensed Beds</label>
