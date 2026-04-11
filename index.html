@@ -1741,28 +1741,39 @@ function runCalc(){
   const protLo   = lbm * 1.6;
   const protHi   = lbm * 2.2;
 
-  /* update DOM */
-  document.getElementById('muscleLo').textContent  = muscleLo.toFixed(1);
-  document.getElementById('muscleHi').textContent  = muscleHi.toFixed(1);
-  document.getElementById('muscleUnit').textContent= unit==='lbs'?'lbs':'kg';
+  /* convert to display units */
+  const u          = unit==='lbs' ? 'lbs' : 'kg';
+  const toDisp     = v => unit==='lbs' ? v*2.20462 : v;
+  const dispLo     = toDisp(muscleLo);
+  const dispHi     = toDisp(muscleHi);
+  const dispLbm    = toDisp(lbm);
+  const dispProtLo = toDisp(protLo);
+  const dispProtHi = toDisp(protHi);
 
-  const pLo = unit==='lbs' ? protLo*2.20462 : protLo;
-  const pHi = unit==='lbs' ? protHi*2.20462 : protHi;
-  document.getElementById('proteinRange').textContent = `${Math.round(pLo)}–${Math.round(pHi)} g/day`;
+  /* update DOM — IDs match the HTML elements */
+  document.getElementById('muscleLow').textContent   = dispLo.toFixed(1) + ' ' + u;
+  document.getElementById('muscleHigh').textContent  = dispHi.toFixed(1) + ' ' + u + ' at 39%';
+  document.getElementById('lbmVal').textContent      = dispLbm.toFixed(1) + ' ' + u;
 
-  /* bar fill – muscle loss % of goal */
+  document.getElementById('proteinRange').textContent = `${Math.round(dispProtLo)}–${Math.round(dispProtHi)} g/day`;
+  document.getElementById('proteinMin').textContent   = Math.round(dispProtLo) + 'g';
+  document.getElementById('proteinOpt').textContent   = Math.round(dispProtHi) + 'g';
+
+  /* bar fill – avg muscle loss as % of goal weight */
   const barPct = Math.min(((muscleLo+muscleHi)/2/gKg)*100, 100);
   document.getElementById('proteinBar').style.width = barPct+'%';
 
   /* contextual note */
-  const pMid = (pLo+pHi)/2;
-  const note = `At ${bf}% body fat, your estimated lean body mass is ${(unit==='lbs'?lbm*2.20462:lbm).toFixed(1)} ${unit==='lbs'?'lbs':'kg'}. `+
-    `Without adequate protein intake, you risk losing ${(unit==='lbs'?muscleLo*2.20462:muscleLo).toFixed(1)}–${(unit==='lbs'?muscleHi*2.20462:muscleHi).toFixed(1)} ${unit==='lbs'?'lbs':'kg'} of muscle alongside fat. `+
-    `Targeting ${Math.round(unit==='lbs'?pLo*2.20462:pLo)}–${Math.round(unit==='lbs'?pHi*2.20462:pHi)} g of protein per day — spread across 3–5 meals — can meaningfully preserve lean mass and long-term metabolic health.`;
+  const note = `At ${bf}% body fat, your estimated lean body mass is ${dispLbm.toFixed(1)} ${u}. `+
+    `Without adequate protein intake, you risk losing ${dispLo.toFixed(1)}–${dispHi.toFixed(1)} ${u} of muscle alongside fat. `+
+    `Targeting ${Math.round(dispProtLo)}–${Math.round(dispProtHi)} g of protein per day — spread across 3–5 meals — can meaningfully preserve lean mass and long-term metabolic health.`;
   document.getElementById('calcNote').textContent = note;
 }
 function clearCalc(){
-  ['muscleLo','muscleHi','proteinRange'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent='—'; });
+  ['muscleLow','muscleHigh','lbmVal','proteinMin','proteinOpt'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.textContent='—';
+  });
+  const pr=document.getElementById('proteinRange'); if(pr) pr.textContent='calculating…';
   const bar=document.getElementById('proteinBar'); if(bar) bar.style.width='0%';
   const note=document.getElementById('calcNote'); if(note) note.textContent='';
 }
