@@ -647,9 +647,7 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
   .roi-calc-grid   { grid-template-columns:1fr; gap:2rem; }
 }
 
-/* Headshot — constrain height on large screens but keep portrait on mobile */
-.headshot-wrap { max-height:580px; }
-@media(max-width:900px) { .headshot-wrap { max-height:none; } }
+/* Headshot — aspect-ratio:3/4 constrains height naturally; no max-height needed */
 
 /* ── FOOTER ────────────────────────────────────────────── */
 .footer { background:#0a0f0d; padding:5rem 0 2.5rem; border-top:1px solid var(--border); }
@@ -898,7 +896,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
       </div>
       <div class="reveal reveal-d1">
         <div class="headshot-wrap" style="margin-bottom:2.5rem;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--bg-card);border:1px solid var(--border)">
-          <img src="headshot.jpg" alt="Jason Fee, MS, RDN, LDN" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;" onerror="this.style.display='none';this.parentElement.style.display='none'">
+          <img src="headshot.jpg" alt="Jason Fee, MS, RDN, LDN" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block;" onerror="this.style.display='none';this.parentElement.style.display='none'">
         </div>
         <div class="specialty-card">
           <div class="s-num">Specialty 01</div>
