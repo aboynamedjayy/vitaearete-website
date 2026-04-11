@@ -62,11 +62,11 @@
   --trans: 0.25s ease;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--bg); }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
+  background: transparent;
   color: var(--parchment);
   overflow-x: hidden;
   line-height: 1.6;
@@ -802,9 +802,88 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
 * { max-width:100%; }
 img,video,canvas,iframe { max-width:100%; }
 pre,code { white-space:pre-wrap; word-break:break-word; }
+
+/* ── BACKGROUND CANVAS (global, fixed, section-aware) ─────── */
+#bgCanvas {
+  position:fixed; inset:0;
+  width:100%; height:100%;
+  pointer-events:none; z-index:0;
+}
+/* Sections sit above canvas; .hero already has position:relative */
+.section, .trust, .newsletter { position:relative; z-index:1; }
+.hero { z-index:1; }
+
+/* ── CORPORATE HEALTH PROMOTION ──────────────────────────────── */
+.corporate { background:var(--bg-alt); }
+.corp-intro {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:4rem; margin-bottom:5rem; align-items:end;
+}
+.corp-intro h2 { color:var(--parchment); }
+.corp-intro h2 strong { font-weight:600; display:block; }
+.corp-intro p { font-size:.9rem; font-weight:300; color:var(--text-mid); line-height:1.85; }
+.corp-plans {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:1.5rem; margin-bottom:3.5rem;
+}
+.corp-plan {
+  background:var(--bg-card); border:1px solid var(--border);
+  padding:2rem 2.2rem; position:relative; overflow:hidden;
+  transition:border-color var(--trans), background var(--trans);
+}
+.corp-plan:hover { border-color:var(--border-md); background:rgba(26,92,71,.06); }
+.corp-plan--flagship { border-color:rgba(26,92,71,.45); }
+.corp-plan--flagship:hover { border-color:rgba(200,169,110,.35); }
+.corp-plan-badge {
+  font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold); display:block; margin-bottom:.75rem;
+}
+.corp-plan h3 { font-size:1.25rem; font-weight:600; color:var(--parchment); margin-bottom:.5rem; }
+.corp-plan-price {
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:2rem; font-weight:300; color:var(--parchment);
+  line-height:1.1; margin-bottom:.25rem;
+}
+.corp-plan-price span { font-size:.85rem; color:var(--text-dim); }
+.corp-plan p { font-size:.83rem; color:var(--text-dim); line-height:1.75; margin:1rem 0 1.25rem; }
+.corp-plan-list { display:flex; flex-direction:column; gap:.35rem; margin-bottom:1.5rem; }
+.corp-plan-list li {
+  font-size:.78rem; color:var(--text-dim);
+  display:flex; align-items:flex-start; gap:.5rem;
+}
+.corp-plan-list li::before { content:'—'; color:var(--gold); flex-shrink:0; font-size:.7rem; margin-top:.15rem; }
+.corp-blocks {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border); border:1px solid var(--border);
+  margin-bottom:3.5rem;
+}
+.corp-block { background:var(--bg); padding:2rem 1.8rem; transition:background var(--trans); }
+.corp-block:hover { background:rgba(26,92,71,.07); }
+.corp-block-tag {
+  font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold); display:block; margin-bottom:.75rem;
+}
+.corp-block h4 { font-size:1.1rem; font-weight:600; color:var(--parchment); margin-bottom:.35rem; }
+.corp-block-price {
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1.35rem; color:var(--gold); margin-bottom:.5rem; font-style:italic;
+}
+.corp-block p { font-size:.8rem; color:var(--text-dim); line-height:1.65; }
+.corp-note {
+  background:rgba(26,92,71,.07); border:1px solid rgba(26,92,71,.25);
+  border-left:2px solid var(--forest); padding:1.5rem 1.8rem; margin-top:.5rem;
+}
+.corp-note p { font-size:.83rem; color:var(--text-dim); line-height:1.8; }
+.corp-note strong { color:var(--parchment); font-weight:400; }
+@media(max-width:1000px) { .corp-plans { grid-template-columns:1fr; } }
+@media(max-width:768px) {
+  .corp-intro { grid-template-columns:1fr; gap:2rem; }
+  .corp-blocks { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
 
 <!-- ══ NAV ══════════════════════════════════════════════════════ -->
 <nav class="nav" id="nav">
@@ -819,6 +898,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
       <li><a href="#guides">Guides</a></li>
       <li><a href="#glp1calc" style="color:var(--gold)">Tools ✦</a></li>
       <li><a href="#systems">Systems</a></li>
+      <li><a href="#corporate">Corporate</a></li>
       <li><a href="#insights">Insights</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -834,8 +914,9 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
   <a href="#services" class="ml">Services</a>
   <a href="#guides"   class="ml">Guides</a>
   <a href="#glp1calc" class="ml" style="color:var(--gold)">Tools ✦</a>
-  <a href="#systems"  class="ml">Systems</a>
-  <a href="#insights" class="ml">Insights</a>
+  <a href="#systems"    class="ml">Systems</a>
+  <a href="#corporate" class="ml">Corporate</a>
+  <a href="#insights"  class="ml">Insights</a>
   <a href="#booking"  class="ml">Book</a>
   <a href="#contact"  class="ml">Contact</a>
 </div>
@@ -844,7 +925,6 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
 <section class="hero" id="home">
   <div class="hero__bg"></div>
   <div class="hero__grid"></div>
-  <canvas id="molCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.80"></canvas>
   <div class="hero__inner">
     <div class="hero__content">
       <h1 class="hero__headline">
@@ -1062,7 +1142,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
     <div class="guides-grid">
       <!-- GLP-1 Guide -->
       <div class="guide-card guide-card--featured reveal">
-        <span class="guide-badge">Coming Soon · Digital Download</span>
+        <span class="guide-badge">Available Now · Digital Download</span>
         <div class="guide-mockup">
           <div class="guide-mockup-inner">
             <div class="guide-mockup-label">Clinical Guide</div>
@@ -1091,8 +1171,9 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
             <li>Quick Reference Cheat Sheet — protein targets, meal rules, red flags</li>
           </ul>
           <div class="guide-footer">
-            <span class="guide-price" style="font-size:.85rem;color:var(--gold)">Coming Soon · $29</span>
-            <a href="#contact" class="btn btn--outline" style="font-size:.7rem;padding:.75rem 1.6rem">Notify Me →</a>
+            <span class="guide-price" style="font-size:.85rem;color:var(--parchment)">$29</span>
+            <!-- UPDATE: Replace href below with your Gumroad product URL once created -->
+            <a href="https://jasonfeerns.gumroad.com/l/glp1guide" target="_blank" rel="noopener" class="btn btn--gold" style="font-size:.7rem;padding:.75rem 1.6rem">Get the Guide →</a>
           </div>
         </div>
       </div>
@@ -1436,6 +1517,122 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
   </div>
 </section>
 
+<!-- ══ CORPORATE HEALTH PROMOTION ═══════════════════════════════ -->
+<section class="section corporate" id="corporate">
+  <div class="wrap">
+    <span class="eyebrow reveal">Corporate Health Promotion</span>
+    <div class="corp-intro">
+      <div class="reveal">
+        <h2>Employee wellness that<br><strong>moves the bottom line.</strong></h2>
+        <p>
+          Most corporate wellness programs are generic, forgettable, and ignored. I build nutrition-forward health programs that executives actually use and employees actually show up for — because the content is specific, credible, and tied to performance.
+        </p>
+        <p style="margin-top:1rem">
+          Whether you're advising a C-suite team on executive performance nutrition, building a scalable 1:1 employee consult program, or bringing in a workshop that actually lands — I make clinical-grade nutrition accessible at the organizational level.
+        </p>
+      </div>
+      <div class="reveal reveal-d1">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.5rem">
+          <div style="background:var(--bg-card);padding:1.6rem 1.8rem">
+            <div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Industries Served</div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:var(--parchment)">15+</div>
+          </div>
+          <div style="background:var(--bg-card);padding:1.6rem 1.8rem">
+            <div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Engagement Formats</div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:var(--parchment)">4</div>
+          </div>
+          <div style="background:var(--bg-card);padding:1.6rem 1.8rem">
+            <div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Client Tier</div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:var(--parchment)">F500+</div>
+          </div>
+          <div style="background:var(--bg-card);padding:1.6rem 1.8rem">
+            <div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Focus Areas</div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:var(--parchment)">GLP-1, Perf, Met</div>
+          </div>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-dim);line-height:1.7;font-style:italic">Past corporate engagements include Disney, Marriott, Hilton, McDonald's, Publix, Darden Restaurants, NASCAR, the Orlando Magic, and U.S. Government Officials, among others.</p>
+      </div>
+    </div>
+
+    <!-- Annual Wellness Plans -->
+    <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.9rem"><span style="display:block;width:32px;height:1px;background:var(--gold);opacity:.55;flex-shrink:0"></span>Annual Wellness Partnerships</div>
+    <div class="corp-plans reveal">
+      <div class="corp-plan">
+        <span class="corp-plan-badge">Small Business · Up to 100 Employees</span>
+        <h3>Growth Wellness Plan</h3>
+        <div class="corp-plan-price">$700<span> / month · billed annually</span></div>
+        <p>A dedicated nutrition consulting relationship for growing companies. Structured 1:1 employee sessions, quarterly leadership briefings, and a custom nutrition resource library for your team.</p>
+        <ul class="corp-plan-list">
+          <li>Up to 10 employee nutrition consults/month (45 min each)</li>
+          <li>Quarterly executive nutrition briefing (60 min)</li>
+          <li>Custom nutrition FAQ document for HR/wellness teams</li>
+          <li>GLP-1 & weight loss program integration</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="#contact" class="btn btn--outline" style="font-size:.7rem">Inquire →</a>
+      </div>
+      <div class="corp-plan corp-plan--flagship">
+        <span class="corp-plan-badge">Mid-Market · 100–500 Employees</span>
+        <h3>Enterprise Wellness Plan</h3>
+        <div class="corp-plan-price">$1,500<span> / month · billed annually</span></div>
+        <p>A comprehensive nutrition strategy partnership for mid-size organizations. Scalable employee consult blocks, leadership programming, and quarterly strategy reviews with full reporting.</p>
+        <ul class="corp-plan-list">
+          <li>Up to 25 employee nutrition consults/month (45 min each)</li>
+          <li>Monthly C-suite executive advisory (2 sessions/month per exec)</li>
+          <li>Quarterly all-hands wellness presentation</li>
+          <li>Customized GLP-1, metabolic & performance nutrition content</li>
+          <li>Anonymous aggregate reporting on trending employee concerns</li>
+          <li>Branded nutrition resource portal</li>
+        </ul>
+        <a href="#contact" class="btn btn--gold" style="font-size:.7rem">Inquire →</a>
+      </div>
+    </div>
+
+    <!-- A-La-Carte -->
+    <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.9rem"><span style="display:block;width:32px;height:1px;background:var(--gold);opacity:.55;flex-shrink:0"></span>À La Carte Engagements</div>
+    <div class="corp-blocks reveal">
+      <div class="corp-block">
+        <span class="corp-block-tag">C-Suite · Leadership</span>
+        <h4>Executive Advisory Retainer</h4>
+        <div class="corp-block-price">$2,500 / month</div>
+        <p>Concierge nutrition consulting for up to 4 executives. Two 45-min 1:1 sessions per person/month, priority access, and a quarterly performance nutrition briefing for leadership.</p>
+      </div>
+      <div class="corp-block">
+        <span class="corp-block-tag">Employees · Teams</span>
+        <h4>Employee Consult Blocks</h4>
+        <div class="corp-block-price">From $90 / session</div>
+        <p style="margin-bottom:.75rem">Pre-purchase blocks of 45-min employee sessions. Distribute via HR, integrate into benefits, or use on-demand. Volume pricing:</p>
+        <div style="display:flex;flex-direction:column;gap:.3rem">
+          <div style="font-size:.78rem;color:var(--text-mid);display:flex;justify-content:space-between;padding:.25rem 0;border-bottom:1px solid var(--border)"><span>10-session block</span><span style="color:var(--gold)">$1,100</span></div>
+          <div style="font-size:.78rem;color:var(--text-mid);display:flex;justify-content:space-between;padding:.25rem 0;border-bottom:1px solid var(--border)"><span>25-session block</span><span style="color:var(--gold)">$2,500</span></div>
+          <div style="font-size:.78rem;color:var(--text-mid);display:flex;justify-content:space-between;padding:.25rem 0"><span>50-session block</span><span style="color:var(--gold)">$4,500</span></div>
+        </div>
+      </div>
+      <div class="corp-block">
+        <span class="corp-block-tag">Events · Education</span>
+        <h4>Workshops & Lunch & Learns</h4>
+        <div class="corp-block-price">From $1,500</div>
+        <p style="margin-bottom:.75rem">Evidence-based presentations tailored to your workforce. Topics: GLP-1s, metabolic health, energy & performance, stress eating, body composition, and more.</p>
+        <div style="display:flex;flex-direction:column;gap:.3rem">
+          <div style="font-size:.78rem;color:var(--text-mid);display:flex;justify-content:space-between;padding:.25rem 0;border-bottom:1px solid var(--border)"><span>Virtual (60 min)</span><span style="color:var(--gold)">$1,500</span></div>
+          <div style="font-size:.78rem;color:var(--text-mid);display:flex;justify-content:space-between;padding:.25rem 0;border-bottom:1px solid var(--border)"><span>In-person (half-day)</span><span style="color:var(--gold)">$2,500 + travel</span></div>
+          <div style="font-size:.78rem;color:var(--text-mid);display:flex;justify-content:space-between;padding:.25rem 0"><span>In-person (full-day)</span><span style="color:var(--gold)">$4,000 + travel</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enterprise note + CTA -->
+    <div class="corp-note reveal" style="margin-bottom:2.5rem">
+      <div style="font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">Enterprise & Custom Engagements</div>
+      <p>Organizations with 500+ employees or multi-site operations typically need custom scoping. I work directly with HR, benefits, and executive leadership to design programs that fit your structure, budget, and workforce health goals — including GLP-1 management support, clinical weight-loss programs, and performance nutrition for high-demand roles. <strong>All enterprise pricing is negotiated directly.</strong></p>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="#contact" class="btn btn--gold reveal">Inquire About Corporate Programs</a>
+      <a href="#systems" class="btn btn--outline reveal reveal-d1">Healthcare System Consulting →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ INSIGHTS ════════════════════════════════════════════════════ -->
 <section class="section" id="insights">
   <div class="wrap">
@@ -1699,8 +1896,8 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
         <ul>
           <li><a href="#contact">Contact</a></li>
           <li><a href="https://www.amazon.com/Cancer-Treatment-Nutrition-Guide-Immunotherapy-ebook/dp/B0GQX69CKY" target="_blank" rel="noopener">Amazon</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/jason-fee-ms-rdn-ldn-63128219/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/vitaearete/" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </div>
     </div>
@@ -1953,132 +2150,290 @@ function runROI(){
 }
 runROI();
 
-/* ── MOLECULAR CANVAS ANIMATION ──────────────────────────── */
-function initMolCanvas(){
-  const canvas = document.getElementById('molCanvas');
+/* ── BACKGROUND CANVAS — section-aware ambient animation ────── */
+function initBgCanvas(){
+  const canvas = document.getElementById('bgCanvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, particles = [], animId = null;
+  let W, H, animId = null;
   let mouse = {x:-9999, y:-9999};
-  const COUNT      = 75;
-  const LINK_DIST  = 160;
-  const MOUSE_DIST = 140;
-  const SPEED      = 0.4;
-  /* Node colors: bright luminous greens + gold — contrast against dark bg */
-  const COLORS = [
-    [72,200,140],  /* bright mint-green */
-    [100,220,160], /* light emerald */
-    [200,169,110], /* gold */
-    [230,200,140], /* pale gold */
-    [140,230,190], /* seafoam */
-    [255,210,120]  /* warm gold */
-  ];
 
+  /* Shared animation state */
+  let particles = [], pulseRings = [];
+  let helixT = 0, metabolicAngle = 0;
+
+  /* Mode transition */
+  let curMode  = 'molecular';
+  let prevMode = null;
+  let blendProg = 1.0; /* 0 = old mode, 1 = new mode fully in */
+
+  /* Colour palette */
+  const GOLD=[200,169,110], MINT=[72,200,140], EMERALD=[100,220,160];
+  const SEAFOAM=[140,230,190], PALE=[230,200,140];
+  const NODE_COLS=[MINT,GOLD,EMERALD,SEAFOAM,PALE];
+
+  /* Section → visual mode mapping */
+  const MODE_MAP={
+    'home':'molecular','about':'molecular',
+    'services':'helix',
+    'guides':'metabolic','glp1calc':'metabolic',
+    'systems':'network','corporate':'network',
+    'insights':'pulse','testimonials':'pulse',
+    'booking':'drift','contact':'drift'
+  };
+
+  function initParticles(){
+    particles = Array.from({length:52},()=>{
+      const col=NODE_COLS[Math.floor(Math.random()*NODE_COLS.length)];
+      return{x:Math.random()*W,y:Math.random()*H,
+             vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,
+             r:Math.random()*2.2+1.2,col:col,a:Math.random()*.4+.22};
+    });
+    pulseRings=[];
+  }
   function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    W = canvas.width  = rect.width  || window.innerWidth;
-    H = canvas.height = rect.height || window.innerHeight;
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
+    initParticles();
   }
 
-  function makeParticle(){
-    const col = COLORS[Math.floor(Math.random()*COLORS.length)];
-    return {
-      x:  Math.random()*W,
-      y:  Math.random()*H,
-      vx: (Math.random()-.5)*SPEED,
-      vy: (Math.random()-.5)*SPEED,
-      r:  Math.random()*2.5+1.5,
-      r0: Math.random()*2.5+1.5,
-      col: col,
-      a:  Math.random()*.55+.35
-    };
+  /* IntersectionObserver — switch mode when section scrolls into view */
+  const sectionVis={};
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{sectionVis[e.target.id]=e.intersectionRatio;});
+    let bestId=null,bestR=0;
+    Object.entries(sectionVis).forEach(([id,r])=>{if(r>bestR){bestR=r;bestId=id;}});
+    const newMode=(bestId&&MODE_MAP[bestId])||curMode;
+    if(newMode!==curMode){prevMode=curMode;curMode=newMode;blendProg=0;}
+  },{threshold:[0.05,0.15,0.3,0.5]});
+  document.querySelectorAll('section[id]').forEach(s=>observer.observe(s));
+
+  /* Shared particle physics (bounce-on-walls, mouse repulsion) */
+  function tickParticles(spd=1){
+    particles.forEach(p=>{
+      p.x+=p.vx*spd; p.y+=p.vy*spd;
+      if(p.x<0){p.x=0;p.vx*=-1;} if(p.x>W){p.x=W;p.vx*=-1;}
+      if(p.y<0){p.y=0;p.vy*=-1;} if(p.y>H){p.y=H;p.vy*=-1;}
+      const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.hypot(dx,dy);
+      if(d<125&&d>0){
+        const f=(125-d)/125*.05; p.vx+=(dx/d)*f; p.vy+=(dy/d)*f;
+        const s=Math.hypot(p.vx,p.vy); if(s>1.5){p.vx=p.vx/s*1.5;p.vy=p.vy/s*1.5;}
+      }
+    });
   }
 
-  function init(){
-    resize();
-    particles = Array.from({length:COUNT}, makeParticle);
+  /* ── MOLECULAR: floating node + link network ── */
+  function drawMolecular(a){
+    tickParticles(1);
+    for(let i=0;i<particles.length-1;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const pa=particles[i],pb=particles[j];
+        const d=Math.hypot(pa.x-pb.x,pa.y-pb.y);
+        if(d<150){
+          const c=pa.col;
+          ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);
+          ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${(1-d/150)*.26*a})`;
+          ctx.lineWidth=1;ctx.stroke();
+        }
+      }
+    }
+    particles.forEach(p=>{
+      const[r,g,b]=p.col;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*4.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${.08*a})`;ctx.fill();
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${p.a*a})`;ctx.fill();
+    });
+  }
+
+  /* ── HELIX: DNA double-helix sweeping the full page ── */
+  function drawHelix(a){
+    helixT+=.007;
+    const cx=W/2, amp=Math.min(W*.22,185);
+    for(let strand=0;strand<2;strand++){
+      const off=strand*Math.PI, col=strand===0?MINT:GOLD;
+      ctx.beginPath();
+      for(let i=0;i<=90;i++){
+        const t=i/90,y=t*H,x=cx+Math.sin(t*Math.PI*4.5+helixT+off)*amp;
+        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=`rgba(${col[0]},${col[1]},${col[2]},${.18*a})`;
+      ctx.lineWidth=1.5;ctx.stroke();
+    }
+    for(let i=0;i<=90;i+=5){
+      const t=i/90,y=t*H;
+      const x1=cx+Math.sin(t*Math.PI*4.5+helixT)*amp;
+      const x2=cx+Math.sin(t*Math.PI*4.5+helixT+Math.PI)*amp;
+      ctx.beginPath();ctx.moveTo(x1,y);ctx.lineTo(x2,y);
+      ctx.strokeStyle=`rgba(200,169,110,${.09*a})`;ctx.lineWidth=1;ctx.stroke();
+      [[x1,MINT],[x2,GOLD]].forEach(([x,col])=>{
+        ctx.beginPath();ctx.arc(x,y,2.6,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${col[0]},${col[1]},${col[2]},${.55*a})`;ctx.fill();
+      });
+    }
+    /* drifting background nodes */
+    tickParticles(.35);
+    particles.forEach(p=>{
+      const[r,g,b]=p.col;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*.6,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${p.a*.22*a})`;ctx.fill();
+    });
+  }
+
+  /* ── METABOLIC: Krebs-cycle orbital system with pulse rings ── */
+  function drawMetabolic(a){
+    metabolicAngle+=.0035;
+    const cx=W/2,cy=H/2;
+    [{r:68,n:5,col:MINT,s:1},{r:132,n:8,col:GOLD,s:-.65},{r:208,n:11,col:EMERALD,s:.45}]
+    .forEach(orb=>{
+      ctx.beginPath();ctx.arc(cx,cy,orb.r,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(${orb.col[0]},${orb.col[1]},${orb.col[2]},${.07*a})`;
+      ctx.lineWidth=1;ctx.stroke();
+      for(let i=0;i<orb.n;i++){
+        const ang=metabolicAngle*orb.s+(i/orb.n)*Math.PI*2;
+        const x=cx+Math.cos(ang)*orb.r, y=cy+Math.sin(ang)*orb.r;
+        ctx.beginPath();ctx.arc(x,y,9,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${orb.col[0]},${orb.col[1]},${orb.col[2]},${.08*a})`;ctx.fill();
+        ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${orb.col[0]},${orb.col[1]},${orb.col[2]},${.65*a})`;ctx.fill();
+      }
+    });
+    if(Math.random()<.014) pulseRings.push({r:0,alpha:.3,col:GOLD});
+    pulseRings.forEach(ring=>{ring.r+=1.4;ring.alpha*=.975;});
+    pulseRings=pulseRings.filter(ring=>ring.alpha>.004);
+    pulseRings.forEach(ring=>{
+      const c=ring.col;
+      ctx.beginPath();ctx.arc(cx,cy,ring.r,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${ring.alpha*a})`;
+      ctx.lineWidth=1;ctx.stroke();
+    });
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,55);
+    g.addColorStop(0,`rgba(26,92,71,${.16*a})`);g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,55,0,Math.PI*2);ctx.fill();
+  }
+
+  /* ── NETWORK: hub-and-spoke org chart ── */
+  function drawNetwork(a){
+    tickParticles(.28);
+    const hubs=[
+      {x:W*.28,y:H*.38},{x:W*.60,y:H*.28},{x:W*.48,y:H*.62},
+      {x:W*.76,y:H*.52},{x:W*.18,y:H*.68}
+    ];
+    for(let i=0;i<hubs.length;i++)
+      for(let j=i+1;j<hubs.length;j++){
+        const d=Math.hypot(hubs[i].x-hubs[j].x,hubs[i].y-hubs[j].y);
+        if(d<W*.43){
+          ctx.beginPath();ctx.moveTo(hubs[i].x,hubs[i].y);ctx.lineTo(hubs[j].x,hubs[j].y);
+          ctx.strokeStyle=`rgba(200,169,110,${.14*a})`;ctx.lineWidth=1;ctx.stroke();
+        }
+      }
+    particles.forEach(p=>{
+      let nearest=hubs[0],minD=Infinity;
+      hubs.forEach(h=>{const d=Math.hypot(p.x-h.x,p.y-h.y);if(d<minD){minD=d;nearest=h;}});
+      if(minD<165){
+        const c=p.col;
+        ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(nearest.x,nearest.y);
+        ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${(1-minD/165)*.13*a})`;
+        ctx.lineWidth=.8;ctx.stroke();
+      }
+    });
+    hubs.forEach(h=>{
+      ctx.beginPath();ctx.arc(h.x,h.y,22,0,Math.PI*2);
+      ctx.fillStyle=`rgba(26,92,71,${.14*a})`;ctx.fill();
+      ctx.strokeStyle=`rgba(200,169,110,${.28*a})`;ctx.lineWidth=1;ctx.stroke();
+      ctx.beginPath();ctx.arc(h.x,h.y,5.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,169,110,${.65*a})`;ctx.fill();
+    });
+    particles.forEach(p=>{
+      const[r,g,b]=p.col;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${p.a*.45*a})`;ctx.fill();
+    });
+  }
+
+  /* ── PULSE: ECG waveforms — heartbeat / vital signs ── */
+  function drawPulse(a){
+    helixT+=.010;
+    for(let w=0;w<4;w++){
+      const yOff=(w+.5)/4*H, phase=helixT+w*.8;
+      const col=w%2===0?MINT:GOLD;
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=3){
+        const t=(x/W)*5+phase, mod=((t%1)+1)%1;
+        let y=yOff;
+        if(mod<.04)      y=yOff-Math.sin(mod/.04*Math.PI)*42;
+        else if(mod<.09) y=yOff+Math.sin((mod-.04)/.05*Math.PI)*16;
+        else             y=yOff+Math.sin(t*2.2)*5;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=`rgba(${col[0]},${col[1]},${col[2]},${.20*a})`;
+      ctx.lineWidth=1.5;ctx.stroke();
+    }
+    tickParticles(.5);
+    particles.forEach(p=>{
+      const[r,g,b]=p.col;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*.8,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${p.a*.30*a})`;ctx.fill();
+    });
+  }
+
+  /* ── DRIFT: slow luminous orbs — calm / contact ── */
+  function drawDrift(a){
+    particles.forEach(p=>{
+      p.vx+=(Math.random()-.5)*.01; p.vy+=(Math.random()-.5)*.01;
+      const s=Math.hypot(p.vx,p.vy); if(s>.28){p.vx=p.vx/s*.28;p.vy=p.vy/s*.28;}
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      const[r,g,b]=p.col;
+      const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*9);
+      grd.addColorStop(0,`rgba(${r},${g},${b},${.13*a})`);
+      grd.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grd;ctx.beginPath();ctx.arc(p.x,p.y,p.r*9,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*1.1,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${r},${g},${b},${p.a*.5*a})`;ctx.fill();
+    });
+  }
+
+  function drawMode(mode,a){
+    if(a<=0) return;
+    if(mode==='molecular')  drawMolecular(a);
+    else if(mode==='helix') drawHelix(a);
+    else if(mode==='metabolic') drawMetabolic(a);
+    else if(mode==='network')   drawNetwork(a);
+    else if(mode==='pulse')     drawPulse(a);
+    else if(mode==='drift')     drawDrift(a);
   }
 
   function draw(){
     ctx.clearRect(0,0,W,H);
-
-    particles.forEach(p=>{
-      p.x += p.vx;
-      p.y += p.vy;
-      if(p.x<0){p.x=0;p.vx*=-1;}
-      if(p.x>W){p.x=W;p.vx*=-1;}
-      if(p.y<0){p.y=0;p.vy*=-1;}
-      if(p.y>H){p.y=H;p.vy*=-1;}
-
-      /* mouse repulsion */
-      const dx = p.x-mouse.x, dy = p.y-mouse.y;
-      const dist = Math.hypot(dx,dy);
-      if(dist<MOUSE_DIST && dist>0){
-        const f = (MOUSE_DIST-dist)/MOUSE_DIST * 0.06;
-        p.vx += (dx/dist)*f;
-        p.vy += (dy/dist)*f;
-        /* clamp */
-        const spd = Math.hypot(p.vx,p.vy);
-        if(spd>SPEED*4){ p.vx=p.vx/spd*SPEED*4; p.vy=p.vy/spd*SPEED*4; }
-      }
-    });
-
-    /* draw links */
-    for(let i=0;i<particles.length-1;i++){
-      for(let j=i+1;j<particles.length;j++){
-        const a=particles[i], b=particles[j];
-        const d=Math.hypot(a.x-b.x,a.y-b.y);
-        if(d<LINK_DIST){
-          const alpha=(1-d/LINK_DIST)*0.40;
-          const c=a.col;
-          ctx.beginPath();
-          ctx.moveTo(a.x,a.y);
-          ctx.lineTo(b.x,b.y);
-          ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
-          ctx.lineWidth=1.2;
-          ctx.stroke();
-        }
-      }
+    blendProg=Math.min(1,blendProg+.016);
+    if(prevMode&&blendProg<1){
+      drawMode(prevMode,1-blendProg);
+      drawMode(curMode,blendProg);
+    } else {
+      drawMode(curMode,1);
     }
-
-    /* draw nodes */
-    particles.forEach(p=>{
-      const [r,g,b]=p.col;
-      /* glow */
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r*5,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${r},${g},${b},0.10)`;
-      ctx.fill();
-      /* core */
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;
-      ctx.fill();
-    });
-
-    animId = requestAnimationFrame(draw);
+    animId=requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize',()=>{
-    resize();
-    particles.forEach(p=>{ if(p.x>W)p.x=W; if(p.y>H)p.y=H; });
+  window.addEventListener('resize',()=>{resize();});
+  document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+  document.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){cancelAnimationFrame(animId);animId=null;}
+    else if(!animId) draw();
   });
-  canvas.parentElement.addEventListener('mousemove',e=>{
-    const rect=canvas.getBoundingClientRect();
-    mouse.x=e.clientX-rect.left;
-    mouse.y=e.clientY-rect.top;
-  });
-  canvas.parentElement.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
 
-  init();
+  resize();
   draw();
 }
 
 /* Start after full page load so layout dimensions are correct */
 if(document.readyState==='complete'){
-  initMolCanvas();
+  initBgCanvas();
 } else {
-  window.addEventListener('load', initMolCanvas);
+  window.addEventListener('load', initBgCanvas);
 }
 </script>
 </body>
