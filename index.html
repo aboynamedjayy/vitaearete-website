@@ -25,7 +25,7 @@
 <link rel="canonical" href="https://vitaearete.com/">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23111410'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-style='italic' fill='%23c8a96e'>VA</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111410'/><circle cx='32' cy='32' r='26' stroke='%23c8a96e' stroke-width='.6' fill='none' opacity='.35'/><text x='22' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' fill='%23f0e9d8'>V</text><text x='34' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' font-style='italic' fill='%23c8a96e'>A</text></svg>">
 
 <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -152,18 +152,29 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
 .nav {
   position:fixed; top:0; left:0; right:0; z-index:200;
   padding:1.4rem 0;
-  transition:background var(--trans), border-color var(--trans);
+  background:rgba(17,20,16,.97);
+  border-bottom:1px solid rgba(200,169,110,.06);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background var(--trans), border-color var(--trans), backdrop-filter var(--trans);
 }
 .nav.scrolled {
-  background:rgba(17,20,16,.94);
-  backdrop-filter:blur(12px);
+  background:rgba(17,20,16,.98);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
 }
 .nav__inner {
   display:flex; align-items:center; justify-content:space-between;
   width:min(1200px,92%); margin:0 auto;
 }
-.nav__logo { display:flex; flex-direction:column; line-height:1; }
+.nav__logo { display:flex; align-items:center; gap:.75rem; line-height:1; }
+.nav__logo-mark {
+  width:38px; height:38px; flex-shrink:0;
+  opacity:.9; transition:opacity var(--trans);
+}
+.nav__logo:hover .nav__logo-mark { opacity:1; }
+.nav__logo-text { display:flex; flex-direction:column; }
 .nav__logo-name {
   font-family:'Cormorant Garamond',serif;
   font-size:1.35rem; font-weight:400; letter-spacing:.03em;
@@ -188,7 +199,7 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
 
 /* ── MOBILE MENU ───────────────────────────────────────── */
 .mmenu {
-  display:none; position:fixed; inset:0; z-index:198;
+  display:none; position:fixed; inset:0; z-index:210;
   background:var(--bg); flex-direction:column;
   align-items:center; justify-content:center; gap:2.5rem;
 }
@@ -204,10 +215,11 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
 /* ── HERO ──────────────────────────────────────────────── */
 .hero {
   min-height:100vh;
-  display:flex; flex-direction:column; justify-content:flex-end;
+  display:flex; flex-direction:column;
   padding:0 0 6rem;
   position:relative; overflow:hidden;
 }
+.hero__spacer { flex:1 1 6rem; min-height:6rem; }
 .hero__bg {
   position:absolute; inset:0;
   background:
@@ -227,6 +239,7 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
   position:relative; z-index:2;
   width:min(1200px,92%); margin:0 auto;
   display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:flex-end;
+  padding-top:1rem;
 }
 .hero__eyebrow {
   font-size:.7rem; letter-spacing:.24em; text-transform:uppercase;
@@ -738,7 +751,8 @@ h3 { font-size:clamp(1.3rem,2.2vw,1.75rem); font-weight:600; }
   h1, .hero__headline { font-size:clamp(2.2rem,10vw,3rem); }
   h2 { font-size:clamp(1.65rem,7vw,2.4rem); }
 
-  .hero { padding-bottom:4rem; padding-top:100px; min-height:100svh; }
+  .hero { padding-bottom:3rem; min-height:100svh; }
+  .hero__spacer { min-height:4.5rem; }
   .hero__inner { gap:2rem; }
   .hero__eyebrow {
     font-size:.62rem; letter-spacing:.14em;
@@ -889,8 +903,11 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
 <nav class="nav" id="nav">
   <div class="nav__inner">
     <a href="#home" class="nav__logo">
-      <span class="nav__logo-name">Vitae <em>Arete</em></span>
-      <span class="nav__logo-sub">Jason Fee, MS, RDN, LDN</span>
+      <img src="logo.svg" alt="Vitae Arete logo" class="nav__logo-mark">
+      <span class="nav__logo-text">
+        <span class="nav__logo-name">Vitae <em>Arete</em></span>
+        <span class="nav__logo-sub">Jason Fee, MS, RDN, LDN</span>
+      </span>
     </a>
     <ul class="nav__links">
       <li><a href="#about">About</a></li>
@@ -925,6 +942,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
 <section class="hero" id="home">
   <div class="hero__bg"></div>
   <div class="hero__grid"></div>
+  <div class="hero__spacer"></div>
   <div class="hero__inner">
     <div class="hero__content">
       <h1 class="hero__headline">
