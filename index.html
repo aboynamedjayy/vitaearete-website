@@ -1775,15 +1775,45 @@ renderCal();
 /* Forms */
 function handleNL(e){
   e.preventDefault();
-  const btn=e.target.querySelector('button');
-  btn.textContent='✓ Subscribed!';
-  setTimeout(()=>btn.textContent='Subscribe',3000);
+  const form=e.target;
+  const btn=form.querySelector('button');
+  btn.textContent='Sending…';
+  btn.disabled=true;
+  fetch('/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(()=>{
+    btn.textContent='✓ Subscribed!';
+    form.reset();
+    setTimeout(()=>{btn.textContent='Subscribe';btn.disabled=false;},4000);
+  })
+  .catch(()=>{
+    btn.textContent='Error — try again';
+    btn.disabled=false;
+  });
 }
 function handleContact(e){
   e.preventDefault();
-  const btn=e.target.querySelector('button');
-  btn.textContent='✓ Message Sent!';
-  setTimeout(()=>btn.textContent='Send Message →',3000);
+  const form=e.target;
+  const btn=form.querySelector('button[type="submit"]');
+  btn.textContent='Sending…';
+  btn.disabled=true;
+  fetch('/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(()=>{
+    btn.textContent='✓ Message Sent!';
+    form.reset();
+    setTimeout(()=>{btn.textContent='Send Message →';btn.disabled=false;},4000);
+  })
+  .catch(()=>{
+    btn.textContent='Error — please try again';
+    btn.disabled=false;
+  });
 }
 
 /* FAQ */
