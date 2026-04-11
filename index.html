@@ -1135,6 +1135,15 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
         </div>
 
         <div style="margin-bottom:1rem">
+          <label style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:.4rem">Biological Sex</label>
+          <div style="display:flex;gap:.5rem">
+            <button id="gSexM" onclick="setSex('male',this)" style="flex:1;padding:.5rem .8rem;font-size:.78rem;background:rgba(240,233,216,.04);border:1px solid rgba(200,169,110,.1);color:rgba(240,233,216,.5);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s">Male</button>
+            <button id="gSexF" onclick="setSex('female',this)" style="flex:1;padding:.5rem .8rem;font-size:.78rem;background:rgba(26,92,71,.2);border:1px solid rgba(26,92,71,.5);color:var(--parchment);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s">Female</button>
+          </div>
+          <input id="calcGender" type="hidden" value="female">
+        </div>
+
+        <div style="margin-bottom:1rem">
           <label style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:.4rem">Estimated Body Fat %</label>
           <div style="display:flex;align-items:center;gap:1rem">
             <input id="calcBF" type="range" min="10" max="55" value="32" oninput="document.getElementById('bfVal').textContent=this.value+'%';runCalc()" style="flex:1;accent-color:var(--gold);cursor:pointer">
@@ -1715,58 +1724,74 @@ function toggleFaq(el){
 }
 
 /* ── GLP-1 CALCULATOR ─────────────────────────────────────── */
+function setSex(gender, btn){
+  document.getElementById('calcGender').value = gender;
+  ['gSexM','gSexF'].forEach(id=>{
+    const b=document.getElementById(id);
+    b.style.background  ='rgba(240,233,216,.04)';
+    b.style.borderColor ='rgba(200,169,110,.1)';
+    b.style.color       ='rgba(240,233,216,.5)';
+  });
+  btn.style.background  ='rgba(26,92,71,.2)';
+  btn.style.borderColor ='rgba(26,92,71,.5)';
+  btn.style.color       ='var(--parchment)';
+  runCalc();
+}
 function runCalc(){
   const unit   = document.getElementById('calcUnit').value;
+  const gender = document.getElementById('calcGender').value;
   const rawW   = parseFloat(document.getElementById('calcWeight').value)||0;
   const rawG   = parseFloat(document.getElementById('calcGoal').value)||0;
   const bf     = parseFloat(document.getElementById('calcBF').value)||30;
 
-  /* normalise to kg */
-  const wKg  = unit==='lbs' ? rawW*0.453592 : rawW;
-  const gKg  = unit==='lbs' ? rawG*0.453592 : rawG;
+  /* normalise inputs to kg */
+  const wKg = unit==='lbs' ? rawW*0.453592 : rawW;
+  const gKg = unit==='lbs' ? rawG*0.453592 : rawG;
 
-  /* update goal unit label */
   document.getElementById('calcGoalUnit').textContent = unit==='lbs'?'lbs':'kg';
 
   if(wKg<30||gKg<2){ clearCalc(); return; }
 
-  /* lean body mass */
-  const lbm  = wKg * (1 - bf/100);
+  /* lean body mass (kg) */
+  const lbmKg = wKg * (1 - bf/100);
 
-  /* muscle loss range: 25% – 39% of weight lost (STEP/SURMOUNT data) */
+  /* gender-specific BF% cutoff for overweight/obese:
+     Male >22% → use LBM; Female >32% → use LBM
+     Normal BF% → use actual body weight */
+  const bfCutoff    = gender==='male' ? 22 : 32;
+  const isOverwt    = bf > bfCutoff;
+  const protBasisKg = isOverwt ? lbmKg : wKg;
+
+  /* protein: 1.6–2.2 g per kg of appropriate basis — result is grams/day
+     NOTE: protein stays in grams regardless of the user's weight unit */
+  const protLoG = protBasisKg * 1.6;
+  const protHiG = protBasisKg * 2.2;
+
+  /* muscle loss range: 25–39% of weight lost (STEP/SURMOUNT) — in kg */
   const muscleLo = gKg * 0.25;
   const muscleHi = gKg * 0.39;
 
-  /* protein targets: 1.6 – 2.2 g per kg LBM */
-  const protLo   = lbm * 1.6;
-  const protHi   = lbm * 2.2;
+  /* display unit conversion for MASS values only */
+  const u      = unit==='lbs' ? 'lbs' : 'kg';
+  const toDisp = v => unit==='lbs' ? v*2.20462 : v;
 
-  /* convert to display units */
-  const u          = unit==='lbs' ? 'lbs' : 'kg';
-  const toDisp     = v => unit==='lbs' ? v*2.20462 : v;
-  const dispLo     = toDisp(muscleLo);
-  const dispHi     = toDisp(muscleHi);
-  const dispLbm    = toDisp(lbm);
-  const dispProtLo = toDisp(protLo);
-  const dispProtHi = toDisp(protHi);
+  /* update DOM */
+  document.getElementById('muscleLow').textContent  = toDisp(muscleLo).toFixed(1)+' '+u;
+  document.getElementById('muscleHigh').textContent = toDisp(muscleHi).toFixed(1)+' '+u+' at 39%';
+  document.getElementById('lbmVal').textContent     = toDisp(lbmKg).toFixed(1)+' '+u;
 
-  /* update DOM — IDs match the HTML elements */
-  document.getElementById('muscleLow').textContent   = dispLo.toFixed(1) + ' ' + u;
-  document.getElementById('muscleHigh').textContent  = dispHi.toFixed(1) + ' ' + u + ' at 39%';
-  document.getElementById('lbmVal').textContent      = dispLbm.toFixed(1) + ' ' + u;
+  document.getElementById('proteinRange').textContent = `${Math.round(protLoG)}–${Math.round(protHiG)} g/day`;
+  document.getElementById('proteinMin').textContent   = Math.round(protLoG)+'g';
+  document.getElementById('proteinOpt').textContent   = Math.round(protHiG)+'g';
 
-  document.getElementById('proteinRange').textContent = `${Math.round(dispProtLo)}–${Math.round(dispProtHi)} g/day`;
-  document.getElementById('proteinMin').textContent   = Math.round(dispProtLo) + 'g';
-  document.getElementById('proteinOpt').textContent   = Math.round(dispProtHi) + 'g';
-
-  /* bar fill – avg muscle loss as % of goal weight */
   const barPct = Math.min(((muscleLo+muscleHi)/2/gKg)*100, 100);
   document.getElementById('proteinBar').style.width = barPct+'%';
 
-  /* contextual note */
-  const note = `At ${bf}% body fat, your estimated lean body mass is ${dispLbm.toFixed(1)} ${u}. `+
-    `Without adequate protein intake, you risk losing ${dispLo.toFixed(1)}–${dispHi.toFixed(1)} ${u} of muscle alongside fat. `+
-    `Targeting ${Math.round(dispProtLo)}–${Math.round(dispProtHi)} g of protein per day — spread across 3–5 meals — can meaningfully preserve lean mass and long-term metabolic health.`;
+  /* contextual note explains which weight basis was used and why */
+  const threshLabel = `${bfCutoff}% for ${gender==='male'?'men':'women'}`;
+  const note = isOverwt
+    ? `At ${bf}% body fat — above the normal range of ${threshLabel} — protein is calculated from lean body mass (${lbmKg.toFixed(1)} kg) rather than total weight. Without adequate intake, you risk losing ${toDisp(muscleLo).toFixed(1)}–${toDisp(muscleHi).toFixed(1)} ${u} of muscle alongside fat. Target ${Math.round(protLoG)}–${Math.round(protHiG)} g of protein per day, spread across 3–5 meals.`
+    : `At ${bf}% body fat, protein is calculated from your actual body weight (${wKg.toFixed(1)} kg). Without adequate intake, you risk losing ${toDisp(muscleLo).toFixed(1)}–${toDisp(muscleHi).toFixed(1)} ${u} of muscle alongside fat. Target ${Math.round(protLoG)}–${Math.round(protHiG)} g of protein per day, spread across 3–5 meals.`;
   document.getElementById('calcNote').textContent = note;
 }
 function clearCalc(){
