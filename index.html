@@ -24,6 +24,57 @@
 <!-- Canonical -->
 <link rel="canonical" href="https://vitaearete.com/">
 
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jason Fee",
+  "jobTitle": "Registered Dietitian Nutritionist",
+  "credential": ["MS", "RDN", "LDN"],
+  "description": "Registered Dietitian specializing in oncology nutrition, GLP-1 therapy and weight loss, lifestyle medicine, and executive nutrition consulting.",
+  "url": "https://vitaearete.com",
+  "image": "https://vitaearete.com/headshot.jpg",
+  "sameAs": [
+    "https://www.instagram.com/vitaearete/",
+    "https://www.linkedin.com/in/jasonfee/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Vitae Arete",
+    "url": "https://vitaearete.com"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Nutrition Guides",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Book",
+          "name": "The GLP-1 Nutrition Survival Guide",
+          "author": { "@type": "Person", "name": "Jason Fee" },
+          "bookFormat": "https://schema.org/EBook",
+          "url": "https://jason117.gumroad.com/l/glp1-nutrition-guide"
+        },
+        "price": "29.00",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Book",
+          "name": "The Cancer Treatment Nutrition Guide",
+          "author": { "@type": "Person", "name": "Jason Fee" },
+          "bookFormat": "https://schema.org/EBook",
+          "url": "https://www.amazon.com/Cancer-Treatment-Nutrition-Guide-Immunotherapy-ebook/dp/B0GQX69CKY"
+        }
+      }
+    ]
+  }
+}
+</script>
+
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111410'/><circle cx='32' cy='32' r='26' stroke='%23c8a96e' stroke-width='.6' fill='none' opacity='.35'/><text x='22' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' fill='%23f0e9d8'>V</text><text x='34' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' font-style='italic' fill='%23c8a96e'>A</text></svg>">
 
@@ -35,6 +86,10 @@
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 </script>
+
+<!-- Preload critical assets -->
+<link rel="preload" href="headshot.jpg" as="image">
+<link rel="preload" href="logo.svg" as="image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1874,6 +1929,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
           </div>
           <div class="f-group"><label>Message</label><textarea name="message" placeholder="Tell me a little about yourself and what you're hoping to achieve…"></textarea></div>
           <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center">Send Message →</button>
+          <div id="formFeedback" style="display:none;margin-top:1rem;padding:1rem 1.2rem;border-radius:6px;font-size:.85rem;line-height:1.5;text-align:center"></div>
         </form>
       </div>
     </div>
@@ -2016,21 +2072,35 @@ function handleContact(e){
   e.preventDefault();
   const form=e.target;
   const btn=form.querySelector('button[type="submit"]');
+  const fb=document.getElementById('formFeedback');
+  fb.style.display='none';
   btn.textContent='Sending…';
   btn.disabled=true;
+  btn.style.opacity='.6';
   fetch('/',{
     method:'POST',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:new URLSearchParams(new FormData(form)).toString()
   })
   .then(()=>{
-    btn.textContent='✓ Message Sent!';
+    btn.textContent='✓ Sent!';
     form.reset();
-    setTimeout(()=>{btn.textContent='Send Message →';btn.disabled=false;},4000);
+    fb.style.display='block';
+    fb.style.background='rgba(26,92,71,.2)';
+    fb.style.border='1px solid rgba(26,92,71,.4)';
+    fb.style.color='var(--parchment)';
+    fb.innerHTML='<strong>Thank you!</strong> Your message has been received. I typically respond within 24–48 hours.';
+    setTimeout(()=>{btn.textContent='Send Message →';btn.disabled=false;btn.style.opacity='1';},4000);
   })
   .catch(()=>{
-    btn.textContent='Error — please try again';
+    btn.textContent='Send Message →';
     btn.disabled=false;
+    btn.style.opacity='1';
+    fb.style.display='block';
+    fb.style.background='rgba(180,60,60,.15)';
+    fb.style.border='1px solid rgba(180,60,60,.3)';
+    fb.style.color='var(--parchment)';
+    fb.innerHTML='<strong>Something went wrong.</strong> Please try again, or email directly at jason_11_1@yahoo.com';
   });
 }
 
@@ -2439,8 +2509,17 @@ function initBgCanvas(){
   document.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden){cancelAnimationFrame(animId);animId=null;}
-    else if(!animId) draw();
+    else if(!animId&&canvasVisible) draw();
   });
+
+  /* Pause animation when canvas is off-screen to save CPU/battery */
+  let canvasVisible=true;
+  const canvasObs=new IntersectionObserver(([entry])=>{
+    canvasVisible=entry.isIntersecting;
+    if(!canvasVisible){cancelAnimationFrame(animId);animId=null;}
+    else if(!animId&&!document.hidden) draw();
+  },{threshold:0});
+  canvasObs.observe(canvas);
 
   resize();
   draw();
