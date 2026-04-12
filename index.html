@@ -1524,7 +1524,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
           <span style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem">Interactive Tool</span>
           <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;color:var(--parchment)">Clinical ROI Estimator</h3>
         </div>
-        <p style="font-size:.82rem;color:var(--text-dim);max-width:440px;line-height:1.75">Estimate the projected clinical value of strategic RDN investment for your health system. Based on published malnutrition identification revenue, LOS reduction data, and readmission avoidance benchmarks.</p>
+        <p style="font-size:.82rem;color:var(--text-dim);max-width:440px;line-height:1.75">Model the projected clinical value of RDN investment for your health system. Scenario projections based on published malnutrition coding revenue, length-of-stay reduction, and readmission avoidance data.</p>
       </div>
       <div class="roi-calc-grid">
         <div>
@@ -1550,12 +1550,13 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
           </div>
           <div>
             <label style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);display:block;margin-bottom:.9rem">Target RDN:Bed Ratio</label>
-            <div style="display:flex;gap:.5rem">
-              <button onclick="setRatio(1,30,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:30<br><span style="font-size:.65rem;color:var(--text-dim)">Minimum</span></button>
-              <button onclick="setRatio(1,25,this)" class="ratio-btn active-ratio" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(26,92,71,.2);border:1px solid rgba(26,92,71,.5);color:var(--parchment);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:25<br><span style="font-size:.65rem;color:var(--gold)">Standard</span></button>
-              <button onclick="setRatio(1,20,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:20<br><span style="font-size:.65rem;color:var(--text-dim)">Best Practice</span></button>
-              <button onclick="setRatio(1,15,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif">1:15<br><span style="font-size:.65rem;color:var(--text-dim)">Excellence</span></button>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+              <button onclick="setRatio(1,50,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;min-width:70px">1:50<br><span style="font-size:.65rem;color:var(--text-dim)">General Acute</span></button>
+              <button onclick="setRatio(1,30,this)" class="ratio-btn active-ratio" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(26,92,71,.2);border:1px solid rgba(26,92,71,.5);color:var(--parchment);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;min-width:70px">1:30<br><span style="font-size:.65rem;color:var(--gold)">High Acuity</span></button>
+              <button onclick="setRatio(1,20,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;min-width:70px">1:20<br><span style="font-size:.65rem;color:var(--text-dim)">Specialty / ICU</span></button>
+              <button onclick="setRatio(1,15,this)" class="ratio-btn" style="flex:1;padding:.55rem;font-size:.75rem;background:rgba(240,233,216,.04);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;min-width:70px">1:15<br><span style="font-size:.65rem;color:var(--text-dim)">Oncology / TPN</span></button>
             </div>
+            <p style="font-size:.62rem;color:var(--text-dim);margin-top:.6rem;line-height:1.55;font-style:italic">No federally mandated RDN-to-bed ratio exists. These targets reflect published advocacy benchmarks from the Academy of Nutrition and Dietetics and peer-reviewed staffing studies for different clinical settings.</p>
           </div>
         </div>
 
@@ -1563,11 +1564,11 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.2rem">
             <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
               <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Recommended RDNs</div>
-              <div id="roiRecRdns" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--parchment)">16</div>
+              <div id="roiRecRdns" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--parchment)">14</div>
             </div>
             <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
               <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">FTE Gap</div>
-              <div id="roiGap" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--gold)">+8</div>
+              <div id="roiGap" style="font-size:2.2rem;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;color:var(--gold)">+6</div>
             </div>
             <div style="background:var(--bg-card);padding:1.4rem 1.6rem">
               <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem">Annual Payroll Cost</div>
@@ -1597,7 +1598,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
             </div>
           </div>
 
-          <p style="font-size:.7rem;color:var(--text-dim);line-height:1.65;font-style:italic">Clinical value projections based on malnutrition identification revenue (DRG coding), LOS reduction, and readmission avoidance benchmarks from peer-reviewed literature. All figures are modeling estimates for planning purposes only. Individual results vary by case mix, documentation practices, and organizational context.</p>
+          <p style="font-size:.7rem;color:var(--text-dim);line-height:1.65;font-style:italic"><strong style="color:var(--text-mid);font-weight:500">Methodology note:</strong> There is no federally mandated RDN-to-bed ratio (unlike nurse staffing). The ratios above are advocacy targets derived from Academy of Nutrition and Dietetics position papers and peer-reviewed staffing analyses across clinical settings. Per-RDN clinical value is modeled from three evidence-based revenue streams: malnutrition identification and DRG coding revenue (one published analysis documented $571K from 68 encounters), LOS reduction of 0.5–2 days for at-risk patients (~$2,500/day average), and readmission avoidance ($4,000–$5,000 per avoided readmission, with malnourished patients facing 50% higher readmission rates). All projections are scenario models for planning purposes — actual results depend on case mix, documentation maturity, payer mix, and organizational context. This tool is not a guarantee of outcomes.</p>
         </div>
       </div>
     </div>
@@ -2208,7 +2209,7 @@ function clearCalc(){
 runCalc();
 
 /* ── HEALTHCARE ROI ESTIMATOR ────────────────────────────── */
-let roiRatio = 25; /* beds per RDN */
+let roiRatio = 30; /* beds per RDN — default: high-acuity target */
 
 function setRatio(n, d, btn){
   roiRatio = d;
@@ -2232,11 +2233,14 @@ function runROI(){
   const gap     = Math.max(0, recRDN - curRDN);
   const payroll = gap * salary;
 
-  /* Clinical value per additional RDN (evidence-based benchmarks):
-     Conservative $350K | Base $550K | Optimistic $850K */
-  const conserv = gap * 350000;
-  const base    = gap * 550000;
-  const optim   = gap * 850000;
+  /* Clinical value per additional RDN — modeled from published data:
+     - Malnutrition coding revenue: $150K–$571K/yr per RDN (varies by volume)
+     - LOS reduction (0.5–2 days × ~$2,500/day) for at-risk patients
+     - Readmission avoidance ($4–5K per event, 50% higher rate in malnourished)
+     Conservative $250K | Base $450K | Optimistic $750K */
+  const conserv = gap * 250000;
+  const base    = gap * 450000;
+  const optim   = gap * 750000;
   const multiple= payroll > 0 ? (base / payroll) : 0;
 
   const fmt = v => v >= 1e6
