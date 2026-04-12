@@ -1581,7 +1581,7 @@ pre,code { white-space:pre-wrap; word-break:break-word; }
           </div>
 
           <div style="background:rgba(26,92,71,.1);border:1px solid rgba(26,92,71,.25);padding:1.3rem 1.5rem;margin-bottom:1rem">
-            <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">Projected Annual Clinical Value</div>
+            <div id="roiValueLabel" style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">Projected Annual Clinical Value</div>
             <div style="display:flex;gap:1.2rem;align-items:flex-end">
               <div style="flex:1">
                 <div style="font-size:.68rem;color:var(--text-dim);margin-bottom:.3rem">Conservative</div>
@@ -2232,15 +2232,19 @@ function runROI(){
   const recRDN  = Math.ceil(beds / roiRatio);
   const gap     = Math.max(0, recRDN - curRDN);
   const payroll = gap * salary;
+  const atTarget = curRDN >= recRDN;
 
-  /* Clinical value per additional RDN — modeled from published data:
+  /* Clinical value per RDN — modeled from published data:
      - Malnutrition coding revenue: $150K–$571K/yr per RDN (varies by volume)
      - LOS reduction (0.5–2 days × ~$2,500/day) for at-risk patients
      - Readmission avoidance ($4–5K per event, 50% higher rate in malnourished)
      Conservative $250K | Base $450K | Optimistic $750K */
-  const conserv = gap * 250000;
-  const base    = gap * 450000;
-  const optim   = gap * 750000;
+
+  /* If already at/above target, show value of current staff instead of zeroing out */
+  const valueRDNs = atTarget ? curRDN : gap;
+  const conserv = valueRDNs * 250000;
+  const base    = valueRDNs * 450000;
+  const optim   = valueRDNs * 750000;
   const multiple= payroll > 0 ? (base / payroll) : 0;
 
   const fmt = v => v >= 1e6
@@ -2248,9 +2252,14 @@ function runROI(){
     : '$' + Math.round(v/1000) + 'K';
 
   document.getElementById('roiRecRdns').textContent = recRDN;
-  document.getElementById('roiGap').textContent     = gap > 0 ? '+'+gap : gap;
-  document.getElementById('roiCost').textContent    = fmt(payroll);
-  document.getElementById('roiMultiple').textContent= payroll > 0 ? '~'+Math.round(multiple)+'×' : '—';
+  document.getElementById('roiGap').textContent     = atTarget ? 'Staffed' : '+'+gap;
+  document.getElementById('roiCost').textContent    = atTarget ? '$0' : fmt(payroll);
+  document.getElementById('roiMultiple').textContent= atTarget ? '✓ At Target' : (payroll > 0 ? '~'+Math.round(multiple)+'×' : '—');
+
+  /* Update the value header label depending on context */
+  const valLabel = document.getElementById('roiValueLabel');
+  if(valLabel) valLabel.textContent = atTarget ? 'Estimated Annual Value of Current RDN Staff' : 'Projected Annual Clinical Value';
+
   document.getElementById('roiConserv').textContent = fmt(conserv);
   document.getElementById('roiBase').textContent    = fmt(base);
   document.getElementById('roiOptim').textContent   = fmt(optim);
