@@ -113,23 +113,25 @@
             align-items: center;
         }
 
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
-            transition: color var(--trans);
+        .nav__logo { display:flex; align-items:center; gap:.75rem; line-height:1; text-decoration:none; }
+        .nav__logo-mark { width:38px; height:38px; flex-shrink:0; opacity:.9; transition:opacity var(--trans); }
+        .nav__logo:hover .nav__logo-mark { opacity:1; }
+        .nav__logo-text { display:flex; flex-direction:column; }
+        .nav__logo-name {
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.35rem; font-weight:400; letter-spacing:.03em;
+            color:var(--parchment);
         }
-
-        .nav-logo:hover {
-            color: var(--gold-lt);
+        .nav__logo-name em { font-style:italic; color:var(--gold); }
+        .nav__logo-sub {
+            font-size:.58rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+            color:var(--text-dim); margin-top:.15rem;
         }
 
         .nav-back {
             color: var(--text-mid);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             transition: color var(--trans);
         }
 
@@ -453,7 +455,13 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">VA</a>
+            <a href="../index.html" class="nav__logo">
+                <img src="../logo.svg" alt="Vitae Arete logo" class="nav__logo-mark">
+                <span class="nav__logo-text">
+                    <span class="nav__logo-name">Vitae <em>Arete</em></span>
+                    <span class="nav__logo-sub">Jason Fee, MS, RDN, LDN</span>
+                </span>
+            </a>
             <a href="../index.html#insights" class="nav-back">← Back to Insights</a>
         </div>
     </nav>
