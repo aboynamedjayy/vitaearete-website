@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- V left stroke — parchment -->
+  <line x1="68" y1="100" x2="130" y2="215" stroke="#f0e9d8" stroke-width="3" stroke-linecap="round"/>
+  <!-- V right stroke — parchment, rises to shared peak -->
+  <line x1="130" y1="215" x2="180" y2="100" stroke="#f0e9d8" stroke-width="3" stroke-linecap="round"/>
+  <!-- A left stroke — gold, descends from shared peak -->
+  <line x1="180" y1="100" x2="234" y2="215" stroke="#c8a96e" stroke-width="3" stroke-linecap="round"/>
+  <!-- A crossbar — passes through A equidistantly, fades toward V -->
+  <defs>
+    <linearGradient id="crossbar-fade" gradientUnits="userSpaceOnUse" x1="188" y1="170" x2="238" y2="170">
+      <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.1"/>
+      <stop offset="30%" stop-color="#c8a96e" stop-opacity="0.45"/>
+      <stop offset="65%" stop-color="#c8a96e" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c8a96e" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect x="188" y="168.75" width="50" height="2.5" rx="1.25" fill="url(#crossbar-fade)"/>
+</svg>
