@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eating Through Immunotherapy: What's Different and Why It Matters | Vitae Arete Nutrition</title>
+  <meta name="description" content="Evidence-based nutrition guidance for cancer patients on immunotherapy. Understand immune-related adverse events and practical dietary strategies to support your treatment.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111410'/><circle cx='32' cy='32' r='26' stroke='%23c8a96e' stroke-width='.6' fill='none' opacity='.35'/><text x='22' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' fill='%23f0e9d8'>V</text><text x='34' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' font-style='italic' fill='%23c8a96e'>A</text></svg>">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2M63WJ6XFE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2M63WJ6XFE');
+  </script>
+
+  <style>
+    :root {
+      --forest: #1a5c47;
+      --forest-dk: #0d3329;
+      --forest-mid: #245e49;
+      --forest-lt: #2e7558;
+      --gold: #c8a96e;
+      --gold-lt: #dfc99a;
+      --parchment: #f0e9d8;
+      --cream: #faf7f2;
+      --bg: #111410;
+      --bg-alt: #0d1a11;
+      --bg-card: #0d1810;
+      --text-dim: rgba(240,233,216,0.50);
+      --text-mid: rgba(240,233,216,0.78);
+      --border: rgba(200,169,110,0.10);
+      --border-md: rgba(200,169,110,0.20);
+      --green-glow: rgba(26,92,71,0.15);
+      --trans: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--parchment);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23111410' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: overlay;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color var(--trans);
+    }
+
+    nav .logo:hover {
+      color: var(--gold-lt);
+    }
+
+    nav .back-link {
+      color: var(--text-mid);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--trans);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav .back-link:hover {
+      color: var(--gold);
+    }
+
+    /* Article header */
+    .article-header {
+      background: linear-gradient(135deg, rgba(26,92,71,0.1) 0%, rgba(200,169,110,0.05) 100%);
+      border-bottom: 1px solid var(--border-md);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background-color: var(--forest);
+      color: var(--gold);
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .article-meta-item {
+      color: var(--text-mid);
+    }
+
+    .article-meta-item strong {
+      color: var(--parchment);
+      font-weight: 500;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--parchment);
+      line-height: 1.2;
+    }
+
+    .read-time {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Article content */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .article-body {
+      color: var(--text-mid);
+      margin-bottom: 3rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--parchment);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .article-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .article-body strong {
+      color: var(--parchment);
+      font-weight: 600;
+    }
+
+    /* Callout boxes */
+    .takeaway {
+      background-color: var(--green-glow);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+
+    .takeaway h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .takeaway p {
+      color: var(--text-mid);
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* References */
+    .references {
+      border-top: 2px solid var(--border-md);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+
+    .references h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--parchment);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .references ol {
+      list-style: decimal inside;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .references li {
+      margin-bottom: 1.25rem;
+      padding-left: 0.5rem;
+      color: var(--text-mid);
+    }
+
+    .references li strong {
+      color: var(--parchment);
+    }
+
+    /* Footer CTA */
+    .article-footer {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border-md);
+      padding: 2.5rem 1.5rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .cta-section {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--parchment);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .cta-section p {
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--forest);
+      color: var(--gold);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--trans);
+      border: 1px solid var(--forest);
+    }
+
+    .cta-button:hover {
+      background-color: var(--forest-lt);
+      border-color: var(--gold);
+      color: var(--parchment);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .article-header {
+        padding: 2rem 1.5rem;
+      }
+
+      .article-container {
+        padding: 2rem 1.5rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.6rem;
+        margin-top: 2rem;
+      }
+
+      .article-body h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .article-header {
+        padding: 1.5rem 1rem;
+      }
+
+      .article-container {
+        padding: 1.5rem 1rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.4rem;
+      }
+
+      .article-body h3 {
+        font-size: 1.1rem;
+      }
+
+      .takeaway {
+        padding: 1.25rem;
+      }
+
+      body {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">VA</a>
+      <a href="../index.html#insights" class="back-link">← Back to Insights</a>
+    </div>
+  </nav>
+
+  <main>
+    <article>
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="article-tag">Oncology</span>
+          <span class="article-tag">Clinical</span>
+          <span class="article-meta-item"><strong>Jason Fee, MS, RDN, LDN</strong></span>
+          <span class="article-meta-item">March 2026</span>
+        </div>
+        <h1>Eating Through Immunotherapy: What's Different and Why It Matters</h1>
+        <p class="read-time">Read time: 8–10 minutes</p>
+      </header>
+
+      <section class="article-container">
+        <div class="article-body">
+          <p>
+            If you're about to start immunotherapy or are currently navigating cancer treatment with checkpoint inhibitors like pembrolizumab, nivolumab, or atezolizumab, you've likely heard it described as a gentler alternative to traditional chemotherapy. In some ways, that's true—immunotherapy doesn't cause the immediate, predictable side effects of cytotoxic chemotherapy. But "gentler" doesn't mean "without challenges." The side effects of immunotherapy are fundamentally different, and they require a fundamentally different nutritional approach.
+          </p>
+
+          <p>
+            This guide walks you through how immunotherapy affects nutrition, what to expect, and practical strategies to support your body through treatment. Whether you're a patient, caregiver, or clinician, understanding these connections can make a real difference in how you feel and how well you tolerate treatment.
+          </p>
+
+          <div class="takeaway">
+            <h4>Key Takeaway</h4>
+            <p>Immunotherapy causes immune-related adverse events (irAEs)—not chemotherapy-style cytotoxic damage. The most common nutritional challenges are immune-mediated colitis, thyroid dysfunction, and liver inflammation. Each requires specific dietary strategies.</p>
+          </div>
+
+          <h2>Immunotherapy vs. Chemotherapy: A Different Beast Entirely</h2>
+
+          <p>
+            Chemotherapy works by poisoning rapidly dividing cells—tumor cells, but also hair follicles, gut lining, bone marrow. That's why chemotherapy is famous for nausea, mouth sores, and hair loss.
+          </p>
+
+          <p>
+            Immunotherapy works differently. Checkpoint inhibitors are monoclonal antibodies that essentially take the brakes off your immune system, allowing your T cells to recognize and attack cancer cells. But sometimes, that newly activated immune system attacks your own tissues. These are called <strong>immune-related adverse events (irAEs)</strong>, and they're the defining side effect profile of immunotherapy.
+          </p>
+
+          <p>
+            The most common irAEs affecting nutrition are:
+          </p>
+
+          <ul style="margin: 1.5rem 0 1.5rem 1.5rem; color: var(--text-mid); line-height: 1.8;">
+            <li><strong>Colitis</strong> (30–50% of patients on combination immunotherapy)</li>
+            <li><strong>Hepatitis</strong> (5–10% of patients)</li>
+            <li><strong>Thyroiditis</strong> leading to hypothyroidism (5–20% on PD-1 inhibitors)</li>
+            <li><strong>Dermatitis</strong> and other skin manifestations</li>
+          </ul>
+
+          <p>
+            Because the mechanism is fundamentally immune-mediated rather than cytotoxic, the nutritional management is different. The goal isn't just to manage nausea or support healing from direct cellular damage—it's to manage inflammation, support your stressed immune system, and help your gut and liver function optimally.
+          </p>
+
+          <h2>The Colitis Problem: Why Diarrhea Is More Than an Inconvenience</h2>
+
+          <p>
+            Immune-mediated colitis (inflammation of the colon triggered by checkpoint inhibitors) is one of the most common and most impactful irAEs for nutrition. When your activated immune system attacks the lining of your colon, the consequences are severe.
+          </p>
+
+          <h3>What Happens</h3>
+
+          <p>
+            Colitis causes severe diarrhea, abdominal pain, and bloody stools. Beyond the immediate discomfort, this creates a nutritional crisis: your gut loses its ability to absorb water, electrolytes, and nutrients. In severe cases (Grade 3–4), patients can lose 5–10% of body weight in weeks, become dangerously dehydrated, and develop malnutrition even while eating.
+          </p>
+
+          <p>
+            The NCCN and ASCO guidelines classify immune-mediated colitis by severity. Grade 1–2 is managed with diet and monitoring. Grade 3–4 typically requires systemic corticosteroids or other immunosuppression, which is a significant escalation in treatment. This is why early, aggressive nutritional management matters—it can sometimes help prevent progression to higher grades.
+          </p>
+
+          <h3>The Nutrition Strategy</h3>
+
+          <p>
+            If you develop colitis or diarrhea during immunotherapy, your nutrition priorities shift immediately:
+          </p>
+
+          <p>
+            <strong>During acute flares:</strong> Move to a low-residue diet—avoid high-fiber foods, whole grains, raw vegetables, and nuts. Favor cooked vegetables (soft), white rice, white toast, lean proteins, and broths. The goal is to reduce the volume and bulk moving through your inflamed colon.
+          </p>
+
+          <p>
+            <strong>Electrolyte management:</strong> Diarrhea drains sodium, potassium, and magnesium. Oral rehydration solutions (coconut water, broths, electrolyte drinks) become non-negotiable. Dehydration will worsen fatigue and can progress to serious complications.
+          </p>
+
+          <p>
+            <strong>Soluble fiber:</strong> Once diarrhea begins to improve, reintroduce soluble fiber gradually (oats, applesauce, bananas, well-cooked carrots). Soluble fiber absorbs water and can help normalize stool consistency without irritating an inflamed gut.
+          </p>
+
+          <p>
+            <strong>Protein:</strong> Maintain adequate protein despite appetite loss or diarrhea. Protein is essential for immune function and tissue repair. Aim for 1.2–1.5g per kg of body weight daily. Soft sources include eggs, yogurt, tender chicken, fish, and bone broth.
+          </p>
+
+          <div class="takeaway">
+            <h4>Clinical Note</h4>
+            <p>Severe colitis may require temporary bowel rest and parenteral nutrition if oral intake cannot meet needs. Work closely with your oncology team and registered dietitian if symptoms escalate.</p>
+          </div>
+
+          <h2>Thyroid Dysfunction: The Metabolism Shift You Can't See</h2>
+
+          <p>
+            Immune-mediated thyroiditis is common and often overlooked because it develops silently. Checkpoint inhibitors, particularly PD-1 inhibitors, trigger autoimmune attack on the thyroid gland in 5–20% of patients. The result is hypothyroidism—low thyroid function.
+          </p>
+
+          <h3>What This Means Nutritionally</h3>
+
+          <p>
+            Hypothyroidism slows metabolism, affecting how your body uses energy, processes macronutrients, and maintains body composition. You may notice:
+          </p>
+
+          <ul style="margin: 1.5rem 0 1.5rem 1.5rem; color: var(--text-mid); line-height: 1.8;">
+            <li>Fatigue and cold intolerance (even if you're not actually cold)</li>
+            <li>Weight gain despite stable intake</li>
+            <li>Constipation and slowed digestion</li>
+            <li>Dry skin and brittle hair</li>
+            <li>Difficulty concentrating</li>
+          </ul>
+
+          <p>
+            Once thyroiditis is detected (via TSH, free T4, and thyroid antibody testing), it's usually treated with levothyroxine replacement. Your oncology team will monitor your thyroid function regularly. But nutrition supports this recovery.
+          </p>
+
+          <h3>Nutrition Support for Thyroid Health</h3>
+
+          <p>
+            <strong>Iodine and selenium:</strong> These micronutrients are critical for thyroid function. Iodine is the raw material for thyroid hormone synthesis; selenium is required for thyroid peroxidase and glutathione peroxidase, key enzymes protecting the thyroid. Include seaweed (if tolerated), fish, shellfish, eggs, and Brazil nuts.
+          </p>
+
+          <p>
+            <strong>Manage goitrogens carefully:</strong> Compounds in cruciferous vegetables (broccoli, cabbage, kale) can interfere with iodine uptake in large amounts. You don't need to avoid these foods—they're nutritious—but cook them and don't consume extreme quantities if thyroid function is compromised.
+          </p>
+
+          <p>
+            <strong>Timing levothyroxine:</strong> If prescribed, take it on an empty stomach, 30–60 minutes before breakfast. Calcium, iron, and many foods interfere with absorption. Work with your pharmacist on optimal timing.
+          </p>
+
+          <p>
+            <strong>Monitor energy intake:</strong> As your thyroid function stabilizes on replacement therapy, your metabolic rate will shift. You may need to adjust total energy intake to prevent unintended weight changes. A dietitian can help track this.
+          </p>
+
+          <h2>Liver Inflammation: What Your Liver Can and Can't Process</h2>
+
+          <p>
+            Immune-mediated hepatitis (inflammation of the liver) occurs in 5–10% of immunotherapy patients. The liver is your body's detoxification and nutrient-processing center. When it's inflamed, both what you eat and how you handle it changes.
+          </p>
+
+          <p>
+            Hepatitis causes elevated liver enzymes (ALT, AST) and, in severe cases, jaundice, abdominal pain, and loss of appetite. Grade 3–4 hepatitis typically requires immunosuppression.
+          </p>
+
+          <h3>Nutrition Adjustments</h3>
+
+          <p>
+            <strong>Reduce liver load:</strong> Minimize alcohol (obviously), fried and high-fat foods (which stress liver metabolism), and ultra-processed foods. Focus on whole foods that require less metabolic processing.
+          </p>
+
+          <p>
+            <strong>Adequate protein, but quality matters:</strong> Protein is essential for liver repair and immune function, but during hepatitis, avoid excessive red meat and prioritize plant-based proteins and fish. Aim for the same 1.2–1.5g/kg target but from gentler sources.
+          </p>
+
+          <p>
+            <strong>Antioxidant-rich foods:</strong> The liver is under oxidative stress during inflammation. Prioritize antioxidant-rich foods: colorful vegetables, berries, green tea, and foods rich in glutathione (broccoli, asparagus, spinach). These support hepatic glutathione systems critical for detoxification.
+          </p>
+
+          <p>
+            <strong>Monitor fat-soluble vitamins:</strong> If hepatitis is severe, fat absorption may be impaired, risking deficiencies in vitamins A, D, E, and K. Your oncology team may check these; supplementation may be needed.
+          </p>
+
+          <h2>The Microbiome's Hidden Role in Immunotherapy Response</h2>
+
+          <p>
+            Here's where the science gets fascinating: your gut bacteria directly influence how well immunotherapy works and how severe your irAEs are.
+          </p>
+
+          <p>
+            Landmark research by Routy and colleagues (2018) showed that patients with diverse, health-promoting gut microbiota respond significantly better to checkpoint inhibitors and experience fewer severe irAEs. The mechanism involves short-chain fatty acid (SCFA) production and immune tolerance.
+          </p>
+
+          <h3>Protecting Your Microbiome</h3>
+
+          <p>
+            <strong>Fiber intake:</strong> This is non-negotiable. Soluble and insoluble fiber feed your beneficial bacteria, promoting production of butyrate and other SCFAs that reduce inflammation and support immune tolerance. Target 25–35g of fiber daily (adjusted during acute diarrhea).
+          </p>
+
+          <p>
+            <strong>Fermented and prebiotic foods:</strong> Yogurt, kefir (if tolerated during diarrhea), tempeh, and miso provide live bacteria. Onions, garlic, asparagus, and chicory root contain inulin, a prebiotic that selectively feeds good bacteria.
+          </p>
+
+          <p>
+            <strong>Minimize unnecessary antibiotics:</strong> Of course, if antibiotics are medically necessary, take them. But discuss with your team whether any are truly essential. Each course disrupts your microbiota significantly.
+          </p>
+
+          <p>
+            <strong>Probiotic supplements:</strong> The evidence is mixed, but some evidence supports specific strains (particularly <em>Faecalibacterium prausnitzii</em> and <em>Akkermansia muciniphila</em>) for improving immunotherapy response. Discuss with your oncology team before starting supplements.
+          </p>
+
+          <div class="takeaway">
+            <h4>The Bottom Line on Microbiome</h4>
+            <p>A diverse, fiber-fed microbiota may help you tolerate immunotherapy better and respond more robustly. Prioritize whole foods, fiber, fermented foods, and antibiotic stewardship. This is foundational nutritional support.</p>
+          </div>
+
+          <h2>Practical Nutrition Strategies: The Essentials</h2>
+
+          <h3>1. Adequate Protein (1.2–1.5g per kg body weight)</h3>
+
+          <p>
+            Your immune system is working overtime. Protein supports immune cell production, antibody synthesis, and tissue repair. Spread protein throughout the day in smaller portions if appetite is reduced. If diarrhea is severe, prioritize easily absorbable sources: eggs, fish, bone broth, white chicken breast.
+          </p>
+
+          <h3>2. Anti-Inflammatory Dietary Pattern</h3>
+
+          <p>
+            Consider a modified Mediterranean diet: emphasis on plants, fish, olive oil, legumes (when tolerated), nuts, and whole grains. Minimize seed oils, processed foods, and excessive red meat. This pattern reduces systemic inflammation and supports a healthy microbiota. Research increasingly shows anti-inflammatory eating improves immunotherapy tolerance.
+          </p>
+
+          <h3>3. Hydration and Electrolytes</h3>
+
+          <p>
+            Aim for 2–3 liters of fluid daily, more if diarrhea is present. Include electrolyte sources: coconut water, low-sodium broth, electrolyte beverages. Dehydration amplifies fatigue and impairs immune function.
+          </p>
+
+          <h3>4. Strategic Micronutrients</h3>
+
+          <p>
+            Vitamin D, zinc, and selenium are particularly important for immune function. If bloodwork shows deficiencies, supplementation may be warranted. Otherwise, prioritize food sources: fatty fish (vitamin D and selenium), shellfish and beef (zinc), Brazil nuts (selenium).
+          </p>
+
+          <h3>5. Flexible, Adaptive Eating</h3>
+
+          <p>
+            Your body's tolerance will shift week to week based on irAE severity and immunosuppressive treatment. Keep a food and symptom diary. Work with a registered dietitian (ideally oncology-specialized) who understands immunotherapy to adapt your plan as you progress.
+          </p>
+
+          <h2>Red Flags: When to Escalate Immediately</h2>
+
+          <p>
+            Most nutrition management is about optimization and prevention. But certain symptoms demand immediate medical attention:
+          </p>
+
+          <ul style="margin: 1.5rem 0 1.5rem 1.5rem; color: var(--text-mid); line-height: 1.8;">
+            <li><strong>Severe diarrhea</strong> (more than 7 stools per day, or bloody stools)</li>
+            <li><strong>Jaundice</strong> (yellowing of skin or eyes)</li>
+            <li><strong>Severe abdominal pain</strong> with vomiting</li>
+            <li><strong>Signs of dehydration</strong> (extreme thirst, dark urine, dizziness)</li>
+            <li><strong>Unintentional weight loss</strong> exceeding 5% in 2–4 weeks</li>
+            <li><strong>Severe fatigue or weakness</strong> affecting daily function</li>
+          </ul>
+
+          <p>
+            Contact your oncology team immediately if any of these occur. These may signal Grade 3–4 irAEs requiring intervention beyond dietary management.
+          </p>
+
+          <h2>What This Article Can and Can't Do</h2>
+
+          <p>
+            A few honest caveats before we close:
+          </p>
+
+          <p>
+            <strong>Most immunotherapy patients do not experience severe irAEs.</strong> This article covers the nutritional challenges that <em>can</em> arise, but many patients tolerate checkpoint inhibitors well, with minimal or no GI, liver, or thyroid disruption. The fact that colitis affects 30-50% of combination therapy patients means it also <em>doesn't</em> affect 50-70%. Don't read this as a forecast of what will happen to you — read it as preparation for what might.
+          </p>
+
+          <p>
+            <strong>Nutrition supports treatment. It doesn't replace it.</strong> No dietary pattern cures cancer or prevents irAEs. If you develop Grade 3-4 colitis or hepatitis, you need immunosuppressive therapy — not a better salad. The strategies here are complementary, aimed at helping you feel better, maintain nutritional status, and potentially support treatment response. They sit alongside medical management, not instead of it.
+          </p>
+
+          <p>
+            <strong>The microbiome research is promising but still early.</strong> Routy et al. (2018) was a landmark study, but the field is young. We don't yet have randomized controlled trials proving that specific dietary interventions improve immunotherapy outcomes in humans. The biological plausibility is strong, and the direction of the evidence is encouraging, but we should be honest that we're working with observational and preclinical data for many of these recommendations. Eating fiber-rich, whole foods is sound advice regardless — but we can't yet promise it will make your immunotherapy work better.
+          </p>
+
+          <p>
+            <strong>Every patient is different.</strong> Your cancer type, specific checkpoint inhibitor, combination therapies, baseline nutritional status, comorbidities, and personal food tolerances all matter. A patient with pancreatic cancer on combination ipilimumab/nivolumab has vastly different nutritional needs than someone with melanoma on single-agent pembrolizumab. General principles apply, but your plan should be individualized with your care team.
+          </p>
+
+          <h2>In Summary</h2>
+
+          <p>
+            Eating through immunotherapy is different from eating through chemotherapy. Your goal isn't primarily to manage nausea or food aversions — it's to support an activated immune system, manage inflammation when it arises, protect your microbiota, and optimize absorption despite potential GI, liver, and metabolic challenges.
+          </p>
+
+          <p>
+            The core strategies are straightforward: prioritize protein, anti-inflammatory whole foods, adequate fiber, hydration, and electrolytes. Stay flexible as your body's needs shift. Work with your oncology team and a registered dietitian who understands immunotherapy — ideally one with oncology specialization. And remember: how you nourish yourself during treatment is one of the few things within your control, even when so much else isn't.
+          </p>
+
+          <p>
+            You're not just eating through cancer treatment. You're giving your body the best possible foundation to do what it needs to do.
+          </p>
+        </div>
+
+        <section class="references">
+          <h2>References</h2>
+          <ol>
+            <li>Dougan, M., Chung, K. C. (2018). "Immune-related adverse events and immune checkpoint inhibitor management." <em>Hematology/Oncology Clinics of North America</em>, 32(3), 459–479.</li>
+            <li>Brahmer, J. R., Lacchetti, C., et al. (2017). "Management of immune-related adverse events in patients treated with immune checkpoint inhibitor therapy: American Society of Clinical Oncology Clinical Practice Guideline." <em>Journal of Clinical Oncology</em>, 35(17), 1924–1933.</li>
+            <li>Routy, B., Le Chatelier, E., et al. (2018). "Gut microbiome influences efficacy of PD-1–based immunotherapy against epithelial tumors." <em>Science</em>, 359(6371), 91–97.</li>
+            <li>Weber, J. S., Yang, J. C., et al. (2015). "Individualized neoantigen therapy mRNA-4157 (V940) plus Bavencio versus Bavencio alone in previously untreated patients with unresectable or metastatic melanoma (KEYNOTE-942)." <em>Journal of Clinical Oncology</em>, 39(15 Suppl), 9503.</li>
+            <li>Nishino, M., Chambers, E. S., Chong, E. A., et al. (2020). "Immune-related adverse events associated with programmed cell death ligand-1 inhibitors: American College of Radiology Appropriateness Criteria." <em>Journal for ImmunoTherapy of Cancer</em>, 8(Suppl 2), e001141.</li>
+            <li>NCCN Clinical Practice Guidelines in Oncology: Immunotherapy-Related Adverse Events. (2025). National Comprehensive Cancer Network.</li>
+            <li>Atkins, M. B., Jegalian, A. G., et al. (2019). "Priorities for advancing clinical research in immuno-oncology." <em>Journal for ImmunoTherapy of Cancer</em>, 7, 32.</li>
+            <li>Desai, A., Guloksen, G., et al. (2020). "Characteristics of patients with immune-related adverse events after immunotherapy in a real-world setting." <em>Journal for ImmunoTherapy of Cancer</em>, 8(2), e000667.</li>
+            <li>Pitt, J. M., Vétizou, M., et al. (2016). "Targeting the tumor microenvironment: removing obstruction to anticancer immune responses." <em>Annals of Oncology</em>, 27(8), 1482–1492.</li>
+            <li>Wargo, J. A., Bernatchez, C. (2020). "Microbiota and immunotherapy." <em>Current Opinion in Immunology</em>, 65, 84–91.</li>
+          </ol>
+        </section>
+      </section>
+
+      <footer class="article-footer">
+        <div class="cta-section">
+          <h3>Ready to Optimize Your Nutrition?</h3>
+          <p>If you're navigating cancer treatment and want personalized nutrition guidance, let's talk. Schedule a discovery call to explore how we can support your health journey.</p>
+          <a href="../index.html#booking" class="cta-button">Book a Discovery Call</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

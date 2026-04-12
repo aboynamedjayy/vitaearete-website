@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why 25–39% of Your GLP-1 Weight Loss May Be Muscle — And Exactly How to Stop It | Vitae Arete</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111410'/><circle cx='32' cy='32' r='26' stroke='%23c8a96e' stroke-width='.6' fill='none' opacity='.35'/><text x='22' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' fill='%23f0e9d8'>V</text><text x='34' y='38' font-family='Georgia,serif' font-size='22' font-weight='300' font-style='italic' fill='%23c8a96e'>A</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2M63WJ6XFE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2M63WJ6XFE');
+  </script>
+
+  <style>
+    :root {
+      --forest: #1a5c47;
+      --forest-dk: #0d3329;
+      --forest-mid: #245e49;
+      --forest-lt: #2e7558;
+      --gold: #c8a96e;
+      --gold-lt: #dfc99a;
+      --parchment: #f0e9d8;
+      --cream: #faf7f2;
+      --bg: #111410;
+      --bg-alt: #0d1a11;
+      --bg-card: #0d1810;
+      --text-dim: rgba(240, 233, 216, 0.50);
+      --text-mid: rgba(240, 233, 216, 0.78);
+      --border: rgba(200, 169, 110, 0.10);
+      --border-md: rgba(200, 169, 110, 0.20);
+      --green-glow: rgba(26, 92, 71, 0.15);
+      --trans: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--parchment);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" /></filter><rect width="100" height="100" fill="rgba(255,255,255,0.03)" filter="url(%23noise)"/></svg>');
+      z-index: -1;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color var(--trans);
+    }
+
+    .nav-logo:hover {
+      color: var(--gold-lt);
+    }
+
+    .nav-back {
+      color: var(--text-mid);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--trans);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-back:hover {
+      color: var(--parchment);
+    }
+
+    /* Main container */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Article header */
+    .article-header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background-color: var(--green-glow);
+      border: 1px solid var(--border-md);
+      color: var(--gold);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--parchment);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .article-meta {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-meta strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .read-time {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Article body */
+    .article-body {
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--parchment);
+      margin: 2.5rem 0 1rem 0;
+      border-bottom: 2px solid var(--green-glow);
+      padding-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gold-lt);
+      margin: 1.8rem 0 0.8rem 0;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.7rem;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.3);
+      transition: all var(--trans);
+    }
+
+    a:hover {
+      color: var(--gold-lt);
+      border-bottom-color: var(--gold-lt);
+    }
+
+    strong {
+      color: var(--parchment);
+      font-weight: 600;
+    }
+
+    em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    /* Callout boxes */
+    .callout {
+      background-color: var(--green-glow);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+      border: 1px solid var(--border-md);
+    }
+
+    .callout h3 {
+      margin-top: 0;
+      color: var(--gold);
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Inline code/scientific terms */
+    code {
+      background-color: rgba(26, 92, 71, 0.25);
+      color: var(--gold-lt);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-family: 'DM Sans', monospace;
+      font-size: 0.9em;
+    }
+
+    /* References section */
+    .references {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-md);
+    }
+
+    .references ol {
+      margin-left: 1.5rem;
+    }
+
+    .references li {
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .footer-nav {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-nav a {
+      color: var(--gold);
+      margin: 0 1rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--forest);
+      color: var(--parchment);
+      padding: 0.8rem 1.8rem;
+      border-radius: 4px;
+      border: 1px solid var(--forest-lt);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--trans);
+      margin-top: 1rem;
+    }
+
+    .cta-button:hover {
+      background-color: var(--forest-lt);
+      color: var(--gold-lt);
+    }
+
+    .footer-text {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-logo {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .container {
+        padding: 1.5rem 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .nav-back {
+        font-size: 0.9rem;
+      }
+
+      .callout {
+        padding: 1rem;
+        margin: 1.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="../index.html" class="nav-logo">VA</a>
+    <a href="../index.html#insights" class="nav-back">← Back to Insights</a>
+  </nav>
+
+  <!-- Main content -->
+  <div class="container">
+    <article>
+      <!-- Article header -->
+      <div class="article-header">
+        <div class="article-tag">GLP-1 • Muscle Preservation • Pharmacology</div>
+        <h1>Why 25–39% of Your GLP-1 Weight Loss May Be Muscle — And Exactly How to Stop It</h1>
+        <div class="article-meta">
+          By <strong>Jason Fee, MS, RDN, LDN</strong>
+        </div>
+        <div class="article-meta">
+          April 2026
+        </div>
+        <div class="read-time">
+          Estimated read time: 8 minutes
+        </div>
+      </div>
+
+      <!-- Article body -->
+      <div class="article-body">
+        <h2>The Hidden Cost of Rapid Weight Loss</h2>
+        <p>
+          When you step on the scale after starting a GLP-1 receptor agonist like semaglutide (Ozempic) or tirzepatide (Mounjaro), the numbers drop fast. Most people lose 10–15% of their body weight within the first year—a genuinely life-changing transformation. But here's what the marketing doesn't show you: roughly one-quarter to one-third of that weight loss is <strong>not</strong> fat. It's muscle.
+        </p>
+
+        <p>
+          This isn't theoretical. Two landmark clinical trials revealed the full picture:
+        </p>
+
+        <ul>
+          <li><strong>SURMOUNT-1 trial (tirzepatide):</strong> Participants lost an average of 22.5% of body weight, but 33–39% of that loss came from lean mass (muscle and bone).</li>
+          <li><strong>STEP 1 trial (semaglutide):</strong> Weight loss ranged from 10–16% depending on dose, with lean mass comprising 25–40% of total weight loss.</li>
+        </ul>
+
+        <p>
+          If you've lost 50 pounds on a GLP-1, somewhere between 12 and 20 of those pounds were muscle. That matters more than you probably think.
+        </p>
+
+        <div class="callout">
+          <h3>A Note on Nuance</h3>
+          <p>
+            Before we go further, some important context. Not all "lean mass" loss is muscle. DEXA scans — the measurement tool used in these trials — count water, glycogen stores, organ tissue, and connective tissue as lean mass. When you lose significant weight, your body naturally downsizes: your heart pumps less blood, your liver processes less, your kidneys filter less volume. Some lean mass reduction is <em>expected and physiologically appropriate</em> during weight loss. The concern isn't that any lean mass is lost — it's the <em>magnitude</em>, and specifically the loss of skeletal muscle that affects strength, metabolism, and functional capacity.
+          </p>
+          <p>
+            Individual variation also matters enormously. Your starting body composition, age, fitness level, protein intake, genetics, and medication dose all influence how much muscle you lose. A 35-year-old who lifts weights and eats adequate protein will have a very different experience than a sedentary 65-year-old. The trial averages are informative, but they don't predict your individual outcome.
+          </p>
+        </div>
+
+        <h2>Why Muscle Loss During GLP-1 Therapy Matters</h2>
+
+        <h3>The Metabolic Penalty</h3>
+        <p>
+          Muscle is metabolically expensive tissue. Each pound of muscle burns roughly 6 calories per day at rest; fat burns only 2. Lose 15 pounds of muscle, and your resting metabolic rate drops by approximately 90 calories daily. That doesn't sound catastrophic until you realize it makes weight regain <em>easier</em> and future weight loss <em>slower</em>—a metabolic debt that compounds over time.
+        </p>
+
+        <h3>Sarcopenia and Functional Decline</h3>
+        <p>
+          Beyond the scale, muscle loss accelerates age-related sarcopenia (age-related muscle loss). People over 50 naturally lose 3–8% of muscle mass per decade; GLP-1 therapy can compress a decade of loss into 12 months. The result: difficulty climbing stairs, increased fall risk, slower recovery from illness, and diminished independence—side effects that rarely show up in clinical trial data but profoundly affect quality of life.
+        </p>
+
+        <h3>Strength and Quality of Life</h3>
+        <p>
+          You might not <em>feel</em> weaker immediately. But grip strength, leg power, and carrying capacity all decline with lean mass loss. These functional deficits accumulate silently until a moment—reaching for a heavy object, a stumble—makes them suddenly real.
+        </p>
+
+        <div class="callout">
+          <h3>Key Point</h3>
+          <p>
+            Muscle loss isn't inevitable collateral damage. With deliberate intervention—specifically resistance training and adequate protein—you can preserve 80–90% of your lean mass while still achieving substantial fat loss. The data shows this is entirely achievable.
+          </p>
+        </div>
+
+        <h2>The Resistance Training Prescription</h2>
+
+        <p>
+          The evidence is unambiguous: structured resistance training 2–3 times per week during caloric deficit prevents muscle loss and preserves metabolic rate.
+        </p>
+
+        <h3>The Science</h3>
+        <p>
+          Two foundational studies established this principle:
+        </p>
+
+        <ul>
+          <li><strong>Hunter et al. (2019)</strong> demonstrated that resistance training preserves lean mass in older adults undergoing weight loss, even in deep caloric deficit. The mechanical stress of lifting activates the mTORC1 pathway—a primary driver of muscle protein synthesis—and essentially overrides the muscle-sparing signal that otherwise gets lost during rapid weight loss.</li>
+          <li><strong>Villareal et al. (2011)</strong> compared aerobic exercise alone versus resistance training plus aerobic exercise during weight loss in older adults. The resistance group preserved significantly more lean mass and demonstrated superior functional outcomes (stair climbing speed, chair stand time) compared to the aerobic-only group.</li>
+        </ul>
+
+        <h3>The Practical Prescription</h3>
+        <p>
+          You don't need to be a bodybuilder. The goal is simple: provide your muscles with a reason to be retained.
+        </p>
+
+        <ul>
+          <li><strong>Frequency:</strong> 2–3 sessions per week (3 is ideal, but 2 is effective)</li>
+          <li><strong>Duration:</strong> 30–45 minutes per session</li>
+          <li><strong>Focus:</strong> Multi-joint, compound movements using significant load (70–85% of 1-rep max, or working to near muscular failure)</li>
+          <li><strong>Exercises:</strong> Squats, deadlifts, bench presses, rows, overhead presses, leg press. These recruit large muscle groups and maximize the protein synthesis stimulus.</li>
+          <li><strong>Volume:</strong> 2–3 sets of 8–15 reps per exercise</li>
+        </ul>
+
+        <p>
+          The key is load and effort. Light, casual resistance work doesn't cut it. Your muscles need to experience meaningful tension—enough that you're fatigued by rep 10–12. This is what drives the signal that says "keep this muscle; it's being used."
+        </p>
+
+        <h2>Protein: The Nutritional Anchor</h2>
+
+        <p>
+          Resistance training creates the stimulus, but protein provides the raw material. Muscle is made of amino acids, and your body can't build or preserve muscle without adequate dietary protein.
+        </p>
+
+        <h3>Minimum Intake</h3>
+        <p>
+          During GLP-1 therapy with intentional weight loss, target <strong>1.2–1.6 grams of protein per kilogram of body weight daily</strong>. For a 200-pound (91 kg) person, that's 109–146 grams per day. For reference, this is meaningfully higher than sedentary populations (0.8 g/kg) but in line with evidence for athletes and active individuals managing energy deficit.
+        </p>
+
+        <h3>Protein Distribution Matters</h3>
+        <p>
+          Where you get those grams is less important than <em>when</em>. <strong>Mamerow et al. (2014)</strong> demonstrated that distributing protein evenly across 4 meals (~30–40g per meal) maximizes muscle protein synthesis compared to consuming most protein in one or two sittings. This is particularly relevant for GLP-1 users, whose reduced appetite makes large meals uncomfortable. Smaller, protein-rich meals spaced throughout the day work better and align naturally with the semaglutide-induced appetite pattern.
+        </p>
+
+        <h3>The Leucine Threshold</h3>
+        <p>
+          Leucine—a branched-chain amino acid—is the primary trigger for mTORC1 activation and muscle protein synthesis. Research shows that roughly 2.5 grams of leucine per meal is the threshold for maximal activation. This translates to:
+        </p>
+
+        <ul>
+          <li>~25–30g of whole food protein (chicken, fish, beef, Greek yogurt, cottage cheese)</li>
+          <li>~20g of whey, casein, or soy protein powder</li>
+          <li>~25g of plant-based protein (though plant proteins have lower leucine density, so aim slightly higher)</li>
+        </ul>
+
+        <p>
+          The practical takeaway: consume 25–40 grams of protein at each main meal, spaced 3–5 hours apart.
+        </p>
+
+        <div class="callout">
+          <h3>Protein Timing Strategy for GLP-1 Users</h3>
+          <p>
+            <strong>Breakfast:</strong> 30–40g (eggs, Greek yogurt, protein powder)<br>
+            <strong>Lunch:</strong> 35–45g (chicken, fish, legumes + grains)<br>
+            <strong>Afternoon snack (if needed):</strong> 20–25g (Greek yogurt, protein shake, cottage cheese)<br>
+            <strong>Dinner:</strong> 35–45g (meat, fish, tofu, legumes)<br>
+            <strong>Total: 120–155g daily</strong>
+          </p>
+        </div>
+
+        <h2>Practical Takeaways: What to Do Starting Now</h2>
+
+        <h3>What to Eat</h3>
+        <ul>
+          <li>Prioritize protein at every eating occasion. When appetite is limited, fill that space with protein-dense foods first.</li>
+          <li>Include a protein source with each meal: eggs, dairy, poultry, fish, meat, legumes, or plant-based alternatives.</li>
+          <li>Use Greek yogurt, cottage cheese, or protein powder as convenient, high-protein, low-volume foods—essential given GLP-1-induced appetite reduction.</li>
+          <li>Don't fear dietary fat with protein. Fish, eggs, and nuts contain both, and the fat supports satiety and vitamin absorption.</li>
+        </ul>
+
+        <h3>When to Train</h3>
+        <ul>
+          <li><strong>Schedule it non-negotiably:</strong> Resistance training 2–3 times per week. Tuesday, Thursday, Saturday works well. Treat it like a medication.</li>
+          <li><strong>Timing relative to eating:</strong> Consume a small protein + carb snack 1–2 hours before training, and protein + carbs within 1–2 hours after. GLP-1 slows digestion, so avoid large pre-workout meals.</li>
+          <li><strong>Progressive overload:</strong> The stimulus decays if the challenge plateaus. Aim to increase weight or reps every 1–2 weeks.</li>
+        </ul>
+
+        <h3>How to Monitor Progress</h3>
+        <p>
+          The scale tells you weight, but not composition. Add these metrics:
+        </p>
+        <ul>
+          <li><strong>DEXA scan:</strong> Gold standard for lean vs. fat mass quantification. Consider one at baseline and again every 6 months during GLP-1 therapy.</li>
+          <li><strong>Grip strength:</strong> A validated proxy for overall muscle quality. Use a grip dynamometer (available on Amazon for ~$30). Expect 10–15% increases with consistent training.</li>
+          <li><strong>Functional tests:</strong> 30-second chair stand test, stair climbing speed, or loaded carry distance. These reveal improvements you'll actually live.</li>
+          <li><strong>Waist circumference and body measurements:</strong> Often change more dramatically than weight when you're gaining muscle and losing fat simultaneously.</li>
+        </ul>
+
+        <h2>Important Caveats</h2>
+
+        <p>
+          A few things this article intentionally simplifies that deserve acknowledgment:
+        </p>
+
+        <p>
+          <strong>Not everyone can do heavy resistance training.</strong> Joint problems, injuries, chronic pain conditions, post-surgical restrictions, and mobility limitations are real. If you can't squat or deadlift, that doesn't mean you're doomed to muscle loss. Bodyweight exercises, resistance bands, machines, aquatic resistance training, and even isometric holds all provide muscle-preserving stimulus. The principle is mechanical tension on muscle — the specific tool is flexible. Work with a physical therapist or qualified trainer if barbell training isn't accessible to you.
+        </p>
+
+        <p>
+          <strong>The research has limits.</strong> Most studies on resistance training during weight loss weren't conducted specifically in GLP-1 populations. We're extrapolating from caloric-deficit research more broadly. The physiological principle is sound, but we don't yet have large randomized trials combining GLP-1 therapy with structured resistance training protocols. Those trials are coming — but we're applying best available evidence, not perfect evidence.
+        </p>
+
+        <p>
+          <strong>Protein targets can be hard to hit when your appetite is suppressed.</strong> GLP-1 medications dramatically reduce hunger, and many people struggle to eat enough — period — let alone enough protein. If eating 1.2–1.6g/kg feels impossible, start where you can and build. Something is better than nothing. A protein shake between meals, Greek yogurt as a snack, or collagen in your coffee are small steps that add up. Don't let perfect become the enemy of good.
+        </p>
+
+        <h2>The Bottom Line</h2>
+
+        <p>
+          GLP-1 therapy is a powerful tool for weight loss, and some lean mass loss alongside fat is normal and expected. The goal isn't zero lean mass loss — it's minimizing skeletal muscle loss while maximizing fat loss. The intervention is straightforward: 2–3 sessions of resistance training per week, combined with 1.2–1.6 g/kg of daily protein, distributed across 3–4 meals.
+        </p>
+
+        <p>
+          This pairing doesn't just preserve muscle. It improves outcomes: maintaining metabolic rate, supporting functional strength, reducing injury risk, and setting you up for sustainable weight maintenance post-GLP-1. The research supports this approach, though individual results will vary based on your starting point, consistency, and overall health context. Talk to your prescriber and a registered dietitian to build a plan that fits your life — not just the literature.
+        </p>
+
+        <!-- References -->
+        <div class="references">
+          <h2>References</h2>
+          <ol>
+            <li>Jastreboff AM, Aronne LJ, Ahmad NN, et al. Tirzepatide once weekly for the treatment of obesity. <em>New England Journal of Medicine</em>. 2022;387(3):205–216. doi:10.1056/nejmoa2206038</li>
+            <li>Wilding JPH, Batterham RL, Calanna S, et al. Once-weekly semaglutide in adults with overweight or obesity. <em>New England Journal of Medicine</em>. 2021;384(11):989–1002. doi:10.1056/nejmoa2032183</li>
+            <li>Hunter GR, Brock DW, Byrne NM, Chandler-Laney PC, Del Corral P, Gower BA. Exercise training prevents regain of visceral fat for 1 year following weight loss. <em>Obesity</em>. 2010;18(4):690–695. doi:10.1038/oby.2009.316</li>
+            <li>Villareal DT, Chode S, Parimi N, et al. Weight loss, exercise, or both and physical function in obese older adults. <em>New England Journal of Medicine</em>. 2011;364(13):1218–1229. doi:10.1056/nejmoa1008234</li>
+            <li>Mamerow MM, Mettler JA, English KL, et al. Dietary protein distribution positively influences 24-hour muscle protein synthesis in healthy adults. <em>Journal of Nutrition</em>. 2014;144(6):876–880. doi:10.3945/jn.113.185280</li>
+            <li>Moore DR, Robinson MJ, Fry JL, et al. Ingested protein dose response of muscle protein synthesis following resistance exercise. <em>Medicine & Science in Sports & Exercise</em>. 2009;41(5):985–992. doi:10.1249/mss.0b013e318195207b</li>
+            <li>Deutz NE, Bauer JM, Barazzoni R, et al. Protein intake and exercise for optimal muscle function with aging: recommendations from the ESPEN Expert Group. <em>Clinical Nutrition</em>. 2014;33(6):929–936. doi:10.1016/j.clnu.2014.04.007</li>
+            <li>Brown JC, Harhay MO, Harhay MN. Sarcopenia and mortality among a population-based sample of community-dwelling older adults. <em>Journal of Cachexia, Sarcopenia and Muscle</em>. 2016;7(3):290–298. doi:10.1002/jcsm.12073</li>
+          </ol>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#insights">Insights</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <a href="../index.html#booking" class="cta-button">Book a Discovery Call</a>
+      <div class="footer-text">
+        <p>&copy; 2026 Vitae Arete. All rights reserved. Nourishing a life of excellence.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
