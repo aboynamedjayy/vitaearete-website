@@ -60,22 +60,33 @@
       position: relative;
     }
 
-    /* Noise overlay */
-    body::before {
-      content: '';
+    /* Background canvas */
+    #bgCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: 0;
       pointer-events: none;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" /></filter><rect width="100" height="100" fill="rgba(255,255,255,0.03)" filter="url(%23noise)"/></svg>');
-      z-index: -1;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
     }
 
     /* Navigation */
     nav {
-      background-color: var(--bg-card);
+      background-color: rgba(13,24,16,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 1rem 2rem;
       display: flex;
@@ -118,6 +129,8 @@
       max-width: 720px;
       margin: 0 auto;
       padding: 3rem 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     /* Article header */
@@ -274,11 +287,14 @@
 
     /* Footer */
     footer {
-      background-color: var(--bg-card);
+      background-color: rgba(13,24,16,.92);
+      backdrop-filter: blur(12px);
       border-top: 1px solid var(--border);
       padding: 2rem;
       margin-top: 4rem;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .footer-content {
@@ -379,6 +395,7 @@
   </style>
 </head>
 <body>
+  <canvas id="bgCanvas"></canvas>
   <!-- Navigation -->
   <nav>
     <a href="../index.html" class="nav-logo">VA</a>
@@ -620,5 +637,6 @@
       </div>
     </div>
   </footer>
+  <script src="bg-canvas.js" data-mode="helix"></script>
 </body>
 </html>
